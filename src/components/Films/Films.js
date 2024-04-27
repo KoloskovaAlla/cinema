@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import 'swiper/css';
 import { LeftArrowIcon, RightArrowIcon } from './assets';
+import { FilmPreview } from './components';
 
 export const Films = () => {
   const [movies, setMovies] = useState([]);
@@ -57,12 +58,13 @@ export const Films = () => {
 
         {movies.map((movie, index) => (
           <SwiperSlide key={index}>
-            <div key={movie.id} className="movie">
+            <FilmPreview movie={movie} />
+            {/* <div key={movie.id} className="movie">
               <div className={classes.image}>
                 <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} alt={movie.title} />
               </div>
               <h2>{movie.title}</h2>
-            </div>
+            </div> */}
           </SwiperSlide>
         ))}
         <button className={classes.swiper_button_prev_custom} ref={navigationPrevRef}>
