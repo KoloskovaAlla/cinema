@@ -1,12 +1,30 @@
 
 import classes from './Films.module.scss';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import 'swiper/css';
 import { LeftArrowIcon, RightArrowIcon } from './assets';
 
-export const Films = ({ movies }) => {
+export const Films = () => {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const apiKey = 'bc8eebf42f936c16863715b5622480d4';
+        const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=ru-RU`);
+        const data = await response.json();
+        setMovies(data.results);
+        console.log(data.results);
+      } catch (error) {
+        console.error('Error fetching movies:', error);
+      }
+    };
+
+    fetchMovies();
+  }, []);
+
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
 
