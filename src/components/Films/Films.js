@@ -23,15 +23,6 @@ export const Films = () => {
   return (
     <>
       <h1>Лучшие фильмы</h1>
-      {/* <ul className="movie-list">
-        {movies.map(movie => (
-          <li key={movie.id} className="movie">
-            <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} alt={movie.title} />
-            <h2>{movie.title}</h2>
-            <p>{movie.overview}</p>
-          </li>
-        ))}
-      </ul> */}
       <Slider movies={movies} />
     </>
   )

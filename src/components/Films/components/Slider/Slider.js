@@ -15,17 +15,17 @@ export const Slider = ({ movies }) => {
       <Swiper
         className={classes.mySwiper}
         modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={20}
-        slidesPerView={3}
+        spaceBetween={10}
+        slidesPerView={1}
         breakpoints={{
           770: {
-            slidesPerView: 4
+            slidesPerView: 2
           },
           1150: {
-            slidesPerView: 5
+            slidesPerView: 3
           },
           1440: {
-            slidesPerView: 6
+            slidesPerView: 4
           }
         }}
         navigation={{
@@ -39,9 +39,10 @@ export const Slider = ({ movies }) => {
         {movies.map((movie, index) => (
           <SwiperSlide key={index}>
             <div key={movie.id} className="movie">
-              <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} alt={movie.title} />
+              <div className={classes.image}>
+                <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} alt={movie.title} />
+              </div>
               <h2>{movie.title}</h2>
-              <p>{movie.overview}</p>
             </div>
           </SwiperSlide>
         ))}
