@@ -1,4 +1,4 @@
-// import './styles/index.scss';
+import './styles/index.scss';
 import { Films, Header } from './components';
 
 export const App = () => {
