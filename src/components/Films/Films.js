@@ -31,7 +31,7 @@ export const Films = () => {
 
   return (
     <div className={classes.wrapper}>
-      <h1>Лучшие фильмы</h1>
+      <h1 className={classes.title}>Лучшие фильмы</h1>
       <Swiper
         className={classes.mySwiper}
         modules={[Navigation, Pagination, Scrollbar, A11y]}
