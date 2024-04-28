@@ -1,0 +1,143 @@
+@import 'styles/breakpoints.scss';
+
+$container_max_width: 690px;
+$container_max_width_lg: 930px;//1152px
+$container-max-width_xl: 1110px;
+
+$container_template_columns: repeat(1, 1fr);
+$container_template_columns_md: repeat(2, 1fr);
+
+$container_gap: 30px;
+$container_gap_lg: 40px;
+$container-gap_xl: 110px;
+
+$title_fz: 26px;
+$title_fz_md: 30px;
+$title_fz_lg: 34px;
+$title-fz_xl: 40px;
+
+$copy_font_size: 14px;
+$copy_font_size_md: 16px;
+$copy_font_size_lg: 18px;
+$copy-font-size_xl: 20px;
+
+.section {
+  padding:  30px 15px;
+
+  @media (min-width: $breakpoint_lg) {
+    padding: 40px 15px;
+  }
+
+  @media (min-width: $breakpoint_xl) {
+    padding: 50px 15px;
+  }
+}
+
+.wrapper {
+  display: grid;
+  margin: 0 auto;
+  // max-width: $container_max_width;
+  grid-template-columns: $container_template_columns;
+  gap: $container_gap;
+
+  @media (min-width: $breakpoint_md) {
+    grid-template-columns: $container_template_columns_md;
+  }
+
+  @media (min-width: $breakpoint_lg) {
+    // max-width: $container_max_width_lg;
+    gap: $container_gap_lg;
+  }
+
+  @media (min-width: $breakpoint_xl) {
+    // max-width: $container_max_width_xl;
+    gap: $container_gap_xl;
+  }
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+
+  h1 {
+    font-size: 30px;
+
+    @media (min-width: $breakpoint_md) {
+      font-size: 36px;
+    }
+
+    @media (min-width: $breakpoint_lg) {
+      font-size: 42px;
+    }
+
+    @media (min-width: $breakpoint_xl) {
+      font-size: 56px;
+    }
+  }
+}
+
+@media (min-width: $breakpoint_md) {
+  .reverse {
+    order: 1;
+  }
+}
+
+.title {
+  font-size: $title_fz;
+  font-weight: 700;
+
+  @media (min-width: $breakpoint_md) {
+    font-size: $title_fz;
+  }
+
+  @media (min-width: $breakpoint_lg) {
+    font-size: $title_fz_lg;
+  }
+
+  @media (min-width: $breakpoint_xl) {
+    font-size: $title_fz-xl;
+  }
+}
+
+.copy {
+  margin-top: 10px;
+  font-size: $copy_font_size;
+
+  @media (min-width: $breakpoint_md) {
+    font-size: $copy_font_size_md;
+  }
+
+  @media (min-width: $breakpoint_lg) {
+    font-size: $copy_font_size_lg;
+  }
+
+  @media (min-width: $breakpoint_xl) {
+    font-size: $copy_font_size_xl;
+    margin-top: 20px;
+  }
+
+  &:first-of-type {
+    margin-top: 20px;
+
+    @media (min-width: $breakpoint_xl) {
+      margin-top: 30px;
+    }
+  }
+}
+
+.image {
+  margin-top: var(--image-margin-top);
+  height: 70vw;
+  height: var(--image-height);
+  width: 100%;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
