@@ -31,9 +31,9 @@ export const FilmPage = () => {
 
   if (!movies) return;
   return (
-    <>   
+    <div className={classes.filmPage}>   
       <FilmInfo selectedMovie={selectedMovie} />
       <SimilarFilms movies={movies} selectedMovie={selectedMovie} />
-    </>
+    </div>
   )
 };

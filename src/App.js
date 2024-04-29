@@ -5,7 +5,7 @@ import { Router } from './pages';
 export const App = () => {
   return (
     <div className={`app`}>
-      <Header />
+      {/* <Header /> */}
       <Router />
       {/* <Films /> */}
     </div>

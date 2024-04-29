@@ -65,7 +65,6 @@ return (
         {similarMovies.map((movie, index) => (
           <SwiperSlide key={index}>
             <FilmPreview movie={movie} />
-
           </SwiperSlide>
         ))}
         <button className={classes.swiper_button_prev_custom} ref={navigationPrevSimilarRef}>
