@@ -1,6 +1,6 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { HomePage } from './HomePage';
-import {FilmPage } from './FilmPage';
+import {FilmPage } from './FilmPage/FilmPage';
 
 export const Router = () => {
   return (
