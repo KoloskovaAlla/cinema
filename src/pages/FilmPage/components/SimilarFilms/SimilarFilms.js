@@ -3,41 +3,29 @@ import { FilmPreview } from './components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import { LeftArrowIcon, RightArrowIcon } from './assets';
-import { useRef, useState, useEffect } from 'react';
+import { useRef } from 'react';
 
 export const SimilarFilms = ({ movies, selectedMovie }) => {
   const navigationPrevSimilarRef = useRef(null);
   const navigationNextSimilarRef = useRef(null);
   if (!selectedMovie) return;
 
-  const getMovieGenres = (movie) => {
-    return movie.genre_ids.map(genreId => {
-      // Здесь вы можете выполнить какую-то логику для преобразования id жанра в сам жанр
-      return genreId;
-    });
-  };
-
 const findSimilarMovies = (selectedMovie, allMovies) => {
   const selectedMovieGenres = new Set(selectedMovie.genre_ids);
 
   return allMovies.filter(movie => {
     if (movie.id === selectedMovie.id) {
-      return false; // Исключаем выбранный фильм из списка похожих
+      return false; 
     }
-    // Проверяем, сколько общих жанров между выбранным фильмом и текущим фильмом
     const commonGenres = movie.genre_ids.filter(genreId => selectedMovieGenres.has(genreId));
-    return commonGenres.length >= 2; // Проверяем, совпадает ли более 1 идентификатора жанра
+    return commonGenres.length >= 2; 
   });
 }; 
 
-
 const similarMovies = findSimilarMovies(selectedMovie, movies);
-
-console.log(similarMovies);
 
 return (
   <>
-    {/* Код вашей страницы */}
     <h2>Похожие фильмы:</h2>
     <div className={classes.similarMovies}>
       <Swiper

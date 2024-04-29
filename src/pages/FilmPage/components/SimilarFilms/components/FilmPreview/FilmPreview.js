@@ -1,9 +1,8 @@
-import {useEffect} from 'react';
 import classes from './FilmPreview.module.scss';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const FilmPreview = ({ key, movie }) => {
-  const { id, title } = movie;
+  const { id } = movie;
 
   return (
     <Link to={`/${id}`}>
