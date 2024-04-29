@@ -11,12 +11,12 @@
   // --container-gap: 30px;//
   // --title-fz: 26px;//
 
-  // --copy-font-size: 14px;//
+  --copy-font-size: 14px;//
 
   @media (min-width: 768px) {
     --section-padding: 30px 0px;//
     // --container-template-columns: repeat(2, 1fr);//
-    // --copy-font-size: 16px;//
+    --copy-font-size: 16px;//
     // --title-fz: 30px;//
   }
 
@@ -25,7 +25,7 @@
     // --header-height: 80px;
     --section-padding: 40px 0px;//
     // --container-gap: 40px;//
-    // --copy-font-size: 18px;//
+    --copy-font-size: 18px;//
     // --title-fz: 34px;//
   }
 
@@ -33,7 +33,7 @@
     // --container-max-width: 1110px;//
     --section-padding: 50px 0px;//
     // --container-gap: 110px;//
-    // --copy-font-size: 20px;//
+    --copy-font-size: 20px;//
     // --title-fz: 40px;//
   }
 }

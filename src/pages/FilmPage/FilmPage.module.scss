@@ -102,18 +102,18 @@ $copy-font-size_xl: 20px;
 
 .copy {
   margin-top: 10px;
-  font-size: $copy_font_size;
+  font-size: 16px;
 
   @media (min-width: $breakpoint_md) {
-    font-size: $copy_font_size_md;
+    font-size: 24px;
   }
 
   @media (min-width: $breakpoint_lg) {
-    font-size: $copy_font_size_lg;
+    font-size: 36px;
   }
 
   @media (min-width: $breakpoint_xl) {
-    font-size: $copy_font_size_xl;
+    font-size: 42px;
     margin-top: 20px;
   }
 
@@ -126,10 +126,29 @@ $copy-font-size_xl: 20px;
   }
 }
 
-.image {
-  margin-top: var(--image-margin-top);
-  height: 70vw;
-  height: var(--image-height);
+.infoBlock {
+  font-size: 16px;
+  margin-top: auto;
+
+  p {
+    margin-bottom: 5px; // Добавим небольшой отступ между пунктами информации
+  }
+
+  @media (min-width: $breakpoint_md) {
+    font-size: 20px;
+  }
+
+  @media (min-width: $breakpoint_lg) {
+    font-size: 24px;
+  }
+
+  @media (min-width: $breakpoint_xl) {
+    font-size: 36px;   
+  }
+}
+
+.image { 
+  height: 50vw;   
   width: 100%;
   border-radius: 20px;
   border: 1px solid var(--border-color);

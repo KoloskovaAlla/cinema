@@ -38,25 +38,16 @@ export const FilmPage = () => {
       <div className={classes.wrapper}>
         <div className={classes.body}>
          
-            <h1 className={classes.title}>
-              {selectedMovie?.title}
-            </h1>
-
-          {/* {texts?.map((text, index) => (
-            <p
-              className={classes.copy}
-              key={index}
-            >
-              {text}
-            </p>
-          ))} */}
+          <h1 className={classes.title}>
+            {selectedMovie?.title}
+          </h1>
+     
           <p className={classes.copy}>{selectedMovie?.overview}</p>
-          {/* длительность  */}
-          {/* популярность */}
-           <p className={classes.copy}>{`Популярность: ${selectedMovie?.popularity}`}</p>
-          {/* дата выхода */}
-           <p className={classes.copy}>{`Дата выхода: ${selectedMovie?.release_date}`}</p>
-          {/* жанр */}
+
+          <div className={classes.infoBlock}>
+            <p>{`Популярность: ${selectedMovie?.popularity}`}</p>      
+            <p>{`Дата выхода: ${selectedMovie?.release_date}`}</p>
+          </div>
         </div>
 
         <div className={classes.image}>
