@@ -30,7 +30,7 @@ export const HomePage = () => {
   const navigationNextRef = useRef(null);
 
   return (
-    <div className={classes.wrapper}>
+    <div className={classes.homePage}>
       <h1 className={classes.title}>Лучшие фильмы</h1>
       <Swiper
         className={classes.mySwiper}

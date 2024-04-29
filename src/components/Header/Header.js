@@ -1,11 +1,12 @@
 import classes from './Header.module.scss';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
   return (
     <header className={classes.header}>
-      <div className={classes.wrapper}>
+      <Link to='/' className={classes.wrapper}>
         Киносправочник
-      </div>
+      </Link>
     </header>
   );
 };
