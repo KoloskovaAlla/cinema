@@ -1,5 +1,5 @@
 
-import classes from './Films.module.scss';
+import classes from './HomePage.module.scss';
 import { useRef, useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
@@ -7,7 +7,7 @@ import 'swiper/css';
 import { LeftArrowIcon, RightArrowIcon } from './assets';
 import { FilmPreview } from './components';
 
-export const Films = () => {
+export const HomePage = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
