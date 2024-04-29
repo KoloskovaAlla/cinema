@@ -1,1 +1,1 @@
-export { Films } from './Films';
+export { HomePage } from './HomePage';
