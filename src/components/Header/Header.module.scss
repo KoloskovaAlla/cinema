@@ -12,11 +12,13 @@
   z-index: 1;
   font-size: 30px;
     @media (min-width: $breakpoint_lg) {
-      padding: 0 30px;      
+      padding: 0 30px;     
+      font-size: 40px; 
     }
 
     @media (min-width: $breakpoint_xl) {
       padding: 0 40px;
+      font-size: 46px;
     }
 }
 
