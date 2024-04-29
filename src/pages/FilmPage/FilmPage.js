@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { FilmInfo, SimilarFilms } from './components';
 import classes from './FilmPage.module.scss';           
 
 export const FilmPage = () => {
@@ -13,7 +14,7 @@ export const FilmPage = () => {
         const apiKey = 'bc8eebf42f936c16863715b5622480d4';
         const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=ru-RU`);
         const data = await response.json();
-        console.log(data);
+        console.log(data.results);
         setMovies(data.results);
         // console.log(data.results);
       } catch (error) {
@@ -32,32 +33,8 @@ export const FilmPage = () => {
   if (!movies) return;
   return (
     <>   
-      {/* <div>{`Страница с id ${id}`}</div>
-      <div>{`Для фильма ${selectedMovie?.title}`}</div> */}
-          <section className={classes.section}>
-      <div className={classes.wrapper}>
-        <div className={classes.body}>
-         
-          <h1 className={classes.title}>
-            {selectedMovie?.title}
-          </h1>
-     
-          <p className={classes.copy}>{selectedMovie?.overview}</p>
-
-          <div className={classes.infoBlock}>
-            <p>{`Популярность: ${selectedMovie?.popularity}`}</p>      
-            <p>{`Дата выхода: ${selectedMovie?.release_date}`}</p>
-          </div>
-        </div>
-
-        <div className={classes.image}>
-        <img 
-          src={`https://image.tmdb.org/t/p/w200/${selectedMovie?.poster_path}`} 
-          alt={selectedMovie?.title} 
-        />
-        </div>
-      </div>
-    </section>
+      <FilmInfo selectedMovie={selectedMovie} />
+      <SimilarFilms movies={movies} selectedMovie={selectedMovie} />
     </>
   )
 };
