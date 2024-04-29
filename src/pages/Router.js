@@ -1,12 +1,12 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { HomePage } from './HomePage';
 import { FilmPage } from './FilmPage/FilmPage';
-import { Header } from 'components'; // Импортируем компонент Header
+import { Header } from 'components';
 
 export const Router = () => {
   return (
     <BrowserRouter>
-      <Header /> {/* Перемещаем компонент Header внутрь BrowserRouter */}
+      <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />      
         <Route path="/:id" element={<FilmPage />} />
