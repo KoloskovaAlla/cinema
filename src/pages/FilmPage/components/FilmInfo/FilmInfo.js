@@ -1,28 +1,28 @@
 import classes from './FilmInfo.module.scss';
 
-export const FilmInfo = ({ selectedMovie }) => {
+export const FilmInfo = ({ film }) => {
   return (
-       <section className={classes.section}>
+    <section className={classes.section}>
       <div className={classes.wrapper}>
         <div className={classes.body}>
-         
+
           <h1 className={classes.title}>
-            {selectedMovie?.title}
+            {film?.title}
           </h1>
-     
-          <p className={classes.copy}>{selectedMovie?.overview}</p>
+
+          <p className={classes.copy}>{film?.overview}</p>
 
           <div className={classes.infoBlock}>
-            <p>{`Популярность: ${selectedMovie?.popularity}`}</p>      
-            <p>{`Дата выхода: ${selectedMovie?.release_date}`}</p>
+            <p>{`Популярность: ${film?.popularity}`}</p>
+            <p>{`Дата выхода: ${film?.release_date}`}</p>
           </div>
         </div>
 
         <div className={classes.image}>
-        <img 
-          src={`https://image.tmdb.org/t/p/w200/${selectedMovie?.poster_path}`} 
-          alt={selectedMovie?.title} 
-        />
+          <img
+            src={`https://image.tmdb.org/t/p/w200/${film?.poster_path}`}
+            alt={film?.title}
+          />
         </div>
       </div>
     </section>
