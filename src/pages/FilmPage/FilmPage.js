@@ -34,8 +34,8 @@ export const FilmPage = () => {
   }, [film, movies]);
 
   useEffect(() => {
-    console.log(film);
-    console.log(id);
+    if (film) console.log(film.title);
+    // console.log(id);
   }, [film]);
 
   if (!movies) return;
