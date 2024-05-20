@@ -1,0 +1,1 @@
+export { filmSlice } from './filmSlice';
