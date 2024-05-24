@@ -13,11 +13,16 @@ export const HomePage = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const apiKey = 'bc8eebf42f936c16863715b5622480d4';
-        const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=ru-RU`);
+        // const apiKey = 'bc8eebf42f936c16863715b5622480d4';
+        const apiKey = '35b2affc';
+        // const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=ru-RU`);
+        const response = await fetch(`http://www.omdbapi.com/?s=movie&apikey=${apiKey}`);
         const data = await response.json();
-        setMovies(data.results);
-    
+        console.log(data);
+        console.log(data.Search);
+        // setMovies(data.results);
+        setMovies(data.Search);
+
       } catch (error) {
         console.error('Error fetching movies:', error);
       }
@@ -51,18 +56,12 @@ export const HomePage = () => {
         navigation={{
           nextEl: navigationNextRef.current,
           prevEl: navigationPrevRef.current,
-        }}  
+        }}
       >
 
         {movies.map((movie, index) => (
           <SwiperSlide key={index}>
             <FilmPreview movie={movie} />
-            {/* <div key={movie.id} className="movie">
-              <div className={classes.image}>
-                <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} alt={movie.title} />
-              </div>
-              <h2>{movie.title}</h2>
-            </div> */}
           </SwiperSlide>
         ))}
         <button className={classes.swiper_button_prev_custom} ref={navigationPrevRef}>
