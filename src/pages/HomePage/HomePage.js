@@ -16,10 +16,11 @@ export const HomePage = () => {
         // const apiKey = 'bc8eebf42f936c16863715b5622480d4';
         const apiKey = '35b2affc';
         // const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=ru-RU`);
-        const response = await fetch(`http://www.omdbapi.com/?s=movie&apikey=${apiKey}`);
+        // const response = await fetch(`http://www.omdbapi.com/?s=movie&apikey=${apiKey}`);
+        const response = await fetch(`https://www.omdbapi.com/?s=movie&apikey=${apiKey}`);
         const data = await response.json();
         console.log(data);
-        console.log(data.Search);
+        // console.log(data.Search);
         // setMovies(data.results);
         setMovies(data.Search);
 
