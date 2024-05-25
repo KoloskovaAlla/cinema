@@ -11,7 +11,6 @@ export const FilmPage = () => {
   const [movies, setMovies] = useState([]);
   const dispatch = useDispatch();
 
-
   useEffect(() => {
     const fetchMovies = async () => {
       try {

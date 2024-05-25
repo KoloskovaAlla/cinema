@@ -1,20 +1,17 @@
-import { useEffect } from 'react';
+import React from 'react';
 import classes from './FilmPreview.module.scss';
-import { Link, useNavigate } from 'react-router-dom';
-import { useFilm } from 'hooks';
+import { Link } from 'react-router-dom';
 
 export const FilmPreview = ({ movie }) => {
-  const { id, title } = movie;
-
-  const { film } = useFilm();
+  const { imdbID, Title, Poster } = movie;
 
   return (
-    <Link to={`/${id}`}>
-      <div key={movie.id} className="movie">
+    <Link to={`/${imdbID}`}>
+      <div key={imdbID} className="movie">
         <div className={classes.image}>
-          <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} alt={movie.title} />
+          <img src={Poster} alt={Title} />
         </div>
-        <h2>{movie.title}</h2>
+        <h2>{Title}</h2>
       </div>
     </Link>
   );
