@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import 'swiper/css';
+import 'swiper/css/pagination';
 import { LeftArrowIcon, RightArrowIcon } from './assets';
 import { FilmPreview } from './components';
 
@@ -26,6 +27,7 @@ export const HomePage = () => {
 
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
+  const paginationRef = useRef(null);
 
   return (
     <div className={classes.homePage}>
@@ -50,6 +52,10 @@ export const HomePage = () => {
           nextEl: navigationNextRef.current,
           prevEl: navigationPrevRef.current,
         }}
+          pagination={{
+    el: paginationRef.current,
+    clickable: true,
+  }}
       >
 
         {movies.map((movie, index) => (
@@ -63,6 +69,9 @@ export const HomePage = () => {
         <button className={classes.swiper_button_next_custom} ref={navigationNextRef}>
           <RightArrowIcon />
         </button>
+              {/* Добавляем элемент для кастомной пагинации */}
+      <div className={classes.swiper_pagination_custom} ref={paginationRef}>       
+      </div>
 
       </Swiper>
     </div>
