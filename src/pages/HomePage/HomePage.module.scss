@@ -1,38 +1,38 @@
-  @import 'styles/breakpoints.scss';
-  
-  h1 {
-    font-size: 30px;
+@import 'styles/breakpoints.scss';
 
-    @media (min-width: $breakpoint_md) {
-      font-size: 36px;
-    }
+h1 {
+  font-size: 30px;
 
-    @media (min-width: $breakpoint_lg) {
-      font-size: 42px;
-    }
-
-    @media (min-width: $breakpoint_xl) {
-      font-size: 56px;
-    }
+  @media (min-width: $breakpoint_md) {
+    font-size: 36px;
   }
 
-.homePage{
+  @media (min-width: $breakpoint_lg) {
+    font-size: 42px;
+  }
+
+  @media (min-width: $breakpoint_xl) {
+    font-size: 56px;
+  }
+}
+
+.homePage {
   position: relative;
   width: 100%;
   margin: 0 auto;
   padding: 30px 15px;
 
-    @media (min-width: $breakpoint_md) {
-      padding: 30px 15px;
-    }
+  @media (min-width: $breakpoint_md) {
+    padding: 30px 15px;
+  }
 
-    @media (min-width: $breakpoint_lg) {
-      padding: 40px 30px;
-    }
+  @media (min-width: $breakpoint_lg) {
+    padding: 40px 30px;
+  }
 
-    @media (min-width: $breakpoint_xl) {
-      padding: 50px 40px;
-    }
+  @media (min-width: $breakpoint_xl) {
+    padding: 50px 40px;
+  }
 }
 
 .mySwiper {
@@ -44,36 +44,29 @@
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+  position: relative;
+  width: 100%;
 }
 
-.swiper_button_next_custom {
-  right: 10px;
-}
-
+.swiper_button_next_custom,
 .swiper_button_prev_custom {
-  left: 10px;
-}
-
-.swiper_button_prev_custom,
-.swiper_button_next_custom {
   background-color: transparent;
-  /* Устанавливаем прозрачный цвет фона */
   border: none;
-  /* Убираем границу */
   display: block;
-  position: absolute;
-  top: 0px;
   width: 50px;
   height: 50px;
   z-index: 100;
   fill: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .swiper_pagination_custom {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin: 0 10px;
 }
 
 .bullet {
