@@ -26,7 +26,7 @@
   background:violet !important;  
   margin: 0 5px !important;
   cursor: pointer !important;
-  opacity: 1 !important;
+  opacity: 0.2;
 }
 
 /* Стили для активной точки пагинации */
@@ -34,7 +34,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color:yellow;
+  opacity: 1;
   margin: 0 5px;
   cursor: pointer;
 }

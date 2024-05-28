@@ -1,4 +1,3 @@
-
 import classes from './HomePage.module.scss';
 import { useRef, useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,9 +13,9 @@ export const HomePage = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const apiKey = '35b2affc'; 
+        const apiKey = '35b2affc';
         const response = await fetch(`https://www.omdbapi.com/?s=movie&apikey=${apiKey}`);
-        const data = await response.json(); 
+        const data = await response.json();
         setMovies(data.Search);
       } catch (error) {
         console.error('Error fetching movies:', error);
@@ -36,28 +35,28 @@ export const HomePage = () => {
         className={classes.mySwiper}
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={10}
-        slidesPerView={1}
+        slidesPerView={1} // Одновременно отображается один слайд
         breakpoints={{
           770: {
-            slidesPerView: 2
+            slidesPerView: 2 // Одновременно отображается два слайда
           },
           1150: {
-            slidesPerView: 3
+            slidesPerView: 3 // Одновременно отображается три слайда
           },
           1440: {
-            slidesPerView: 4
+            slidesPerView: 4 // Одновременно отображается четыре слайда
           }
         }}
         navigation={{
           nextEl: navigationNextRef.current,
           prevEl: navigationPrevRef.current,
         }}
-          pagination={{
-    el: paginationRef.current,
-    clickable: true,
-  }}
+        pagination={{
+          el: paginationRef.current,
+          clickable: true,
+          type: 'bullets', // Используем точечную пагинацию
+        }}
       >
-
         {movies.map((movie, index) => (
           <SwiperSlide key={index}>
             <FilmPreview movie={movie} />
@@ -69,10 +68,9 @@ export const HomePage = () => {
         <button className={classes.swiper_button_next_custom} ref={navigationNextRef}>
           <RightArrowIcon />
         </button>
-              {/* Добавляем элемент для кастомной пагинации */}
-      <div className={classes.swiper_pagination_custom} ref={paginationRef}>       
-      </div>
-
+        {/* Элемент для кастомной пагинации */}
+        <div className={classes.swiper_pagination_custom} ref={paginationRef}>
+        </div>
       </Swiper>
     </div>
   );
