@@ -7,3 +7,34 @@
   background: var(--bg-color);
   padding-top: 80px; 
 }
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color:violet;
+  background:violet;  
+  margin: 0 5px;
+  cursor: pointer;
+  opacity: 1;
+}
+.swiper-pagination-bullet {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50%;
+  background-color:violet !important;
+  background:violet !important;  
+  margin: 0 5px !important;
+  cursor: pointer !important;
+  opacity: 1 !important;
+}
+
+/* Стили для активной точки пагинации */
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color:yellow;
+  margin: 0 5px;
+  cursor: pointer;
+}

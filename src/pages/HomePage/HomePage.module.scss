@@ -61,3 +61,44 @@
   z-index: 100;
   fill: #fff;
 }
+
+.swiper_pagination_custom {
+  border: 1px solid red;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.swiper_pagination_custom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.swiper_pagination_custom .pagination_item {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color:yellow;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.swiper_pagination_custom .pagination_item.active {
+  background-color: red;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-standard {
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+}
+
+/* Стили для активной точки пагинации */
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+   width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+}
