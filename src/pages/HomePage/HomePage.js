@@ -54,7 +54,9 @@ export const HomePage = () => {
         pagination={{
           el: paginationRef.current,
           clickable: true,
-          type: 'bullets', // Используем точечную пагинацию
+          type: 'bullets',
+          bulletClass: classes.bullet,
+          bulletActiveClass: classes.bullet_active,
         }}
       >
         {movies.map((movie, index) => (
@@ -62,14 +64,16 @@ export const HomePage = () => {
             <FilmPreview movie={movie} />
           </SwiperSlide>
         ))}
-        <button className={classes.swiper_button_prev_custom} ref={navigationPrevRef}>
-          <LeftArrowIcon />
-        </button>
-        <button className={classes.swiper_button_next_custom} ref={navigationNextRef}>
-          <RightArrowIcon />
-        </button>
-        {/* Элемент для кастомной пагинации */}
-        <div className={classes.swiper_pagination_custom} ref={paginationRef}>
+        <div className={classes.controls}>
+          <button className={classes.swiper_button_prev_custom} ref={navigationPrevRef}>
+            <LeftArrowIcon />
+          </button>
+            {/* Элемент для кастомной пагинации */}
+          <div className={classes.swiper_pagination_custom} ref={paginationRef}>
+          </div>
+          <button className={classes.swiper_button_next_custom} ref={navigationNextRef}>
+            <RightArrowIcon />
+          </button>        
         </div>
       </Swiper>
     </div>
