@@ -35,16 +35,16 @@ export const HomePage = () => {
         className={classes.mySwiper}
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={10}
-        slidesPerView={1} // Одновременно отображается один слайд
+        slidesPerView={1}
         breakpoints={{
           770: {
-            slidesPerView: 2 // Одновременно отображается два слайда
+            slidesPerView: 2
           },
           1150: {
-            slidesPerView: 3 // Одновременно отображается три слайда
+            slidesPerView: 3
           },
           1440: {
-            slidesPerView: 4 // Одновременно отображается четыре слайда
+            slidesPerView: 4
           }
         }}
         navigation={{
@@ -67,7 +67,6 @@ export const HomePage = () => {
         <button className={classes.swiper_button_prev_custom} ref={navigationPrevRef}>
           <LeftArrowIcon />
         </button>
-        {/* Элемент для кастомной пагинации */}
         <div className={classes.swiper_pagination_custom} ref={paginationRef}>
         </div>
         <button className={classes.swiper_button_next_custom} ref={navigationNextRef}>
