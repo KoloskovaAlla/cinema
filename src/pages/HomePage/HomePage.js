@@ -64,17 +64,15 @@ export const HomePage = () => {
             <FilmPreview movie={movie} />
           </SwiperSlide>
         ))}
-        <div className={classes.controls}>
-          <button className={classes.swiper_button_prev_custom} ref={navigationPrevRef}>
-            <LeftArrowIcon />
-          </button>
-            {/* Элемент для кастомной пагинации */}
-          <div className={classes.swiper_pagination_custom} ref={paginationRef}>
-          </div>
-          <button className={classes.swiper_button_next_custom} ref={navigationNextRef}>
-            <RightArrowIcon />
-          </button>        
+        <button className={classes.swiper_button_prev_custom} ref={navigationPrevRef}>
+          <LeftArrowIcon />
+        </button>
+        {/* Элемент для кастомной пагинации */}
+        <div className={classes.swiper_pagination_custom} ref={paginationRef}>
         </div>
+        <button className={classes.swiper_button_next_custom} ref={navigationNextRef}>
+          <RightArrowIcon />
+        </button>
       </Swiper>
     </div>
   );

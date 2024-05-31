@@ -1,5 +1,5 @@
   @import 'styles/breakpoints.scss';
-  
+
   h1 {
     font-size: 30px;
 
@@ -16,11 +16,11 @@
     }
   }
 
-.homePage{
-  position: relative;
-  width: 100%;
-  margin: 0 auto;
-  padding: 30px 15px;
+  .homePage {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 15px;
 
     @media (min-width: $breakpoint_md) {
       padding: 30px 15px;
@@ -33,59 +33,127 @@
     @media (min-width: $breakpoint_xl) {
       padding: 50px 40px;
     }
-}
+  }
 
-.mySwiper {
-  padding-top: 100px !important;
-}
+  .mySwiper {
+    padding-top: 100px !important;
+  }
 
-.controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
+  .controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
 
-.swiper_button_next_custom {
-  right: 10px;
-}
+  .swiper_button_next_custom {
+    right: 10px;
+  }
 
-.swiper_button_prev_custom {
-  left: 10px;
-}
+  .swiper_button_prev_custom {
+    left: 10px;
+  }
 
-.swiper_button_prev_custom,
-.swiper_button_next_custom {
-  background-color: transparent;
-  /* Устанавливаем прозрачный цвет фона */
-  border: none;
-  /* Убираем границу */
-  display: block;
-  position: absolute;
-  top: 0px;
-  width: 50px;
-  height: 50px;
-  z-index: 100;
-  fill: #fff;
-}
+  .swiper_button_prev_custom,
+  .swiper_button_next_custom {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    z-index: 100;
+    fill: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 
-.swiper_pagination_custom {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+      transform: translateY(-50%) scale(1.1);
+    }
 
-.bullet {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #ccc;
-  margin: 0 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
 
-.bullet_active {
-  background-color: violet;
-}
+  .swiper_pagination_custom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 6px;
+    border: 1px solid green;
+    padding: 5px;
+
+    @media (min-width: $breakpoint_md) {
+      gap: 8px;
+    }
+
+    @media (min-width: $breakpoint_lg) {
+      gap: 10px;
+    }
+
+    @media (min-width: $breakpoint_xl) {
+      gap: 12px;
+    }
+  }
+
+  .bullet {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(204, 204, 204, 0.8);
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      background: rgb(104, 100, 100);
+      transform: scale(1.4);
+      // background: #ff8c00;
+      /* Увеличим масштаб при наведении */
+    }
+
+    @media (min-width: $breakpoint_md) {
+      width: 12px;
+      height: 12px;
+      margin: 0 6px;
+    }
+
+    @media (min-width: $breakpoint_lg) {
+      width: 14px;
+      height: 14px;
+      margin: 0 8px;
+    }
+
+    @media (min-width: $breakpoint_xl) {
+      width: 16px;
+      height: 16px;
+      margin: 0 10px;
+    }
+  }
+
+  .bullet_active {
+    background: #ff8c00;
+    /* Благородный оранжевый цвет */
+    transform: scale(1.3);
+
+    @media (min-width: $breakpoint_md) {
+      transform: scale(1.4);
+    }
+
+    @media (min-width: $breakpoint_lg) {
+      transform: scale(1.5);
+    }
+
+    @media (min-width: $breakpoint_xl) {
+      transform: scale(1.6);
+    }
+  }
