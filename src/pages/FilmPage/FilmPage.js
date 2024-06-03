@@ -14,10 +14,10 @@ export const FilmPage = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const apiKey = 'bc8eebf42f936c16863715b5622480d4';
-        const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=ru-RU`);
+        const apiKey = '35b2affc';
+        const response = await fetch(`https://www.omdbapi.com/?s=movie&apikey=${apiKey}`);
         const data = await response.json();
-        setMovies(data.results);
+        setMovies(data.Search);
       } catch (error) {
         console.error('Error fetching movies:', error);
       }
@@ -25,23 +25,27 @@ export const FilmPage = () => {
     fetchMovies();
   }, []);
   const { film, setFilm } = useFilm();
-
+  
   useEffect(() => {
     if (!movies) return;
-    const film = movies?.find(movie => movie.id === parseInt(id));
+    movies.forEach((movie) => {
+      // console.log(movie.imdbID);
+      // console.log(id);
+      // if (movie.imdbID === id) console.log(id);
+      // console.log('-----------------------');
+    });
+    const film = movies?.find(movie => movie.imdbID === id);   
+    // console.log(fi lm); 
     dispatch(setFilm(film));
   }, [film, movies]);
 
-  useEffect(() => {
-    if (film) console.log(film.title);
-    // console.log(id);
-  }, [film]);
+
 
   if (!movies) return;
   return (
     <div className={classes.filmPage}>
       <FilmInfo film={film} />
-      <SimilarFilms movies={movies} film={film} />
+      {/* <SimilarFilms movies={movies} film={film} /> */}  
     </div>
   )
 };

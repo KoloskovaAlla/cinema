@@ -1,9 +1,14 @@
 import React from 'react';
+import { useEffect } from 'react';
 import classes from './FilmPreview.module.scss';
 import { Link } from 'react-router-dom';
 
 export const FilmPreview = ({ movie }) => {
   const { imdbID, Title, Poster } = movie;
+
+  // useEffect(() => {      
+  //   console.log(movie.imdbID);    
+  // }, [movie]);
 
   return (
     <Link to={`/${imdbID}`}>

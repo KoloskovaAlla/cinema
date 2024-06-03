@@ -35,10 +35,6 @@ export const HomePage = () => {
     setIsPrevDisabled(swiper.isBeginning);
     setIsNextDisabled(swiper.isEnd);
   };
-  
-  useEffect(() => {
-    console.log(isPrevDisabled);    
-  }, [isPrevDisabled]);
 
   const buttonPrevClassNames = classNames(classes.swiper_button_prev_custom, {
     [classes.disablePrev]: isPrevDisabled,
