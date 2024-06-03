@@ -1,12 +1,6 @@
 import classes from './FilmInfo.module.scss';
-import { useEffect } from 'react';
 
 export const FilmInfo = ({ film }) => {
-  useEffect(() => {
-    // console.log('test');
-    console.log(film);
-  }, [film]);
-
   return (
     <section className={classes.section}>
       <div className={classes.wrapper}>
@@ -18,8 +12,7 @@ export const FilmInfo = ({ film }) => {
 
           <p className={classes.copy}>{film?.overview}</p>
 
-          <div className={classes.infoBlock}>
-            {/* <p>{`Популярность: ${film?.popularity}`}</p> */}
+          <div className={classes.infoBlock}>        
             <p>{`Год выхода: ${film?.Year}`}</p>
           </div>
         </div>
