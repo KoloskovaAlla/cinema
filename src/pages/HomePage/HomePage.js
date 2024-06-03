@@ -6,6 +6,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { LeftArrowIcon, RightArrowIcon } from './assets';
 import { FilmPreview } from './components';
+import { classNames } from 'utils/helpers';
 
 export const HomePage = () => {
   const [movies, setMovies] = useState([]);
@@ -27,6 +28,27 @@ export const HomePage = () => {
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
   const paginationRef = useRef(null);
+  const [isPrevDisabled, setIsPrevDisabled] = useState(true);
+  const [isNextDisabled, setIsNextDisabled] = useState(false);
+
+  const onSlideChange = (swiper) => {
+    setIsPrevDisabled(swiper.isBeginning);
+    setIsNextDisabled(swiper.isEnd);
+  };
+  
+  useEffect(() => {
+    console.log(isPrevDisabled);    
+  }, [isPrevDisabled]);
+
+  const buttonPrevClassNames = classNames(classes.swiper_button_prev_custom, {
+    [classes.disablePrev]: isPrevDisabled,
+  });
+
+  const buttonNextClassNames = classNames(classes.swiper_button_next_custom, {
+    [classes.disableNext]: isNextDisabled,
+  });
+
+
 
   return (
     <div className={classes.homePage}>
@@ -58,18 +80,19 @@ export const HomePage = () => {
           bulletClass: classes.bullet,
           bulletActiveClass: classes.bullet_active,
         }}
+        onSlideChange={onSlideChange}
       >
         {movies.map((movie, index) => (
           <SwiperSlide key={index}>
             <FilmPreview movie={movie} />
           </SwiperSlide>
         ))}
-        <button className={classes.swiper_button_prev_custom} ref={navigationPrevRef}>
+        <button className={buttonPrevClassNames} ref={navigationPrevRef}>
           <LeftArrowIcon />
         </button>
         <div className={classes.swiper_pagination_custom} ref={paginationRef}>
         </div>
-        <button className={classes.swiper_button_next_custom} ref={navigationNextRef}>
+        <button className={buttonNextClassNames} ref={navigationNextRef}>
           <RightArrowIcon />
         </button>
       </Swiper>
