@@ -148,3 +148,8 @@
       transform: scale(1.6);
     }
   }
+
+  .disablePrev,
+  .disableNext {    
+      display: none;    
+  }
