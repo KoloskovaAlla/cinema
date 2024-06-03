@@ -4,27 +4,34 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import { useFilm } from 'hooks';
 import { LeftArrowIcon, RightArrowIcon } from './assets';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 export const SimilarFilms = ({ movies }) => {
   const { film } = useFilm();
+  useEffect(() => {
+    console.log(film);
+  }, []);
   const navigationPrevSimilarRef = useRef(null);
   const navigationNextSimilarRef = useRef(null);
-  if (!film) return;
+  // const findSimilarMovies = (film, allMovies) => {
+  //   const selectedMovieGenres = new Set(film.genre_ids);
 
-  const findSimilarMovies = (film, allMovies) => {
-    const selectedMovieGenres = new Set(film.genre_ids);
+  //   return allMovies.filter(movie => {
+  //     if (movie.id === film.id) {
+  //       return false;
+  //     }
+  //     const commonGenres = movie.genre_ids.filter(genreId => selectedMovieGenres.has(genreId));
+  //     return commonGenres.length >= 2;
+  //   });
+  // };f(null);
 
-    return allMovies.filter(movie => {
-      if (movie.id === film.id) {
-        return false;
-      }
-      const commonGenres = movie.genre_ids.filter(genreId => selectedMovieGenres.has(genreId));
-      return commonGenres.length >= 2;
-    });
-  };
 
-  const similarMovies = findSimilarMovies(film, movies);
+
+  // const similarMovies = findSimilarMovies(film, movies);
+
+  // useEffect(() => {
+  //   console.log(similarMovies);
+  // }, [similarMovies]);
 
   return (
     <>
@@ -52,11 +59,11 @@ export const SimilarFilms = ({ movies }) => {
           }}
         >
 
-          {similarMovies.map((movie, index) => (
+          {/* {similarMovies.map((movie, index) => (
             <SwiperSlide key={index}>
               <FilmPreview movie={movie} />
             </SwiperSlide>
-          ))}
+          ))} */}
           <button className={classes.swiper_button_prev_custom} ref={navigationPrevSimilarRef}>
             <LeftArrowIcon />
           </button>

@@ -36,7 +36,7 @@ export const FilmPage = () => {
   return (
     <div className={classes.filmPage}>
       <FilmInfo film={film} />
-      {/* <SimilarFilms movies={movies} film={film} /> */}  
+      <SimilarFilms movies={movies} film={film} />  
     </div>
   )
 };

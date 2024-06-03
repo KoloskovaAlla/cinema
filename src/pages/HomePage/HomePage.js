@@ -25,6 +25,10 @@ export const HomePage = () => {
     fetchMovies();
   }, []);
 
+  useEffect(() => {
+    console.log(movies);
+  }, [movies]);
+
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
   const paginationRef = useRef(null);
