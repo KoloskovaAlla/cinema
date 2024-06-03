@@ -27,19 +27,10 @@ export const FilmPage = () => {
   const { film, setFilm } = useFilm();
   
   useEffect(() => {
-    if (!movies) return;
-    movies.forEach((movie) => {
-      // console.log(movie.imdbID);
-      // console.log(id);
-      // if (movie.imdbID === id) console.log(id);
-      // console.log('-----------------------');
-    });
-    const film = movies?.find(movie => movie.imdbID === id);   
-    // console.log(fi lm); 
+    if (!movies) return;   
+    const film = movies?.find(movie => movie.imdbID === id);       
     dispatch(setFilm(film));
   }, [film, movies]);
-
-
 
   if (!movies) return;
   return (
