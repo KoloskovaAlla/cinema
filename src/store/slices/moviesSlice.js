@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { API_BASE_URL } from 'shared/constants/api';
+// import { API_BASE_URL } from 'shared/constants/api';
 
 const onGetMovies = async (_, thunkAPI) => {
   try {
@@ -34,22 +34,23 @@ const moviesSlice = createSlice({
   name: 'movies',
   initialState,
   reducers: {},
-  extraReducers: {
-    [getMovies.pending]: (state) => {
-      state.isLoadingMovies = true;
-      state.movies = null;
-      state.errorMessageMovies = '';
-    },
-    [getMovies.fulfilled]: (state, { payload }) => {
-      state.isLoadingMovies = false;
-      state.movies = payload;
-      state.errorMessageMovies = '';
-    },
-    [getMovies.rejected]: (state, { payload }) => {
-      state.isLoadingMovies = false;
-      state.movies = null;
-      state.errorMessageMovies = payload;
-    }
+  extraReducers: builder => {
+    builder
+      .addCase(getMovies.pending, state => {
+        state.isLoadingMovies = true;
+        state.movies = null;
+        state.errorMessageMovies = '';
+      })
+      .addCase(getMovies.fulfilled, (state, { payload }) => {
+        state.isLoadingMovies = false;
+        state.movies = payload;
+        state.errorMessageMovies = '';
+      })
+      .addCase(getMovies.rejected, (state, { payload }) => {
+        state.isLoadingMovies = false;
+        state.movies = null;
+        state.errorMessageMovies = payload;
+      });
   }
 });
 
