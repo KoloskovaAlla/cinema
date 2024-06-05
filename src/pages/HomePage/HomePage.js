@@ -7,23 +7,38 @@ import 'swiper/css/pagination';
 import { LeftArrowIcon, RightArrowIcon } from './assets';
 import { FilmPreview } from './components';
 import { classNames } from 'utils/helpers';
+import { useMovies } from 'hooks';
+import { useDispatch } from 'react-redux';
 
 export const HomePage = () => {
-  const [movies, setMovies] = useState([]);
+  const dispatch = useDispatch();
+  // const [movies, setMovies] = useState([]);
+  const moviesState = useMovies(); 
+  const { movies } = moviesState;
+
+
 
   useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        const apiKey = '35b2affc';
-        const response = await fetch(`https://www.omdbapi.com/?s=movie&apikey=${apiKey}`);
-        const data = await response.json();
-        setMovies(data.Search);
-      } catch (error) {
-        console.error('Error fetching movies:', error);
-      }
-    };
-    fetchMovies();
-  }, []);
+    dispatch(moviesState.getMovies());
+  }, [ dispatch]);
+
+  // useEffect(() => {
+  //   console.log(moviesState);
+  // }, []);
+
+  // useEffect(() => {
+  //   const fetchMovies = async () => {
+  //     try {
+  //       const apiKey = '35b2affc';
+  //       const response = await fetch(`https://www.omdbapi.com/?s=movie&apikey=${apiKey}`);
+  //       const data = await response.json();
+  //       setMovies(data.Search);
+  //     } catch (error) {
+  //       console.error('Error fetching movies:', error);
+  //     }
+  //   };
+  //   fetchMovies();
+  // }, []);
 
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
@@ -44,8 +59,8 @@ export const HomePage = () => {
     [classes.disableNext]: isNextDisabled,
   });
 
-
-
+  if (!movies) return;
+  
   return (
     <div className={classes.homePage}>
       <h1 className={classes.title}>Лучшие фильмы</h1>
