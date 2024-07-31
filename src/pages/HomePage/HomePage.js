@@ -6,28 +6,61 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { LeftArrowIcon, RightArrowIcon } from './assets';
 import { FilmPreview } from './components';
+import { classNames } from 'utils/helpers';
+import { useMovies } from 'hooks';
+import { useDispatch } from 'react-redux';
 
 export const HomePage = () => {
-  const [movies, setMovies] = useState([]);
+  const dispatch = useDispatch();
+  // const [movies, setMovies] = useState([]);
+  const moviesState = useMovies(); 
+  const { movies } = moviesState;
+
+
 
   useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        const apiKey = '35b2affc';
-        const response = await fetch(`https://www.omdbapi.com/?s=movie&apikey=${apiKey}`);
-        const data = await response.json();
-        setMovies(data.Search);
-      } catch (error) {
-        console.error('Error fetching movies:', error);
-      }
-    };
-    fetchMovies();
-  }, []);
+    dispatch(moviesState.getMovies());
+  }, [ dispatch]);
+
+  // useEffect(() => {
+  //   console.log(moviesState);
+  // }, []);
+
+  // useEffect(() => {
+  //   const fetchMovies = async () => {
+  //     try {
+  //       const apiKey = '35b2affc';
+  //       const response = await fetch(`https://www.omdbapi.com/?s=movie&apikey=${apiKey}`);
+  //       const data = await response.json();
+  //       setMovies(data.Search);
+  //     } catch (error) {
+  //       console.error('Error fetching movies:', error);
+  //     }
+  //   };
+  //   fetchMovies();
+  // }, []);
 
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
   const paginationRef = useRef(null);
+  const [isPrevDisabled, setIsPrevDisabled] = useState(true);
+  const [isNextDisabled, setIsNextDisabled] = useState(false);
 
+  const onSlideChange = (swiper) => {
+    setIsPrevDisabled(swiper.isBeginning);
+    setIsNextDisabled(swiper.isEnd);
+  };
+
+  const buttonPrevClassNames = classNames(classes.swiper_button_prev_custom, {
+    [classes.disablePrev]: isPrevDisabled,
+  });
+
+  const buttonNextClassNames = classNames(classes.swiper_button_next_custom, {
+    [classes.disableNext]: isNextDisabled,
+  });
+
+  if (!movies) return;
+  
   return (
     <div className={classes.homePage}>
       <h1 className={classes.title}>Лучшие фильмы</h1>
@@ -58,18 +91,19 @@ export const HomePage = () => {
           bulletClass: classes.bullet,
           bulletActiveClass: classes.bullet_active,
         }}
+        onSlideChange={onSlideChange}
       >
         {movies.map((movie, index) => (
           <SwiperSlide key={index}>
             <FilmPreview movie={movie} />
           </SwiperSlide>
         ))}
-        <button className={classes.swiper_button_prev_custom} ref={navigationPrevRef}>
+        <button className={buttonPrevClassNames} ref={navigationPrevRef}>
           <LeftArrowIcon />
         </button>
         <div className={classes.swiper_pagination_custom} ref={paginationRef}>
         </div>
-        <button className={classes.swiper_button_next_custom} ref={navigationNextRef}>
+        <button className={buttonNextClassNames} ref={navigationNextRef}>
           <RightArrowIcon />
         </button>
       </Swiper>
