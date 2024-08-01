@@ -5,8 +5,7 @@ const getState = (store) => store.moviesReducer;
 
 export const useMovies = () => {
   const state = useSelector(getState);
-  console.log(state);
-
+  
   return {
     ...state,
     getMovies,
