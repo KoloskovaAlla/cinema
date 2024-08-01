@@ -13,14 +13,14 @@ import { useDispatch } from 'react-redux';
 export const HomePage = () => {
   const dispatch = useDispatch();
   // const [movies, setMovies] = useState([]);
-  const moviesState = useMovies(); 
+  const moviesState = useMovies();
   const { movies } = moviesState;
 
 
 
   useEffect(() => {
     dispatch(moviesState.getMovies());
-  }, [ dispatch]);
+  }, [dispatch]);
 
   // useEffect(() => {
   //   console.log(moviesState);
@@ -51,6 +51,19 @@ export const HomePage = () => {
     setIsNextDisabled(swiper.isEnd);
   };
 
+  useEffect(() => {
+    // if (navigationPrevRef.current && navigationNextRef.current && paginationRef.current) {
+    //   setNavigationReady(true);
+    // }
+    const isReady = navigationPrevRef.current && navigationNextRef.current && paginationRef.current
+      ? true
+      : false;
+    console.log(isReady)
+    // console.log(navigationPrevRef.current)
+    // console.log(navigationNextRef.current)
+    // console.log(paginationRef.current)
+  });
+
   const buttonPrevClassNames = classNames(classes.swiper_button_prev_custom, {
     [classes.disablePrev]: isPrevDisabled,
   });
@@ -60,7 +73,7 @@ export const HomePage = () => {
   });
 
   if (!movies) return;
-  
+
   return (
     <div className={classes.homePage}>
       <h1 className={classes.title}>Лучшие фильмы</h1>
