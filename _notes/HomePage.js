@@ -9,6 +9,9 @@ import { FilmPreview } from './components';
 
 export const HomePage = () => {
   const [movies, setMovies] = useState([]);
+  const navigationPrevRef = useRef(null);
+  const navigationNextRef = useRef(null);
+  const swiperRef = useRef(null);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -32,8 +35,10 @@ export const HomePage = () => {
     fetchMovies();
   }, []);
 
-  const navigationPrevRef = useRef(null);
-  const navigationNextRef = useRef(null);
+  useEffect(() => {
+    console.log(swiperRef)
+    console.log('test')
+  });
 
   return (
     <div className={classes.homePage}>
@@ -58,6 +63,7 @@ export const HomePage = () => {
           nextEl: navigationNextRef.current,
           prevEl: navigationPrevRef.current,
         }}
+        ref={swiperRef}
       >
 
         {movies.map((movie, index) => (
