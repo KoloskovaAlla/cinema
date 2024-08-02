@@ -13,33 +13,29 @@ import { useDispatch } from 'react-redux';
 export const HomePage = () => {
   const dispatch = useDispatch();
   // const [movies, setMovies] = useState([]);
-  const moviesState = useMovies(); 
+  const moviesState = useMovies();
   const { movies } = moviesState;
+   const swiperRef = useRef(null);
 
+     useEffect(() => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      const swiper = swiperRef.current.swiper;
+      swiper.params.navigation.prevEl = navigationPrevRef.current;
+      swiper.params.navigation.nextEl = navigationNextRef.current;
+      swiper.params.pagination.el = paginationRef.current;
 
+      swiper.navigation.init();
+      swiper.navigation.update();
+      swiper.pagination.init();
+      swiper.pagination.render();
+      swiper.pagination.update();
+    }
+  }, [movies]); // Ensure this effect runs after movies are fetched
 
   useEffect(() => {
     dispatch(moviesState.getMovies());
-  }, [ dispatch]);
-
-  // useEffect(() => {
-  //   console.log(moviesState);
-  // }, []);
-
-  // useEffect(() => {
-  //   const fetchMovies = async () => {
-  //     try {
-  //       const apiKey = '35b2affc';
-  //       const response = await fetch(`https://www.omdbapi.com/?s=movie&apikey=${apiKey}`);
-  //       const data = await response.json();
-  //       setMovies(data.Search);
-  //     } catch (error) {
-  //       console.error('Error fetching movies:', error);
-  //     }
-  //   };
-  //   fetchMovies();
-  // }, []);
-
+  }, [dispatch]); 
+  
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
   const paginationRef = useRef(null);
@@ -60,7 +56,7 @@ export const HomePage = () => {
   });
 
   if (!movies) return;
-  
+
   return (
     <div className={classes.homePage}>
       <h1 className={classes.title}>Лучшие фильмы</h1>
@@ -92,6 +88,7 @@ export const HomePage = () => {
           bulletActiveClass: classes.bullet_active,
         }}
         onSlideChange={onSlideChange}
+        ref={swiperRef}
       >
         {movies.map((movie, index) => (
           <SwiperSlide key={index}>

@@ -2,12 +2,11 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 // import { API_BASE_URL } from 'shared/constants/api';
 
 const onGetMovies = async (_, thunkAPI) => {
-  try {  
+  try {
     const apiKey = '35b2affc';
     const url = `https://www.omdbapi.com/?s=movie&apikey=${apiKey}`;
     const response = await fetch(url);
-    const data = await response.json(); 
-    console.log(data.Search)
+    const data = await response.json();
     if (!data.Search) throw new Error(data.message);
     return thunkAPI.fulfillWithValue(data.Search);
   } catch (error) {
@@ -16,7 +15,6 @@ const onGetMovies = async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(message);
   };
 };
-console.log('test');
 
 const getMovies = createAsyncThunk(
   'movies/getMovies',
