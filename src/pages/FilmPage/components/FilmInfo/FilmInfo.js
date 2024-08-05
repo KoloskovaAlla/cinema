@@ -4,6 +4,13 @@ export const FilmInfo = ({ film }) => {
   return (
     <section className={classes.section}>
       <div className={classes.wrapper}>
+
+        <div className={classes.image}>
+          <img
+            src={film?.Poster}
+            alt={film?.title}
+          />
+        </div>
         <div className={classes.body}>
 
           <h1 className={classes.title}>
@@ -12,16 +19,9 @@ export const FilmInfo = ({ film }) => {
 
           <p className={classes.copy}>{film?.overview}</p>
 
-          <div className={classes.infoBlock}>        
+          <div className={classes.infoBlock}>
             <p>{`Год выхода: ${film?.Year}`}</p>
           </div>
-        </div>
-
-        <div className={classes.image}>
-          <img
-            src={film?.Poster}
-            alt={film?.title}
-          />
         </div>
       </div>
     </section>
