@@ -14,10 +14,11 @@ const onGetMovies = async (_, thunkAPI) => {
       data.Search.map(async (movie) => {
         const movieDetailsUrl = `https://www.omdbapi.com/?i=${movie.imdbID}&apikey=${apiKey}`;
         const movieDetailsResponse = await fetch(movieDetailsUrl);
-        const movieDetails = await movieDetailsResponse.json();
-        return { ...movie, genre: movieDetails.genre }; // Добавляем жанр
+        const movieDetails = await movieDetailsResponse.json();       
+        return { ...movie, genre: movieDetails.Genre }; // Добавляем жанр
       })
     );
+    // return thunkAPI.fulfillWithValue(data.Search);
     return thunkAPI.fulfillWithValue(moviesWithGenre);
   } catch (error) {
     const { message } = error;

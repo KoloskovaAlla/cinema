@@ -6,6 +6,9 @@ import { useEffect } from 'react';
 
 export const FilmPreview = ({ key, movie }) => {
   const dispatch = useDispatch();
+  useEffect(() => {
+    console.log(movie)
+  }, []);
   const { film, setFilm } = useFilm();
   const { id } = film;
   const handlePreviewClick = () => {
@@ -18,7 +21,7 @@ export const FilmPreview = ({ key, movie }) => {
     <Link to={`/${movie.id}`} onClick={handlePreviewClick}>
       <div key={movie.id} className="movie">
         <div className={classes.image}>
-          <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} alt={movie.title} />
+          <img src={movie.Poster} alt={movie.title} />
         </div>
         <h2>{movie.title}</h2>
       </div>
