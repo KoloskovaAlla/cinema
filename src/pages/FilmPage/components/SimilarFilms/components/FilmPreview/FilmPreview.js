@@ -1,21 +1,15 @@
+import classes from './FilmPreview.module.scss';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useFilm } from 'hooks';
-import classes from './FilmPreview.module.scss';
-import { useEffect } from 'react';
 
-export const FilmPreview = ({ key, movie }) => {
+export const FilmPreview = ({ movie }) => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    console.log(movie)
-  }, []);
-  const { film, setFilm } = useFilm();
-  const { id } = film;
-  const handlePreviewClick = () => {
-    dispatch(setFilm(movie));
-    // console.log(movie.title);
-  };
+  const { setFilm } = useFilm();
 
+  const handlePreviewClick = () => {
+    dispatch(setFilm(movie)); 
+  };
 
   return (
     <Link to={`/${movie.id}`} onClick={handlePreviewClick}>

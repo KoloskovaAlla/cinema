@@ -1,52 +1,32 @@
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { FilmInfo, SimilarFilms } from './components';
-import { useFilm, useMovies } from 'hooks';
 import classes from './FilmPage.module.scss';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { useFilm, useMovies } from 'hooks';
+import { FilmInfo, SimilarFilms } from './components';
 
 export const FilmPage = () => {
+  const dispatch = useDispatch();
   const params = useParams();
   const { id } = params;
+
   const { film, setFilm } = useFilm();
-
-  const dispatch = useDispatch();
-
   const moviesState = useMovies();
   const { movies } = moviesState;
- const [similarMovies, setSimilarMovies] = useState([]);
+  const [similarMovies, setSimilarMovies] = useState([]);
 
   useEffect(() => {
-    if (film && movies && movies.length > 0) {
-      // Разбиваем жанры текущего фильма на массив
+    if (film && movies && movies.length > 0) {   
       const currentGenres = film.genre.split(',').map(genre => genre.trim());
 
-      // Фильтруем фильмы, у которых есть совпадающие жанры
       const filteredMovies = movies.filter(movie => {
-        const movieGenres = movie.genre.split(',').map(genre => genre.trim());
-        // Проверяем есть ли пересечения жанров
+        const movieGenres = movie.genre.split(',').map(genre => genre.trim());       
         return movie !== film && movieGenres.some(genre => currentGenres.includes(genre));
       });      
      
       setSimilarMovies(filteredMovies);
     }
   }, [film, movies]);
-
-
-
-  // useEffect(() => {
-  //   const fetchMovies = async () => {
-  //     try {
-  //       const apiKey = '35b2affc';
-  //       const response = await fetch(`https://www.omdbapi.com/?s=movie&apikey=${apiKey}`);
-  //       const data = await response.json();
-  //       setMovies(data.Search);
-  //     } catch (error) {
-  //       console.error('Error fetching movies:', error);
-  //     }
-  //   };
-  //   fetchMovies();
-  // }, []);
   
   useEffect(() => {
     if (!movies) return;   

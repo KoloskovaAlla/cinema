@@ -12,12 +12,15 @@ import { useDispatch } from 'react-redux';
 
 export const HomePage = () => {
   const dispatch = useDispatch();
-  // const [movies, setMovies] = useState([]);
+  const swiperRef = useRef(null);
+  const navigationPrevRef = useRef(null);
+  const navigationNextRef = useRef(null);
+  const paginationRef = useRef(null);
+
   const moviesState = useMovies();
   const { movies } = moviesState;
-   const swiperRef = useRef(null);
 
-     useEffect(() => {
+  useEffect(() => {
     if (swiperRef.current && swiperRef.current.swiper) {
       const swiper = swiperRef.current.swiper;
       swiper.params.navigation.prevEl = navigationPrevRef.current;
@@ -30,15 +33,13 @@ export const HomePage = () => {
       swiper.pagination.render();
       swiper.pagination.update();
     }
-  }, [movies]); // Ensure this effect runs after movies are fetched
+  }, [movies]);
 
   useEffect(() => {
     dispatch(moviesState.getMovies());
   }, [dispatch]); 
   
-  const navigationPrevRef = useRef(null);
-  const navigationNextRef = useRef(null);
-  const paginationRef = useRef(null);
+
   const [isPrevDisabled, setIsPrevDisabled] = useState(true);
   const [isNextDisabled, setIsNextDisabled] = useState(false);
 

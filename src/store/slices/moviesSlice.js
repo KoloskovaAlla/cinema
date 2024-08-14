@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-// import { API_BASE_URL } from 'shared/constants/api';
 
 const onGetMovies = async (_, thunkAPI) => {
   try {
@@ -8,17 +7,15 @@ const onGetMovies = async (_, thunkAPI) => {
     const response = await fetch(url);
     const data = await response.json();
 
-    if (!data.Search) throw new Error(data.message);
-     // Получаем жанр для каждого фильма
+    if (!data.Search) throw new Error(data.message);     
     const moviesWithGenre = await Promise.all(
       data.Search.map(async (movie) => {
         const movieDetailsUrl = `https://www.omdbapi.com/?i=${movie.imdbID}&apikey=${apiKey}`;
         const movieDetailsResponse = await fetch(movieDetailsUrl);
         const movieDetails = await movieDetailsResponse.json();       
-        return { ...movie, genre: movieDetails.Genre }; // Добавляем жанр
+        return { ...movie, genre: movieDetails.Genre }; 
       })
     );
-    // return thunkAPI.fulfillWithValue(data.Search);
     return thunkAPI.fulfillWithValue(moviesWithGenre);
   } catch (error) {
     const { message } = error;
