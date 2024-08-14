@@ -16,6 +16,5 @@ const filmSlice = createSlice({
   },
 });
 
-
 export const { reducer: filmReducer } = filmSlice;
 export const { setFilm } = filmSlice.actions;

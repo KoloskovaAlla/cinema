@@ -1,36 +1,18 @@
 import classes from './SimilarFilms.module.scss';
-import { FilmPreview } from './components';
+import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import { useFilm } from 'hooks';
+import { FilmPreview } from './components';
 import { LeftArrowIcon, RightArrowIcon } from './assets';
-import { useEffect, useRef } from 'react';
 
 export const SimilarFilms = ({ similarMovies }) => {
-  const { film } = useFilm();
-
   const navigationPrevSimilarRef = useRef(null);
   const navigationNextSimilarRef = useRef(null);
-  // useEffect(() => {
-  //   console.log(similarMovies)
-  // }, [similarMovies])
+
+  const { film } = useFilm();
+ 
   if (!film) return;
-
-  // const findSimilarMovies = (film, allMovies) => {
-  //   const selectedMovieGenres = new Set(film.genre_ids);
-
-  //   return allMovies.filter(movie => {
-  //     if (movie.id === film.id) {
-  //       return false;
-  //     }
-  //     const commonGenres = movie.genre_ids.filter(genreId => selectedMovieGenres.has(genreId));
-  //     return commonGenres.length >= 2;
-  //   });
-  // };
-
-  // const similarMovies = findSimilarMovies(film, movies);
-
-
 
   return (
     <>
