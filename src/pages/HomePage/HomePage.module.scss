@@ -2,6 +2,7 @@
 
 h1 {
   font-size: 30px;
+  margin-bottom: 16px;
 
   @media (min-width: $breakpoint_md) {
     font-size: 36px;
