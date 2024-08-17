@@ -5,7 +5,7 @@ export const Header = () => {
   return (
     <header className={classes.header}>
       <Link to='/' className={classes.wrapper}>
-        Киносправочник
+        КИНОСПРАВОЧНИК
       </Link>
     </header>
   );
