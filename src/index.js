@@ -1,7 +1,7 @@
 import { Provider } from 'react-redux';
-import { App } from './App';
+import { App } from 'app';
 import { createRoot } from 'react-dom/client';
-import { store } from 'store';
+import { store } from 'app/store';
 
 const $root = document.querySelector('#root');
 

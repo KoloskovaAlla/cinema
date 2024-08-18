@@ -1,7 +1,7 @@
 import classes from './FilmPreview.module.scss';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { useFilm } from 'hooks';
+import { useFilm } from 'shared/hooks';
 
 export const FilmPreview = ({ movie }) => {
   const dispatch = useDispatch();
