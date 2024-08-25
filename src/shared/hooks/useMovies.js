@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 import { useSelector } from 'react-redux';
-import { getMovies } from 'store/slices/moviesSlice';
+import { getMovies } from 'shared/reducers/moviesSlice';
 
 const getState = (store) => store.moviesReducer;
 

@@ -7,7 +7,7 @@ import 'swiper/css/pagination';
 import { LeftArrowIcon, RightArrowIcon } from './assets';
 import { FilmPreview } from './components';
 import { classNames } from 'utils/helpers';
-import { useMovies } from 'hooks';
+import { useMovies } from 'shared/hooks';
 import { useDispatch } from 'react-redux';
 
 export const HomePage = () => {

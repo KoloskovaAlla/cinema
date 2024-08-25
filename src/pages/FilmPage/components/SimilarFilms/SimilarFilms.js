@@ -2,7 +2,7 @@ import classes from './SimilarFilms.module.scss';
 import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-import { useFilm } from 'hooks';
+import { useFilm } from 'shared/hooks';
 import { FilmPreview } from './components';
 import { LeftArrowIcon, RightArrowIcon } from './assets';
 

@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { setFilm } from 'store/slices/filmSlice';
+import { setFilm } from 'shared/reducers/filmSlice';
 
 const getState = (store) => store.filmReducer;
 

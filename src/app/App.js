@@ -1,5 +1,5 @@
 import './styles/index.scss';
-import { Router } from './pages';
+import { Router } from 'pages';
 
 export const App = () => {
   return (

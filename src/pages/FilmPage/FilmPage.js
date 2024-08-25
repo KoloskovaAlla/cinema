@@ -2,7 +2,7 @@ import classes from './FilmPage.module.scss';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { useFilm, useMovies } from 'hooks';
+import { useFilm, useMovies } from 'shared/hooks';
 import { FilmInfo, SimilarFilms } from './components';
 
 export const FilmPage = () => {
