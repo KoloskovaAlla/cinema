@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useFilm, useMovies } from 'shared/hooks';
-import { FilmInfo, SimilarFilms } from './components';
+import { FilmInfo } from './components';
+import { SimilarFilms } from 'widgets';
 
 export const FilmPage = () => {
   const dispatch = useDispatch();
