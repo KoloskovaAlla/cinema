@@ -12,34 +12,40 @@ export const FilmPage = () => {
   const { id } = params;
 
   const { film, setFilm } = useFilm();
+
+  useEffect(() => {
+    console.log(film);
+  }, []);
+
   const moviesState = useMovies();
   const { movies } = moviesState;
   const [similarMovies, setSimilarMovies] = useState([]);
 
   useEffect(() => {
-    if (film && movies && movies.length > 0) {   
+    if (film && movies && movies.length > 0) {
       const currentGenres = film.genre.split(',').map(genre => genre.trim());
 
       const filteredMovies = movies.filter(movie => {
-        const movieGenres = movie.genre.split(',').map(genre => genre.trim());       
+        const movieGenres = movie.genre.split(',').map(genre => genre.trim());
         return movie !== film && movieGenres.some(genre => currentGenres.includes(genre));
-      });      
-     
+      });
+
       setSimilarMovies(filteredMovies);
     }
   }, [film, movies]);
-  
+
   useEffect(() => {
-    if (!movies) return;   
-    const film = movies?.find(movie => movie.imdbID === id);       
+    if (!movies) return;
+    const film = movies?.find(movie => movie.imdbID === id);
+    console.log(film);
+    localStorage.setItem('film', JSON.stringify(film));
     dispatch(setFilm(film));
   }, [film, movies]);
 
-  if (!movies) return;
   return (
     <div className={classes.filmPage}>
       <FilmInfo film={film} />
-      {similarMovies && <SimilarFilms similarMovies={similarMovies} />}  
+      {similarMovies && <SimilarFilms similarMovies={similarMovies} />}
     </div>
   )
 };
