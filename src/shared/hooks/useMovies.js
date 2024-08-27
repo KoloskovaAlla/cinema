@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getMovies } from 'shared/reducers/moviesSlice';
 
@@ -6,9 +6,6 @@ const getState = (store) => store.moviesReducer;
 
 export const useMovies = () => {
   const state = useSelector(getState);
-  // useEffect(() => {
-  //   console.log(state.movies);
-  // }, [state]);
 
   return {
     ...state,
