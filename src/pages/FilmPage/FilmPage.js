@@ -13,10 +13,6 @@ export const FilmPage = () => {
 
   const { film, setFilm } = useFilm();
 
-  useEffect(() => {
-    console.log(film);
-  }, []);
-
   const moviesState = useMovies();
   const { movies } = moviesState;
   const [similarMovies, setSimilarMovies] = useState([]);
@@ -37,7 +33,6 @@ export const FilmPage = () => {
   useEffect(() => {
     if (!movies) return;
     const film = movies?.find(movie => movie.imdbID === id);
-    console.log(film);
     localStorage.setItem('film', JSON.stringify(film));
     dispatch(setFilm(film));
   }, [film, movies]);

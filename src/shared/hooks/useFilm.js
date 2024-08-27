@@ -7,8 +7,6 @@ const getState = (store) => store.filmReducer;
 export const useFilm = () => {
   const state = useSelector(getState);
 
-  const { film } = state;
-
   return {
     ...state,
     setFilm,

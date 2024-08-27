@@ -1,13 +1,9 @@
 import React from 'react';
-import { useEffect } from 'react';
 import classes from './FilmPreview.module.scss';
-import { useFilm } from 'shared/hooks';
 import { Link } from 'react-router-dom';
 
 export const FilmPreview = ({ movie }) => {
   const { imdbID, Title, Poster } = movie;
-
-  const state = useFilm();
 
   return (
     <Link to={`/${imdbID}`}>
