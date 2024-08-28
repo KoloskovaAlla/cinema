@@ -17,11 +17,16 @@ export const FilmInfo = ({ film }) => {
             {film?.Title}
           </h1>
 
-          <p className={classes.copy}>{film?.overview}</p>
+
 
           <div className={classes.infoBlock}>
-            <p>{`Год выхода: ${film?.Year}`}</p>
+            <p>{film?.genre}</p>
+            <p>{`Year: ${film?.Year}`}</p>
+            <p>{`Country: ${film?.country}`}</p>
+            <p>{`Rating: ${film?.rating}`}</p>
+            <p>{`Actors: ${film?.actors}`}</p>
           </div>
+          <p className={classes.copy}>{film?.plot}</p>
         </div>
       </div>
     </section>

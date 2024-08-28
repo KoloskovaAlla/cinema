@@ -1,7 +1,7 @@
 @import 'shared/constants/styles/breakpoints';
 
 .section {
-  padding:  30px 15px;
+  padding: 30px 15px;
 
   @media (min-width: $breakpoint_lg) {
     padding: 40px 15px;
@@ -22,11 +22,11 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (min-width: $breakpoint_lg) {   
+  @media (min-width: $breakpoint_lg) {
     gap: 40px;
   }
 
-  @media (min-width: $breakpoint_xl) {  
+  @media (min-width: $breakpoint_xl) {
     gap: 110px;
   }
 }
@@ -59,7 +59,7 @@
 }
 
 .title {
-  font-size:  26px;
+  font-size: 26px;
   font-weight: 700;
 
   @media (min-width: $breakpoint_md) {
@@ -103,7 +103,7 @@
 
 .infoBlock {
   font-size: 16px;
-  margin-top: auto;
+  margin-top: 10px;
 
   p {
     margin-bottom: 5px;
@@ -118,12 +118,12 @@
   }
 
   @media (min-width: $breakpoint_xl) {
-    font-size: 36px;   
+    font-size: 36px;
   }
 }
 
-.image { 
-  height: 50vw;   
+.image {
+  height: 50vw;
   width: 100%;
   border-radius: 20px;
   border: 1px solid var(--border-color);

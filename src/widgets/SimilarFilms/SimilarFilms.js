@@ -11,12 +11,12 @@ export const SimilarFilms = ({ similarMovies }) => {
   const navigationNextSimilarRef = useRef(null);
 
   const { film } = useFilm();
- 
+
   if (!film) return;
 
   return (
     <>
-      <h2>Похожие фильмы:</h2>
+      <h2>Similar Films:</h2>
       <div className={classes.similarMovies}>
         <Swiper
           className={classes.mySwiper}
