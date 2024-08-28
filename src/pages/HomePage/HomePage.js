@@ -37,8 +37,8 @@ export const HomePage = () => {
 
   useEffect(() => {
     dispatch(moviesState.getMovies());
-  }, [dispatch]); 
-  
+  }, [dispatch]);
+
 
   const [isPrevDisabled, setIsPrevDisabled] = useState(true);
   const [isNextDisabled, setIsNextDisabled] = useState(false);
@@ -60,7 +60,7 @@ export const HomePage = () => {
 
   return (
     <div className={classes.homePage}>
-      <h1 className={classes.title}>Лучшие фильмы</h1>
+      <h1 className={classes.title}>The Best Films</h1>
       <Swiper
         className={classes.mySwiper}
         modules={[Navigation, Pagination, Scrollbar, A11y]}

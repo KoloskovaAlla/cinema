@@ -17,6 +17,11 @@ export const FilmPage = () => {
   const { movies } = moviesState;
   const [similarMovies, setSimilarMovies] = useState([]);
 
+
+  useEffect(() => {
+    console.log(film);
+  }, []);
+
   useEffect(() => {
     if (film && movies && movies.length > 0) {
       const currentGenres = film.genre.split(',').map(genre => genre.trim());
