@@ -22,9 +22,12 @@ export const FilmInfo = ({ film }) => {
           <div className={classes.infoBlock}>
             <p>{film?.genre}</p>
             <p>{`Year: ${film?.Year}`}</p>
+            <p>{`Runtime: ${film?.runtime}`}</p>
             <p>{`Country: ${film?.country}`}</p>
             <p>{`Rating: ${film?.rating}`}</p>
             <p>{`Actors: ${film?.actors}`}</p>
+            <p>{`Director: ${film?.director}`}</p>
+            <p>{`Writer: ${film?.writer}`}</p>
           </div>
           <p className={classes.copy}>{film?.plot}</p>
         </div>
