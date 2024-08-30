@@ -1,16 +1,32 @@
 import classes from './SimilarFilms.module.scss';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-import { useFilm } from 'shared/hooks';
+import { useFilm, useMovies } from 'shared/hooks';
 import { FilmPreview } from './components';
 import { LeftArrowIcon, RightArrowIcon } from './assets';
 
 export const SimilarFilms = ({ similarMovies }) => {
   const navigationPrevSimilarRef = useRef(null);
   const navigationNextSimilarRef = useRef(null);
+  const dispatch = useDispatch();
+  const params = useParams();
+  const { id } = params;
 
-  const { film } = useFilm();
+  const { film, setFilm } = useFilm();
+  const moviesState = useMovies();
+  const { movies } = moviesState;
+
+  useEffect(() => {
+    if (!movies) return;
+    const film = movies?.find(movie => movie.imdbID === id);
+    localStorage.setItem('film', JSON.stringify(film));
+    // console.log();
+    if (film) console.log(film); else console.log('фильм не определен')
+    dispatch(setFilm(film));
+  }, [film, movies]);
 
   if (!film) return;
 
