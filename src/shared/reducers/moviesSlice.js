@@ -14,7 +14,17 @@ const onGetMovies = async (_, thunkAPI) => {
         const movieDetailsResponse = await fetch(movieDetailsUrl);
         const movieDetails = await movieDetailsResponse.json();
         // console.log(movieDetails);
-        return { ...movie, genre: movieDetails.Genre, rating: movieDetails.imdbRating, plot: movieDetails.Plot, actors: movieDetails.Actors, country: movieDetails.Country };
+        return {
+          ...movie,
+          genre: movieDetails.Genre,
+          rating: movieDetails.imdbRating,
+          plot: movieDetails.Plot,
+          actors: movieDetails.Actors,
+          country: movieDetails.Country,
+          runtime: movieDetails.Runtime,
+          director: movieDetails.Director,
+          writer: movieDetails.Writer,
+        };
       })
     );
     return thunkAPI.fulfillWithValue(moviesWithGenre);
