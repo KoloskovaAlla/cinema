@@ -1,14 +1,14 @@
 import classes from './HomePage.module.scss';
 import { useRef, useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { useMovies } from 'shared/hooks';
+import { classNames } from 'utils/helpers';
 import { LeftArrowIcon, RightArrowIcon } from './assets';
 import { FilmPreview } from './components';
-import { classNames } from 'utils/helpers';
-import { useMovies } from 'shared/hooks';
-import { useDispatch } from 'react-redux';
 
 export const HomePage = () => {
   const dispatch = useDispatch();
@@ -100,7 +100,10 @@ export const HomePage = () => {
         </button>
         <div className={classes.swiper_pagination_custom} ref={paginationRef}>
         </div>
-        <button className={buttonNextClassNames} ref={navigationNextRef}>
+        <button
+          className={buttonNextClassNames}
+          ref={navigationNextRef}
+        >
           <RightArrowIcon />
         </button>
       </Swiper>
