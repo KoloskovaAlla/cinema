@@ -17,7 +17,7 @@ export const FilmPage = () => {
   const { movies } = moviesState;
   const [similarMovies, setSimilarMovies] = useState([]);
 
-  useEffect(() => {
+  useEffect(() => {   
     if (film && movies && movies.length > 0) {
       const currentGenres = film.genre.split(',').map(genre => genre.trim());
 
@@ -28,14 +28,15 @@ export const FilmPage = () => {
 
       setSimilarMovies(filteredMovies);
     }
-  }, [film, movies]);
+  }, [film, movies, id]);
 
   useEffect(() => {
     if (!movies) return;
     const film = movies?.find(movie => movie.imdbID === id);
     localStorage.setItem('film', JSON.stringify(film));
+    console.log('здесь мы записали, какой фильм')
     dispatch(setFilm(film));
-  }, [film, movies]);
+  }, [film, movies, id]);
 
   return (
     <div className={classes.filmPage}>

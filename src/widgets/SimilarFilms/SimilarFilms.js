@@ -15,21 +15,11 @@ export const SimilarFilms = ({ similarMovies }) => {
   const params = useParams();
   const { id } = params;
 
-  const { film, setFilm } = useFilm();
+  const { film } = useFilm();
   const moviesState = useMovies();
   const { movies } = moviesState;
 
-  useEffect(() => {
-    if (!movies) return;
-    const film = movies?.find(movie => movie.imdbID === id);
-    localStorage.setItem('film', JSON.stringify(film));
-    // console.log();
-    if (film) console.log(film); else console.log('фильм не определен')
-    dispatch(setFilm(film));
-  }, [film, movies]);
-
   if (!film) return;
-
   return (
     <>
       <h2>Similar Films:</h2>

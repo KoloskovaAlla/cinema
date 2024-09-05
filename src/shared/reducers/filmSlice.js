@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   film: JSON.parse(localStorage.getItem('film')) ?? null,
+  // film: JSON.parse(localStorage.getItem('film')) || null,
 };
 
 const filmSlice = createSlice({
