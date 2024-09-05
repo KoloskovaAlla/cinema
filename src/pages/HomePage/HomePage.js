@@ -39,7 +39,6 @@ export const HomePage = () => {
     dispatch(moviesState.getMovies());
   }, [dispatch]);
 
-
   const [isPrevDisabled, setIsPrevDisabled] = useState(true);
   const [isNextDisabled, setIsNextDisabled] = useState(false);
 
