@@ -11,11 +11,9 @@ import { LeftArrowIcon, RightArrowIcon } from './assets';
 export const SimilarFilms = ({ similarMovies }) => {
   const navigationPrevSimilarRef = useRef(null);
   const navigationNextSimilarRef = useRef(null);
-  const dispatch = useDispatch();
-  const params = useParams();
-  const { id } = params;
 
   const { film } = useFilm();
+
   const moviesState = useMovies();
   const { movies } = moviesState;
 

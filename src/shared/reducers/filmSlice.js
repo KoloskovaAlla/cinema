@@ -1,9 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const getFilmFromStorage = () => {
+  try {
+    const filmData = localStorage.getItem('film');
+    return filmData ? JSON.parse(filmData) : null;
+  } catch (error) {
+    console.error('Error parsing film data from localStorage:', error);
+    return null;
+  }
+};
+
 
 const initialState = {
-  film: JSON.parse(localStorage.getItem('film')) ?? null,
-  // film: JSON.parse(localStorage.getItem('film')) || null,
+  film: getFilmFromStorage(),
 };
 
 const filmSlice = createSlice({
