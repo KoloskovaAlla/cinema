@@ -1,1 +1,2 @@
-export { SimilarFilms } from './SimilarFilms'; 
+export { SimilarFilms } from './SimilarFilms';
+export { FilmInfo } from './FilmInfo';
