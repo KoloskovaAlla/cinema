@@ -9,18 +9,18 @@ export const FilmPage = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const { id } = params;
-
   const location = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location]);
 
   const { film, setFilm } = useFilm();
 
   const moviesState = useMovies();
   const { movies } = moviesState;
   const [similarMovies, setSimilarMovies] = useState([]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
 
   useEffect(() => {
     if (film && movies && movies.length > 0) {
