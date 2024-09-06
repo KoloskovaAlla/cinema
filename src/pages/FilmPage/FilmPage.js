@@ -1,15 +1,20 @@
 import classes from './FilmPage.module.scss';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { useFilm, useMovies } from 'shared/hooks';
-import { FilmInfo } from 'widgets';
-import { SimilarFilms } from 'widgets';
+import { FilmInfo, SimilarFilms } from 'widgets';
 
 export const FilmPage = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const { id } = params;
+
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   const { film, setFilm } = useFilm();
 
