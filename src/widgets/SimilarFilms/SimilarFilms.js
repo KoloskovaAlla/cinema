@@ -20,7 +20,7 @@ export const SimilarFilms = ({ similarMovies }) => {
   if (!film) return;
   return (
     <>
-      <h2>Similar Films:</h2>
+      <h2 className={classes.title}>Similar Films:</h2>
       <div className={classes.similarMovies}>
         <Swiper
           className={classes.mySwiper}

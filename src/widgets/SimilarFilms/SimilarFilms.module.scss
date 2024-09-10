@@ -1,6 +1,6 @@
  @import 'shared/constants/styles/breakpoints';
 
- h1 {
+ h2 {
    font-size: 30px;
 
    @media (min-width: $breakpoint_md) {
@@ -12,7 +12,7 @@
    }
 
    @media (min-width: $breakpoint_xl) {
-     font-size: 56px;
+     font-size: 36px;
    }
  }
 
