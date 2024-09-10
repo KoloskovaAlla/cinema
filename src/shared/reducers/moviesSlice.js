@@ -10,6 +10,7 @@ const onGetMovies = async (_, thunkAPI) => {
     if (!data.Search) throw new Error(data.message);
     const moviesWithGenre = await Promise.all(
       data.Search.map(async (movie) => {
+
         const movieDetailsUrl = `https://www.omdbapi.com/?i=${movie.imdbID}&apikey=${apiKey}`;
         const movieDetailsResponse = await fetch(movieDetailsUrl);
         const movieDetails = await movieDetailsResponse.json();
@@ -17,11 +18,11 @@ const onGetMovies = async (_, thunkAPI) => {
         return {
           ...movie,
           genre: movieDetails.Genre,
-          rating: movieDetails.imdbRating,
-          plot: movieDetails.Plot,
-          actors: movieDetails.Actors,
-          country: movieDetails.Country,
+          year: movieDetails.Year,
           runtime: movieDetails.Runtime,
+          country: movieDetails.Country,
+          rating: movieDetails.imdbRating,
+          actors: movieDetails.Actors,
           director: movieDetails.Director,
           writer: movieDetails.Writer,
         };

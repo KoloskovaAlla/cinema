@@ -1,10 +1,10 @@
 import classes from './FilmInfo.module.scss';
 
 export const FilmInfo = ({ film }) => {
+  const excludedKeys = ['Poster', 'Title', 'Type', 'Year', 'imdbID'];
   return (
     <section className={classes.section}>
       <div className={classes.wrapper}>
-
         <div className={classes.image}>
           <img
             src={film?.Poster}
@@ -12,91 +12,34 @@ export const FilmInfo = ({ film }) => {
           />
         </div>
         <div className={classes.body}>
-
           <h1 className={classes.title}>
             {film?.Title}
           </h1>
 
           <div className={classes.infoBlock}>
-            <div className={classes.infoItem}>
-              <div className={classes.infoLabel}>
-                Genre
-              </div>
-              <div className={classes.infoValue}>
-                {film?.genre}
-              </div>
-            </div>
-            <div className={classes.infoItem}>
-              <div className={classes.infoLabel}>
-                Year
-              </div>
-              <div className={classes.infoValue}>
-                {film?.Year}
-              </div>
-            </div>
-            <div className={classes.infoItem}>
-              <div className={classes.infoLabel}>
-                Runtime
-              </div>
-              <div className={classes.infoValue}>
-                {film?.runtime}
-              </div>
-            </div>
-
-            <div className={classes.infoItem}>
-              <div className={classes.infoLabel}>
-                Country
-              </div>
-              <div className={classes.infoValue}>
-                {film?.country}
-              </div>
-            </div>
-
-            <div className={classes.infoItem}>
-              <div className={classes.infoLabel}>
-                Rating
-              </div>
-              <div className={classes.infoValue}>
-                {film?.rating}
-              </div>
-            </div>
-
-            <div className={classes.infoItem}>
-              <div className={classes.infoLabel}>
-                Actors
-              </div>
-              <div className={classes.infoValue}>
-                {film?.actors}
-              </div>
-            </div>
-
-            <div className={classes.infoItem}>
-              <div className={classes.infoLabel}>
-                Director
-              </div>
-              <div className={classes.infoValue}>
-                {film?.director}
-              </div>
-            </div>
-            <div className={classes.infoItem}>
-              <div className={classes.infoLabel}>
-                Writer
-              </div>
-              <div className={classes.infoValue}>
-                {film?.writer}
-              </div>
-            </div>
-
-            {/* <p>{`Genre: ${film?.genre}`}</p>
-            <p>{`Year: ${film?.Year}`}</p> */}
-            {/* <p>{`Runtime: ${film?.runtime}`}</p> */}
-            {/* <p>{`Country: ${film?.country}`}</p> */}
-            {/* <p>{`Rating: ${film?.rating}`}</p> */}
-            {/* <p>{`Actors: ${film?.actors}`}</p> */}
-            {/* <p>{`Director: ${film?.director}`}</p> */}
-            {/* <p>{`Writer: ${film?.writer}`}</p> */}
+            {Object.keys(film).map((key, index) => (
+              !excludedKeys.includes(key) && (
+                <div className={classes.infoItem} key={index}>
+                  <div className={classes.infoLabel}>{key.toUpperCase()}</div>
+                  <div className={classes.infoValue}>{film[key]}</div>
+                </div>
+              )
+            ))}
           </div>
           <p className={classes.copy}>{film?.plot}</p>
+        </div>
+        <div className={classes.rating}>
+          <div>
+            {film.rating.toUpperCase()}
+          </div>
+          <div className={classes.countBlock}>{Math.floor(Math.random() * (10000 - 10 + 1)) + 10} ratings</div>
+          <button
+            className={classes.button}
+            // onClick={handleOrderClick}
+            type="button"
+          >
+            Rate the film
+          </button>
         </div>
       </div>
     </section>
