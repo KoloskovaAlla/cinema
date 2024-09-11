@@ -20,8 +20,8 @@ export const SimilarFilms = ({ similarMovies }) => {
   if (!film) return;
   return (
     <>
-      <h2 className={classes.title}>Similar Films:</h2>
       <div className={classes.similarMovies}>
+        <h2 className={classes.title}>Similar Films:</h2>
         <Swiper
           className={classes.mySwiper}
           modules={[Navigation, Pagination, Scrollbar, A11y]}
