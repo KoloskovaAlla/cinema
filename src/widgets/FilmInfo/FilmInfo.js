@@ -2,6 +2,7 @@ import classes from './FilmInfo.module.scss';
 
 export const FilmInfo = ({ film }) => {
   const excludedKeys = ['Poster', 'Title', 'Type', 'Year', 'imdbID'];
+  if (!film) return;
   return (
     <section className={classes.section}>
       <div className={classes.wrapper}>
