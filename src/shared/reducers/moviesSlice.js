@@ -25,6 +25,7 @@ const onGetMovies = async (_, thunkAPI) => {
           actors: movieDetails.Actors,
           director: movieDetails.Director,
           writer: movieDetails.Writer,
+          plot: movieDetails.Plot,
         };
       })
     );
