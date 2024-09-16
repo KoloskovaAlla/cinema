@@ -1,6 +1,7 @@
  @import 'shared/constants/styles/breakpoints';
 
  h2 {
+   margin-top: 30px;
    font-size: 30px;
 
    @media (min-width: $breakpoint_md) {
@@ -72,7 +73,7 @@
  }
 
  .similarMovies {
-   max-width: 1600px;
+   max-width: 1500px;
    margin: 0 auto;
    padding: 0 20px;
  }

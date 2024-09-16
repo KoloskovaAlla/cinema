@@ -2,6 +2,10 @@
 
 .section {
   padding: 30px 15px;
+  display: flex;
+  margin: 0 auto;
+
+
   @media (min-width: $breakpoint_lg) {
     padding: 40px 15px;
   }
@@ -18,7 +22,7 @@
   padding: 0 20px;
 
   /* Здесь меняем соотношение на 1:2 */
-  gap: 30px;
+  // gap: 30px;
 
   @media (min-width: $breakpoint_md) {}
 
@@ -125,10 +129,12 @@
   // height: 70vw;
 
   width: 100%;
+  width: 400px;
   aspect-ratio: 7/10;
   border-radius: 20px;
   border: 1px solid var(--border-color);
   overflow: hidden;
+  margin-right: 50px;
 
   img {
     height: 100%;
@@ -187,4 +193,9 @@
 
 .countBlock {
   font-size: 16px;
+
+}
+
+.rating {
+  margin-left: auto;
 }
