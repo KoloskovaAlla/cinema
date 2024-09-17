@@ -2,8 +2,7 @@
 
 .section {
   padding: 30px 15px;
-  display: flex;
-  margin: 0 auto;
+
 
 
   @media (min-width: $breakpoint_lg) {
@@ -18,30 +17,30 @@
 }
 
 .wrapper {
-  // max-width: 1600px;
-  padding: 0 20px;
+  display: grid;
+  // margin: 0 auto;
+  max-width: 690px;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 30px;  
 
-  /* Здесь меняем соотношение на 1:2 */
-  // gap: 30px;
+  @media (min-width: $breakpoint_md) {} //768px;
 
-  @media (min-width: $breakpoint_md) {}
-
-  @media (min-width: $breakpoint_lg) {
-    
+  @media (min-width: $breakpoint_lg) {    //1152px;
     gap: 40px;
   }
 
-  @media (min-width: $breakpoint_xl) {
+  @media (min-width: $breakpoint_xl) { //1440px;
     gap: 110px;
-      display: grid;
-  margin: 0 auto;
-  grid-template-columns: 1fr 3fr 1fr;
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: 1fr 3fr 1fr;
   }
 }
 
 .body {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 
   h1 {
     font-size: 30px;
@@ -125,21 +124,26 @@
 }
 
 .image {
-  // margin-top: ;
-  // height: 70vw;
-
-  width: 100%;
-  width: 400px;
-  aspect-ratio: 7/10;
-  border-radius: 20px;
+  height: 70vw;
+  width: 100%; 
   border: 1px solid var(--border-color);
   overflow: hidden;
-  margin-right: 50px;
+ 
+  border-radius: 20px;
 
   img {
     height: 100%;
     width: 100%;
     object-fit: cover;
+  }
+
+  @media (min-width: $breakpoint_md) {
+    margin-right: 50px;
+  }
+  
+  @media (min-width: $breakpoint_xl) {
+    width: 400px;
+    aspect-ratio: 7/10;
   }
 }
 
