@@ -3,11 +3,7 @@
 .section {
   padding: 30px 15px;
 
-
-
-  @media (min-width: $breakpoint_lg) {
-    padding: 40px 15px;
-  }
+  @media (min-width: $breakpoint_lg) {}
 
   @media (min-width: $breakpoint_xl) {
     padding: 0px 15px;
@@ -17,22 +13,25 @@
 }
 
 .wrapper {
-  display: grid;
-  // margin: 0 auto;
-  max-width: 690px;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 30px;  
+  display: flex;
+  flex-direction: column;
+  align-items: center; // Выравнивание всех элементов по центру
+  justify-content: center;
+  text-align: center; // Центрирование текста
 
-  @media (min-width: $breakpoint_md) {} //768px;
+  @media (min-width: $breakpoint_md) {}
 
-  @media (min-width: $breakpoint_lg) {    //1152px;
+  //768px;
+
+  @media (min-width: $breakpoint_lg) {
+    //1152px;    
     gap: 40px;
   }
 
-  @media (min-width: $breakpoint_xl) { //1440px;
+  @media (min-width: $breakpoint_xl) {
+    //1440px;    
     gap: 110px;
     display: grid;
-    margin: 0 auto;
     grid-template-columns: 1fr 3fr 1fr;
   }
 }
@@ -124,11 +123,12 @@
 }
 
 .image {
-  height: 70vw;
-  width: 100%; 
+  width: 70vw;
+  aspect-ratio: 7/10; // Соотношение сторон 10:7
   border: 1px solid var(--border-color);
   overflow: hidden;
- 
+  margin: 0 auto;
+
   border-radius: 20px;
 
   img {
@@ -140,7 +140,7 @@
   @media (min-width: $breakpoint_md) {
     margin-right: 50px;
   }
-  
+
   @media (min-width: $breakpoint_xl) {
     width: 400px;
     aspect-ratio: 7/10;
@@ -149,22 +149,32 @@
 
 .infoItem {
   display: flex;
-  align-items: baseline;
+  justify-content: flex-end;
+
   padding-block-start: 8px;
   padding-block-end: 8px;
   padding-inline-start: 0;
   padding-inline-end: 0;
+
+  @media (min-width: $breakpoint_xl) {
+    align-items: baseline;
+  }
 }
 
 .infoLabel {
   width: 160px;
   font-size: 16px;
+  display: flex;
+  justify-content: start;
   // line-height: 18px;
 }
 
 .infoValue {
   flex: 1;
   font-size: 16px;
+  display: flex;
+  justify-content: start;
+  text-align: start;
   // line-height: 18px;
 }
 
@@ -201,5 +211,10 @@
 }
 
 .rating {
-  margin-left: auto;
+
+
+  @media (min-width: $breakpoint_md) {
+    margin-left: auto;
+  }
+
 }
