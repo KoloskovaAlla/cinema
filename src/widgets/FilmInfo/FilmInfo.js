@@ -1,7 +1,13 @@
+import { useEffect } from 'react';
 import classes from './FilmInfo.module.scss';
 
 export const FilmInfo = ({ film }) => {
-  const excludedKeys = ['Poster', 'Title', 'Type', 'Year', 'imdbID'];
+  const excludedKeys = ['Poster', 'Title', 'Type', 'Year', 'imdbID', 'plot'];
+
+  useEffect(() => {
+    console.log(film);
+  }, [film]);
+
   if (!film) return;
   return (
     <section className={classes.section}>
@@ -26,8 +32,9 @@ export const FilmInfo = ({ film }) => {
                 </div>
               )
             ))}
+            <div><p className={classes.copy}>{film?.plot}</p></div>
           </div>
-          <p className={classes.copy}>{film?.plot}</p>
+
         </div>
         <div className={classes.rating}>
           <div>

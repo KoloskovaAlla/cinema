@@ -1,6 +1,7 @@
  @import 'shared/constants/styles/breakpoints';
 
  h2 {
+   margin-top: 30px;
    font-size: 30px;
 
    @media (min-width: $breakpoint_md) {
@@ -30,7 +31,7 @@
 
  .swiper_button_prev_custom,
  .swiper_button_next_custom {
-   background: rgba(0, 0, 0, 0.7);
+   background: rgba(0, 0, 0, 0.7);  
    border-radius: 50%;
    border: none;
    border: none;
@@ -39,12 +40,17 @@
    align-items: center;
    position: absolute;
    top: 50%;
-   width: 100px;
-   height: 100px;
+   width: 70px;
+   height: 70px;
    z-index: 100;
    cursor: pointer;
    transition: fill 0.3s ease, transform 0.3s ease;
    transform-origin: center center;
+
+  @media (min-width: $breakpoint_xl) {
+    width: 100px;
+    height: 100px;
+  }
 
    &:hover {
      transform: scale(1.2);
@@ -72,7 +78,7 @@
  }
 
  .similarMovies {
-   max-width: 1600px;
+   max-width: 1500px;
    margin: 0 auto;
    padding: 0 20px;
  }
