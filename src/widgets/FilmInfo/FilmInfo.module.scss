@@ -15,13 +15,14 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center; // Выравнивание всех элементов по центру
+  align-items: center;
   justify-content: center;
-  text-align: center; // Центрирование текста
+  text-align: center; 
 
-  @media (min-width: $breakpoint_md) {}
-
-  //768px;
+  @media (min-width: $breakpoint_md) { //768px;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+  } 
 
   @media (min-width: $breakpoint_lg) {
     //1152px;    
@@ -124,7 +125,7 @@
 
 .image {
   width: 70vw;
-  aspect-ratio: 7/10; // Соотношение сторон 10:7
+  aspect-ratio: 7/10;
   border: 1px solid var(--border-color);
   overflow: hidden;
   margin: 0 auto;
@@ -138,13 +139,14 @@
   }
 
   @media (min-width: $breakpoint_md) {
-    margin-right: 50px;
+    width: 100px;
+    aspect-ratio: 7/10;
+    // margin-right: 50px;
+    // height: 280px;
+    // min-height: auto;
   }
 
-  @media (min-width: $breakpoint_xl) {
-    width: 400px;
-    aspect-ratio: 7/10;
-  }
+ 
 }
 
 .infoItem {
