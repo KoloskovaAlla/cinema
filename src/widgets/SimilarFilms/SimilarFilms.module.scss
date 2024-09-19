@@ -40,8 +40,8 @@
    align-items: center;
    position: absolute;
    top: 50%;
-   width: 70px;
-   height: 70px;
+   width: 55x;
+   height: 55px;
    z-index: 100;
    cursor: pointer;
    transition: fill 0.3s ease, transform 0.3s ease;
@@ -70,11 +70,11 @@
  }
 
  .swiper_button_next_custom {
-   right: 15px;
+   right: 10px;
  }
 
  .swiper_button_prev_custom {
-   left: 15px;
+   left: 10px;
  }
 
  .similarMovies {

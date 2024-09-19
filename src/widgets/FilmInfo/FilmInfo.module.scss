@@ -193,11 +193,16 @@
   width: 100%;
   overflow-x: hidden;
   padding: 15px 30px;
-  border: 1px solid white;
+  border: 1px solid rgb(242, 255, 0);
+  border: white;
+  border: rgb(221, 37, 37);
   border-radius: 30px;
   font-size: 26px;
+  color: rgb(6, 1, 1);
   color: white;
-  background: orange;
+  background: rgb(242, 255, 0);
+  background: white;
+  background: rgb(221, 37, 37);
 
   @media (min-width: $breakpoint_md) {
     width: 225px;
@@ -220,6 +225,7 @@
 }
 
 .rating {
+  margin-top: 15px;
 
 
   @media (min-width: $breakpoint_md) {
