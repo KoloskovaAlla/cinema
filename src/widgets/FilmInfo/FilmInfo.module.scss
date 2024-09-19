@@ -32,6 +32,7 @@
   @media (min-width: $breakpoint_lg) {
     //1152px;    
     gap: 40px;
+    grid-template-columns: 2fr 3fr 1fr;
   }
 
   @media (min-width: $breakpoint_xl) {
@@ -224,6 +225,10 @@
   @media (min-width: $breakpoint_md) {
     // margin-left: auto;
     display: none;
+  }
+
+  @media (min-width: $breakpoint_lg) {
+    display: block;
   }
 
 }
