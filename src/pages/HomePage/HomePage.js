@@ -70,7 +70,7 @@ export const HomePage = () => {
             slidesPerView: 2
           },
           1150: {
-            slidesPerView: 3
+            slidesPerView: 5
           },
           1440: {
             slidesPerView: 4

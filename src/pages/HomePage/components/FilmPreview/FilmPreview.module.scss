@@ -3,10 +3,15 @@
   overflow: hidden;
   width: 100%;
   aspect-ratio: 6/10;
+  margin-bottom: 15px;
 
   img {
     object-fit: cover;
     height: 100%;
     width: 100%;
   }
+}
+
+.title {
+  font-size: 26px;
 }
