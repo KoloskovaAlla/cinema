@@ -4,10 +4,6 @@ import classes from './FilmInfo.module.scss';
 export const FilmInfo = ({ film }) => {
   const excludedKeys = ['Poster', 'Title', 'Type', 'Year', 'imdbID', 'plot'];
 
-  useEffect(() => {
-    console.log(film);
-  }, [film]);
-
   if (!film) return;
   return (
     <section className={classes.section}>
