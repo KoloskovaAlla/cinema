@@ -8,7 +8,7 @@ import { useFilm, useMovies } from 'shared/hooks';
 import { FilmPreview } from './components';
 import { LeftArrowIcon, RightArrowIcon } from './assets';
 
-export const SimilarFilms = ({ similarMovies }) => {
+export const SimilarFilms = ({ similarFilms }) => {
   const navigationPrevSimilarRef = useRef(null);
   const navigationNextSimilarRef = useRef(null);
 
@@ -20,7 +20,7 @@ export const SimilarFilms = ({ similarMovies }) => {
   if (!film) return;
   return (
     <>
-      <div className={classes.similarMovies}>
+      <div className={classes.similarFilms}>
         <h2 className={classes.title}>Similar Films:</h2>
         <Swiper
           className={classes.mySwiper}
@@ -44,7 +44,7 @@ export const SimilarFilms = ({ similarMovies }) => {
           }}
         >
 
-          {similarMovies.map((movie, index) => (
+          {similarFilms.map((movie, index) => (
             <SwiperSlide key={index}>
               <FilmPreview movie={movie} />
             </SwiperSlide>

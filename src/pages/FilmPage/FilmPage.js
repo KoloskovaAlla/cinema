@@ -2,7 +2,7 @@ import classes from './FilmPage.module.scss';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams, useLocation } from 'react-router-dom';
-import { useFilm, useMovies } from 'shared/hooks';
+import { useFilm, useMovies, useSimilarFilms } from 'shared/hooks';
 import { FilmInfo, SimilarFilms } from 'widgets';
 
 export const FilmPage = () => {
@@ -13,14 +13,19 @@ export const FilmPage = () => {
 
   const { film, setFilm } = useFilm();
 
+  const { similarFilms, setSimilarFilms } = useSimilarFilms();
+
+  useEffect(() => {
+    console.log(similarFilms);
+  }, [similarFilms]);
+
   const moviesState = useMovies();
   const { movies } = moviesState;
-  const [similarMovies, setSimilarMovies] = useState([]);
+  // const [similarMovies, setSimilarMovies] = useState([]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
-
 
   useEffect(() => {
     if (film && movies && movies.length > 0) {
@@ -31,7 +36,7 @@ export const FilmPage = () => {
         return movie !== film && movieGenres.some(genre => currentGenres.includes(genre));
       });
 
-      setSimilarMovies(filteredMovies);
+      dispatch(setSimilarFilms(filteredMovies));
     }
   }, [film, movies, id]);
 
@@ -45,7 +50,7 @@ export const FilmPage = () => {
   return (
     <div className={classes.filmPage}>
       <FilmInfo film={film} />
-      {similarMovies && <SimilarFilms similarMovies={similarMovies} />}
+      {similarFilms && <SimilarFilms similarFilms={similarFilms} />}
     </div>
   )
 };
