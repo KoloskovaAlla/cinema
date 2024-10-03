@@ -55,6 +55,12 @@ export const HomePage = () => {
     [classes.disableNext]: isNextDisabled,
   });
 
+  document.querySelectorAll('.swiper_button_prev_custom, .swiper_button_next_custom').forEach(button => {
+    button.addEventListener('click', () => {
+      button.blur(); // Убираем фокус с кнопки после клика
+    });
+  });
+
   if (!movies) return;
 
   return (
