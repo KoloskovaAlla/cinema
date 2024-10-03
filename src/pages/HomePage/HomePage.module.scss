@@ -1,23 +1,7 @@
 @import 'shared/constants/styles/breakpoints';
 
-h1 {
-  font-size: 30px;
-  margin-bottom: 16px;
-
-  @media (min-width: $breakpoint_md) {
-    font-size: 36px;
-  }
-
-  @media (min-width: $breakpoint_lg) {
-    font-size: 42px;
-  }
-
-  @media (min-width: $breakpoint_xl) {
-    font-size: 56px;
-  }
-}
-
 .homePage {
+  min-height: 100vh;
   position: relative;
   width: 100%;
   margin: 0 auto;
@@ -36,6 +20,23 @@ h1 {
   }
 }
 
+h1 {
+  font-size: 30px;
+  margin-bottom: 30px;
+
+  @media (min-width: $breakpoint_md) {
+    font-size: 36px;
+  }
+
+  @media (min-width: $breakpoint_lg) {
+    font-size: 42px;
+  }
+
+  @media (min-width: $breakpoint_xl) {
+    font-size: 56px;
+  }
+}
+
 .swiper_button_prev_custom,
 .swiper_button_next_custom {
   background: rgba(0, 0, 0, 0.7);
@@ -47,12 +48,17 @@ h1 {
   align-items: center;
   position: absolute;
   top: 50%;
-  width: 100px;
-  height: 100px;
+  width: 55x;
+  height: 55px;
   z-index: 100;
   cursor: pointer;
   transition: fill 0.3s ease, transform 0.3s ease;
   transform-origin: center center;
+
+  @media (min-width: $breakpoint_xl) {
+    width: 100px;
+    height: 100px;
+  }
 
   &:hover {
     transform: scale(1.2);

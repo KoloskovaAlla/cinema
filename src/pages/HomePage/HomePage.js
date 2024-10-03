@@ -63,17 +63,17 @@ export const HomePage = () => {
       <Swiper
         className={classes.mySwiper}
         modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={10}
+        spaceBetween={30}
         slidesPerView={1}
         breakpoints={{
           770: {
             slidesPerView: 2
           },
           1150: {
-            slidesPerView: 3
+            slidesPerView: 4
           },
           1440: {
-            slidesPerView: 4
+            slidesPerView: 5
           }
         }}
         navigation={{
