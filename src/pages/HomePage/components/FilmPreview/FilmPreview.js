@@ -13,7 +13,7 @@ export const FilmPreview = ({ movie }) => {
         <div className={classes.image}>
           <img src={Poster} alt={Title} />
         </div>
-        <h2>{Title}</h2>
+        <h2 className={classes.title}>{Title}</h2>
       </div>
     </Link>
   );
