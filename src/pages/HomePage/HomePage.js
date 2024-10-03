@@ -55,11 +55,50 @@ export const HomePage = () => {
     [classes.disableNext]: isNextDisabled,
   });
 
-  document.querySelectorAll('.swiper_button_prev_custom, .swiper_button_next_custom').forEach(button => {
-    button.addEventListener('click', () => {
-      button.blur(); // Убираем фокус с кнопки после клика
-    });
-  });
+  useEffect(() => {
+    const prevButton = navigationPrevRef.current;
+    const nextButton = navigationNextRef.current;
+
+    if (prevButton && nextButton) {
+      const handlePrevClick = () => {
+        console.log('Prev button clicked');
+        console.log(prevButton);
+
+        // Изменяем масштаб кнопки
+        prevButton.style.transform = 'scale(1.2)'; // Увеличиваем размер кнопки
+
+        // Возвращаем размер к нормальному через 300 мс
+        setTimeout(() => {
+          prevButton.style.transform = 'scale(1)'; // Возвращаем к нормальному размеру
+        }, 300);
+      };
+
+      const handleNextClick = () => {
+        console.log('Next button clicked');
+        console.log(nextButton);
+
+        // Изменяем масштаб кнопки
+        nextButton.style.transform = 'scale(1.2)'; // Увеличиваем размер кнопки
+
+        // Возвращаем размер к нормальному через 300 мс
+        setTimeout(() => {
+          nextButton.style.transform = 'scale(1)'; // Возвращаем к нормальному размеру
+        }, 300);
+      };
+
+      // Добавляем обработчики
+      prevButton.addEventListener('click', handlePrevClick);
+      nextButton.addEventListener('click', handleNextClick);
+
+      // Убираем обработчики при размонтировании
+      return () => {
+        prevButton.removeEventListener('click', handlePrevClick);
+        nextButton.removeEventListener('click', handleNextClick);
+      };
+    } else {
+      console.log("Buttons not ready yet");
+    }
+  }, [navigationPrevRef, navigationNextRef, movies]); // Добавляем movies как зависимость
 
   if (!movies) return;
 
