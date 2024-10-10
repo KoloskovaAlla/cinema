@@ -19,45 +19,45 @@ export const SimilarFilms = ({ similarFilms }) => {
 
   if (!film) return;
   return (
-    <>
-      <div className={classes.similarFilms}>
-        <h2 className={classes.title}>Similar Films:</h2>
-        <Swiper
-          className={classes.mySwiper}
-          modules={[Navigation, Pagination, Scrollbar, A11y]}
-          spaceBetween={10}
-          slidesPerView={1}
-          breakpoints={{
-            770: {
-              slidesPerView: 2
-            },
-            1150: {
-              slidesPerView: 3
-            },
-            1440: {
-              slidesPerView: 4
-            }
-          }}
-          navigation={{
-            nextEl: navigationNextSimilarRef.current,
-            prevEl: navigationPrevSimilarRef.current,
-          }}
-        >
 
-          {similarFilms.map((movie, index) => (
-            <SwiperSlide key={index}>
-              <FilmPreview movie={movie} />
-            </SwiperSlide>
-          ))}
-          <button className={classes.swiper_button_prev_custom} ref={navigationPrevSimilarRef}>
-            <LeftArrowIcon />
-          </button>
-          <button className={classes.swiper_button_next_custom} ref={navigationNextSimilarRef}>
-            <RightArrowIcon />
-          </button>
+    <section className={classes.similarFilms}>
+      <h2 className={classes.title}>Similar Films:</h2>
+      <Swiper
+        className={classes.mySwiper}
+        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        spaceBetween={10}
+        slidesPerView={1}
+        breakpoints={{
+          770: {
+            slidesPerView: 2
+          },
+          1150: {
+            slidesPerView: 3
+          },
+          1440: {
+            slidesPerView: 4
+          }
+        }}
+        navigation={{
+          nextEl: navigationNextSimilarRef.current,
+          prevEl: navigationPrevSimilarRef.current,
+        }}
+      >
 
-        </Swiper>
-      </div>
-    </>
+        {similarFilms.map((movie, index) => (
+          <SwiperSlide key={index}>
+            <FilmPreview movie={movie} />
+          </SwiperSlide>
+        ))}
+        <button className={classes.swiper_button_prev_custom} ref={navigationPrevSimilarRef}>
+          <LeftArrowIcon />
+        </button>
+        <button className={classes.swiper_button_next_custom} ref={navigationNextSimilarRef}>
+          <RightArrowIcon />
+        </button>
+
+      </Swiper>
+    </section>
+
   );
 };

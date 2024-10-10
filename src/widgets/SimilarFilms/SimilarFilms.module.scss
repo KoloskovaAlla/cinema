@@ -1,5 +1,17 @@
  @import 'shared/constants/styles/breakpoints';
 
+ .similarFilms {
+   padding: 30px 15px;
+
+   @media (min-width: $breakpoint_lg) {}
+
+   @media (min-width: $breakpoint_xl) {
+     padding: 0px 15px;
+     max-width: 1600px;
+     margin: 0 auto;
+   }
+ }
+
  title {
    margin-top: 30px;
    font-size: 30px;
