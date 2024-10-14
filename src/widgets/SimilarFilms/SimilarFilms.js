@@ -1,5 +1,6 @@
 import classes from './SimilarFilms.module.scss';
-import { useEffect, useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
+import { classNames } from 'utils/helpers'; // надо перенести в соответствии с FSD
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -11,11 +12,28 @@ import { LeftArrowIcon, RightArrowIcon } from './assets';
 export const SimilarFilms = ({ similarFilms }) => {
   const navigationPrevSimilarRef = useRef(null);
   const navigationNextSimilarRef = useRef(null);
+  const [isPrevDisabled, setIsPrevDisabled] = useState(true);
+  const [isNextDisabled, setIsNextDisabled] = useState(false);
+
+  const onSlideChange = (swiper) => {
+    setIsPrevDisabled(swiper.isBeginning);
+    setIsNextDisabled(swiper.isEnd);
+  };
+
+  const buttonPrevClassNames = classNames(classes.swiper_button_prev_custom, {
+    [classes.disablePrev]: isPrevDisabled,
+  });
+
+  const buttonNextClassNames = classNames(classes.swiper_button_next_custom, {
+    [classes.disableNext]: isNextDisabled,
+  });
+
 
   const { film } = useFilm();
 
   const moviesState = useMovies();
   const { movies } = moviesState;
+
 
   if (!film) return;
   return (
@@ -42,6 +60,7 @@ export const SimilarFilms = ({ similarFilms }) => {
           nextEl: navigationNextSimilarRef.current,
           prevEl: navigationPrevSimilarRef.current,
         }}
+        onSlideChange={onSlideChange}
       >
 
         {similarFilms.map((movie, index) => (
@@ -49,10 +68,10 @@ export const SimilarFilms = ({ similarFilms }) => {
             <FilmPreview movie={movie} />
           </SwiperSlide>
         ))}
-        <button className={classes.swiper_button_prev_custom} ref={navigationPrevSimilarRef}>
+        <button className={buttonPrevClassNames} ref={navigationPrevSimilarRef}>
           <LeftArrowIcon />
         </button>
-        <button className={classes.swiper_button_next_custom} ref={navigationNextSimilarRef}>
+        <button className={buttonNextClassNames} ref={navigationNextSimilarRef}>
           <RightArrowIcon />
         </button>
 
