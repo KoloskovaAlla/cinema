@@ -178,54 +178,55 @@ export const HomePage = () => {
 
   return (
     <div className={classes.homePage}>
-      <h1 className={classes.title}>The Best Films</h1>
-      <Swiper
-        className={classes.mySwiper}
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={30}
-        slidesPerView={1}
-        breakpoints={{
-          770: {
-            slidesPerView: 2
-          },
-          1150: {
-            slidesPerView: 4
-          },
-          1440: {
-            slidesPerView: 5
-          }
-        }}
-        navigation={{
-          nextEl: navigationNextRef.current,
-          prevEl: navigationPrevRef.current,
-        }}
-        pagination={{
-          el: paginationRef.current,
-          clickable: true,
-          type: 'bullets',
-          bulletClass: classes.bullet,
-          bulletActiveClass: classes.bullet_active,
-        }}
-        onSlideChange={onSlideChange}
-        ref={swiperRef}
-      >
-        {movies.map((movie, index) => (
-          <SwiperSlide key={index}>
-            <FilmPreview movie={movie} />
-          </SwiperSlide>
-        ))}
-        <button className={buttonPrevClassNames} ref={navigationPrevRef}>
-          <LeftArrowIcon />
-        </button>
-        <div className={classes.swiper_pagination_custom} ref={paginationRef}>
-        </div>
-        <button
-          className={buttonNextClassNames}
-          ref={navigationNextRef}
+      <div className={classes.mySwiper}>
+        <h1 className={classes.title}>The Best Films</h1>
+        <Swiper
+          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          spaceBetween={30}
+          slidesPerView={1}
+          breakpoints={{
+            770: {
+              slidesPerView: 2
+            },
+            1150: {
+              slidesPerView: 5
+            },
+            1440: {
+              slidesPerView: 5
+            }
+          }}
+          navigation={{
+            nextEl: navigationNextRef.current,
+            prevEl: navigationPrevRef.current,
+          }}
+          pagination={{
+            el: paginationRef.current,
+            clickable: true,
+            type: 'bullets',
+            bulletClass: classes.bullet,
+            bulletActiveClass: classes.bullet_active,
+          }}
+          onSlideChange={onSlideChange}
+          ref={swiperRef}
         >
-          <RightArrowIcon />
-        </button>
-      </Swiper>
+          {movies.map((movie, index) => (
+            <SwiperSlide key={index}>
+              <FilmPreview movie={movie} />
+            </SwiperSlide>
+          ))}
+          <button className={buttonPrevClassNames} ref={navigationPrevRef}>
+            <LeftArrowIcon />
+          </button>
+          <div className={classes.swiper_pagination_custom} ref={paginationRef}>
+          </div>
+          <button
+            className={buttonNextClassNames}
+            ref={navigationNextRef}
+          >
+            <RightArrowIcon />
+          </button>
+        </Swiper>
+      </div>
     </div>
   );
 };
