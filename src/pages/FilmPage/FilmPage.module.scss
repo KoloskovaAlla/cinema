@@ -1,18 +1,19 @@
 @import 'shared/constants/styles/breakpoints';
 
-.filmPage{
+.filmPage {
   position: relative;
   width: 100%;
   margin: 0 auto;
-    @media (min-width: $breakpoint_md) {
-      padding: 30px 15px;
-    }
 
-    @media (min-width: $breakpoint_lg) {
-      padding: 40px 30px;
-    }
+  @media (min-width: $breakpoint_md) {
+    padding: 15px 15px;
+  }
 
-    @media (min-width: $breakpoint_xl) {
-      padding: 50px 40px;
-    }
+  @media (min-width: $breakpoint_lg) {
+    padding: 15px 30px;
+  }
+
+  @media (min-width: $breakpoint_xl) {
+    padding: 25px 40px;
+  }
 }
