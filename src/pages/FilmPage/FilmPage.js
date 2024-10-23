@@ -2,7 +2,7 @@ import classes from './FilmPage.module.scss';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams, useLocation } from 'react-router-dom';
-import { useFilm, useMovies, useSimilarFilms } from 'shared/hooks';
+import { useFilm, useMovies, useSimilarFilms, useDocumentTitle } from 'shared/hooks';
 import { FilmInfo, SimilarFilms } from 'widgets';
 
 export const FilmPage = () => {
@@ -15,9 +15,13 @@ export const FilmPage = () => {
 
   const { similarFilms, setSimilarFilms } = useSimilarFilms();
 
+  const [title, setTitle] = useState('');
+
+  useDocumentTitle(title);
+
   useEffect(() => {
-    console.log(similarFilms);
-  }, [similarFilms]);
+    setTitle(film.Title);
+  }, [film]);
 
   const moviesState = useMovies();
   const { movies } = moviesState;
