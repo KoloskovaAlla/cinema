@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { useMovies } from 'shared/hooks';
+import { useMovies, useDocumentTitle } from 'shared/hooks';
 import { LeftArrowIcon, RightArrowIcon } from './assets';
 import { FilmPreview } from './components';
 
@@ -18,6 +18,10 @@ export const HomePage = () => {
 
   const moviesState = useMovies();
   const { movies } = moviesState;
+
+  const title = 'Film Finder'
+
+  useDocumentTitle(title);
 
   useEffect(() => {
     if (swiperRef.current && swiperRef.current.swiper) {
