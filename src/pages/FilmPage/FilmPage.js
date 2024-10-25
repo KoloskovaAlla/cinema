@@ -18,12 +18,10 @@ export const FilmPage = () => {
 
   const [documentTitle, setDocumentTitle] = useState('');
 
-  // useDocumentTitle(documentTitle);
+  useDocumentTitle(documentTitle);
 
   useEffect(() => {
-    if (film) console.log('есть фильм')
-    else console.log('нет фильма');
-    // if (film) setDocumentTitle(film.Title);
+    if (film) setDocumentTitle(film.Title);
   }, [film]);
 
   const moviesState = useMovies();
