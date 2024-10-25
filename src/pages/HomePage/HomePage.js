@@ -8,6 +8,7 @@ import 'swiper/css/pagination';
 import { useMovies, useDocumentTitle } from 'shared/hooks';
 import { LeftArrowIcon, RightArrowIcon } from './assets';
 import { FilmPreview } from './components';
+import { Preloader } from 'widgets';
 
 export const HomePage = () => {
   const dispatch = useDispatch();
@@ -116,7 +117,7 @@ export const HomePage = () => {
     }
   }, [navigationPrevRef, navigationNextRef, movies]);
 
-  if (!movies) return;
+  if (!movies) return (Preloader);
 
   return (
     <div className={classes.homePage}>

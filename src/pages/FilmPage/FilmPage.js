@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useParams, useLocation } from 'react-router-dom';
 import { useFilm, useMovies, useSimilarFilms, useDocumentTitle } from 'shared/hooks';
 import { FilmInfo, SimilarFilms } from 'widgets';
+import { Preloader } from 'widgets';
 
 export const FilmPage = () => {
   const dispatch = useDispatch();
@@ -50,6 +51,8 @@ export const FilmPage = () => {
     localStorage.setItem('film', JSON.stringify(film));
     dispatch(setFilm(film));
   }, [film, movies, id]);
+
+  if (!film) return (Preloader);
 
   return (
     <div className={classes.filmPage}>
