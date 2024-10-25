@@ -16,12 +16,12 @@ export const FilmPage = () => {
 
   const { similarFilms, setSimilarFilms } = useSimilarFilms();
 
-  const [title, setTitle] = useState('');
+  const [documentTitle, setDocumentTitle] = useState('');
 
-  useDocumentTitle(title);
+  useDocumentTitle(documentTitle);
 
   useEffect(() => {
-    setTitle(film.Title);
+    if (film) setDocumentTitle(film.Title);
   }, [film]);
 
   const moviesState = useMovies();
@@ -52,7 +52,7 @@ export const FilmPage = () => {
     dispatch(setFilm(film));
   }, [film, movies, id]);
 
-  if (!film) return (Preloader);
+  if (!film) return (<Preloader />);
 
   return (
     <div className={classes.filmPage}>
