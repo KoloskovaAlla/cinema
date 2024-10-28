@@ -1,25 +1,26 @@
 @import 'shared/constants/styles/breakpoints';
-  
+
 .header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 80px;
+  height: var(--header-height);
   padding: 0 15px;
   background: orange;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   z-index: 2;
   font-size: 30px;
-    @media (min-width: $breakpoint_lg) {
-      padding: 0 30px;     
-      font-size: 40px; 
-    }
 
-    @media (min-width: $breakpoint_xl) {
-      padding: 0 40px;
-      font-size: 46px;
-    }
+  @media (min-width: $breakpoint_lg) {
+    padding: 0 30px;
+    font-size: 40px;
+  }
+
+  @media (min-width: $breakpoint_xl) {
+    padding: 0 40px;
+    font-size: 46px;
+  }
 }
 
 .wrapper {
