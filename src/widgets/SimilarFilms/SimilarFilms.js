@@ -12,11 +12,26 @@ import { LeftArrowIcon, RightArrowIcon } from './assets';
 export const SimilarFilms = ({ similarFilms }) => {
   const navigationPrevSimilarRef = useRef(null);
   const navigationNextSimilarRef = useRef(null);
+  const [isPrevDisabled, setIsPrevDisabled] = useState(true);
+  const [isNextDisabled, setIsNextDisabled] = useState(false);
 
   const { film } = useFilm();
 
   const moviesState = useMovies();
   const { movies } = moviesState;
+
+  const onSlideChange = (swiper) => {
+    setIsPrevDisabled(swiper.isBeginning);
+    setIsNextDisabled(swiper.isEnd);
+  };
+
+  const buttonPrevClassNames = classNames(classes.swiper_button_prev_custom, {
+    [classes.disablePrev]: isPrevDisabled,
+  });
+
+  const buttonNextClassNames = classNames(classes.swiper_button_next_custom, {
+    [classes.disableNext]: isNextDisabled,
+  });
 
   useEffect(() => {
     const prevButton = navigationPrevSimilarRef.current;
@@ -114,7 +129,7 @@ export const SimilarFilms = ({ similarFilms }) => {
             slidesPerView: 4
           }
         }}
-        loop={true}
+        onSlideChange={onSlideChange}
         navigation={{
           nextEl: navigationNextSimilarRef.current,
           prevEl: navigationPrevSimilarRef.current,
@@ -127,13 +142,13 @@ export const SimilarFilms = ({ similarFilms }) => {
           </SwiperSlide>
         ))}
         <button
-          className={classes.swiper_button_prev_custom}
+          className={buttonPrevClassNames}
           ref={navigationPrevSimilarRef}
         >
           <LeftArrowIcon />
         </button>
         <button
-          className={classes.swiper_button_next_custom}
+          className={buttonNextClassNames}
           ref={navigationNextSimilarRef}
         >
           <RightArrowIcon />
