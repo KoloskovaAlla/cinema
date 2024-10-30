@@ -9,6 +9,7 @@ import { useMovies, useDocumentTitle } from 'shared/hooks';
 import { LeftArrowIcon, RightArrowIcon } from './assets';
 import { FilmPreview } from './components';
 import { Preloader } from 'widgets';
+import { classNames } from 'utils/helpers';
 
 export const HomePage = () => {
   const dispatch = useDispatch();
@@ -43,6 +44,29 @@ export const HomePage = () => {
     dispatch(moviesState.getMovies());
   }, [dispatch]);
 
+
+
+  const [isPrevDisabled, setIsPrevDisabled] = useState(true);
+  const [isNextDisabled, setIsNextDisabled] = useState(false);
+
+  const onSlideChange = (swiper) => {
+    setIsPrevDisabled(swiper.isBeginning);
+    setIsNextDisabled(swiper.isEnd);
+  };
+
+  const buttonPrevClassNames = classNames(classes.swiper_button_prev_custom, {
+    [classes.disablePrev]: isPrevDisabled,
+  });
+
+  const buttonNextClassNames = classNames(classes.swiper_button_next_custom, {
+    [classes.disableNext]: isNextDisabled,
+  });
+
+  useEffect(() => {
+    console.log(isNextDisabled)
+  }, [isNextDisabled]);
+
+
   useEffect(() => {
     const prevButton = navigationPrevRef.current;
     const nextButton = navigationNextRef.current;
@@ -75,9 +99,6 @@ export const HomePage = () => {
       };
 
       const handleNextTouchStart = () => {
-        console.log('Next button clicked');
-        console.log(nextButton);
-
         // Изменяем масштаб кнопки
         nextButton.style.transform = 'scale(1.5)'; // Увеличиваем размер кнопки
 
@@ -88,9 +109,6 @@ export const HomePage = () => {
       };
 
       const handleNextTouchEnd = () => {
-        console.log('Next button clicked');
-        console.log(nextButton);
-
         // Изменяем масштаб кнопки
         nextButton.style.transform = 'scale(1.0)'; // Увеличиваем размер кнопки
 
@@ -138,7 +156,6 @@ export const HomePage = () => {
               slidesPerView: 5
             }
           }}
-          loop={true}
           navigation={{
             nextEl: navigationNextRef.current,
             prevEl: navigationPrevRef.current,
@@ -150,6 +167,7 @@ export const HomePage = () => {
             bulletClass: classes.bullet,
             bulletActiveClass: classes.bullet_active,
           }}
+          onSlideChange={onSlideChange}
           ref={swiperRef}
         >
           {movies.map((movie, index) => (
@@ -158,7 +176,7 @@ export const HomePage = () => {
             </SwiperSlide>
           ))}
           <button
-            className={classes.swiper_button_prev_custom}
+            className={buttonPrevClassNames}
             ref={navigationPrevRef}
           >
             <LeftArrowIcon />
@@ -166,7 +184,7 @@ export const HomePage = () => {
           <div className={classes.swiper_pagination_custom} ref={paginationRef}>
           </div>
           <button
-            className={classes.swiper_button_next_custom}
+            className={buttonNextClassNames}
             ref={navigationNextRef}
           >
             <RightArrowIcon />
