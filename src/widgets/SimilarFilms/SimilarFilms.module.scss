@@ -43,21 +43,28 @@
 
  .swiper_button_prev_custom,
  .swiper_button_next_custom {
-   background: rgba(0, 0, 0, 0.7);
-   border-radius: 50%;
-   border: none;
-   border: none;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   position: absolute;
-   top: 50%;
-   width: 55x;
-   height: 55px;
-   z-index: 100;
-   cursor: pointer;
-   transition: fill 0.3s ease, transform 0.3s ease;
-   transform-origin: center center;
+
+   display: none;
+
+   @media (min-width: $breakpoint_lg) {
+     background: rgba(0, 0, 0, 0.7);
+     border-radius: 50%;
+     border: none;
+     border: none;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     position: absolute;
+     top: 50%;
+     width: 55x;
+     height: 55px;
+     z-index: 100;
+     cursor: pointer;
+     transition: fill 0.3s ease, transform 0.3s ease;
+     transform-origin: center center;
+     display: flex;
+   }
+
 
    @media (min-width: $breakpoint_xl) {
      width: 100px;
