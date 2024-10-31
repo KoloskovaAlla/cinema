@@ -1,7 +1,6 @@
-import React from 'react';
 import classes from './FilmPreview.module.scss';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import {useEffect} from 'react';
 
 export const FilmPreview = ({ movie }) => {
   const { imdbID, Title, Poster } = movie;
