@@ -1,6 +1,6 @@
 import classes from './SimilarFilms.module.scss';
 import { useRef, useState, useEffect } from 'react';
-import { classNames } from 'utils/helpers'; // надо перенести в соответствии с FSD
+import { classNames } from 'shared/utils/helpers'; // надо перенести в соответствии с FSD
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
