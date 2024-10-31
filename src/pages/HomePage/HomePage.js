@@ -6,10 +6,10 @@ import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { useMovies, useDocumentTitle } from 'shared/hooks';
+import { classNames } from 'shared/utils/helpers';
+import { Preloader } from 'widgets';
 import { LeftArrowIcon, RightArrowIcon } from './assets';
 import { FilmPreview } from './components';
-import { Preloader } from 'widgets';
-import { classNames } from 'utils/helpers';
 
 export const HomePage = () => {
   const dispatch = useDispatch();
@@ -73,63 +73,26 @@ export const HomePage = () => {
 
     if (prevButton && nextButton) {
       const handlePrevTouchStart = () => {
-        console.log('Prev button clicked');
-        console.log(prevButton);
-
-        // Изменяем масштаб кнопки
-        prevButton.style.transform = 'scale(1.5)'; // Увеличиваем размер кнопки
-
-        // Возвращаем размер к нормальному через 300 мс
-        // setTimeout(() => {
-        //   prevButton.style.transform = 'scale(1)'; // Возвращаем к нормальному размеру
-        // }, 300);
+        prevButton.style.transform = 'scale(1.5)';
       };
 
       const handlePrevTouchEnd = () => {
-        console.log('Prev button clicked');
-        console.log(prevButton);
-
-        // Изменяем масштаб кнопки
-        prevButton.style.transform = 'scale(1.0)'; // Увеличиваем размер кнопки
-
-        // Возвращаем размер к нормальному через 300 мс
-        // setTimeout(() => {
-        //   prevButton.style.transform = 'scale(1)'; // Возвращаем к нормальному размеру
-        // }, 300);
+        prevButton.style.transform = 'scale(1.0)';
       };
 
       const handleNextTouchStart = () => {
-        // Изменяем масштаб кнопки
-        nextButton.style.transform = 'scale(1.5)'; // Увеличиваем размер кнопки
-
-        // Возвращаем размер к нормальному через 300 мс
-        // setTimeout(() => {
-        //   nextButton.style.transform = 'scale(1)'; // Возвращаем к нормальному размеру
-        // }, 300);
+        nextButton.style.transform = 'scale(1.5)';
       };
 
       const handleNextTouchEnd = () => {
-        // Изменяем масштаб кнопки
-        nextButton.style.transform = 'scale(1.0)'; // Увеличиваем размер кнопки
-
-        // Возвращаем размер к нормальному через 300 мс
-        // setTimeout(() => {
-        //   nextButton.style.transform = 'scale(1)'; // Возвращаем к нормальному размеру
-        // }, 300);
+        nextButton.style.transform = 'scale(1.0)';
       };
 
-
-      // Добавляем обработчики
       prevButton.addEventListener('touchstart', handlePrevTouchStart);
       prevButton.addEventListener('touchend', handlePrevTouchEnd);
 
       nextButton.addEventListener('touchstart', handleNextTouchStart);
       nextButton.addEventListener('touchend', handleNextTouchEnd);
-      // Убираем обработчики при размонтировании
-      // return () => {
-      //   prevButton.removeEventListener('click', handlePrevClick);
-      //   nextButton.removeEventListener('click', handleNextClick);
-      // };
     } else {
       console.log("Buttons not ready yet");
     }
