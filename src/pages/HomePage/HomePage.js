@@ -44,6 +44,10 @@ export const HomePage = () => {
     dispatch(moviesState.getMovies());
   }, [dispatch]);
 
+  useEffect(() => {
+    console.log('test')
+  }, []);
+
 
 
   const [isPrevDisabled, setIsPrevDisabled] = useState(true);
@@ -61,11 +65,6 @@ export const HomePage = () => {
   const buttonNextClassNames = classNames(classes.swiper_button_next_custom, {
     [classes.disableNext]: isNextDisabled,
   });
-
-  useEffect(() => {
-    console.log(isNextDisabled)
-  }, [isNextDisabled]);
-
 
   useEffect(() => {
     const prevButton = navigationPrevRef.current;
@@ -98,9 +97,9 @@ export const HomePage = () => {
     }
   }, [navigationPrevRef, navigationNextRef, movies]);
 
-  if (!movies) return (Preloader);
+  if (!movies) return (<Preloader />);
 
-  return (
+  return (   
     <div className={classes.homePage}>
       <div className={classes.mySwiper}>
         <h1 className={classes.title}>The Best Films</h1>
