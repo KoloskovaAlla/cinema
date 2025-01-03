@@ -33,14 +33,17 @@ export const FilmPage = () => {
   }, [location]);
 
   useEffect(() => {
+    console.log(film);
+  }, [film]);
+
+  useEffect(() => {
     if (film && movies && movies.length > 0) {
       const currentGenres = film.genre.split(',').map(genre => genre.trim());
 
       const filteredMovies = movies.filter(movie => {
         const movieGenres = movie.genre.split(',').map(genre => genre.trim());
         return movie !== film && movieGenres.some(genre => currentGenres.includes(genre));
-      });
-
+      });  
       dispatch(setSimilarFilms(filteredMovies));
     }
   }, [film, movies, id]);
