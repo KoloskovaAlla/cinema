@@ -1,11 +1,7 @@
 import classes from './FilmPreview.module.scss';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { useFilm } from 'shared/hooks';
-import {useEffect} from 'react';
 
 export const FilmPreview = ({ movie }) => {
-  const dispatch = useDispatch();
   const { imdbID, Title, Poster } = movie;
 
   // Это в секции похожих фильмов
