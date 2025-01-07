@@ -6,7 +6,10 @@ export const Header = () => {
     <header className={classes.header}>
       <Link to='/' className={classes.wrapper}>
         FILM FINDER
-      </Link>
+      </Link>     
+      <Navigation />      
+      <Theme />
+      <Burger />
     </header>
   );
 };
