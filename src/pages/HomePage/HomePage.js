@@ -43,13 +43,7 @@ export const HomePage = () => {
   useEffect(() => {
     dispatch(moviesState.getMovies());
   }, [dispatch]);
-
-  useEffect(() => {
-    console.log('test')
-  }, []);
-
-
-
+ 
   const [isPrevDisabled, setIsPrevDisabled] = useState(true);
   const [isNextDisabled, setIsNextDisabled] = useState(false);
 
@@ -92,9 +86,7 @@ export const HomePage = () => {
 
       nextButton.addEventListener('touchstart', handleNextTouchStart);
       nextButton.addEventListener('touchend', handleNextTouchEnd);
-    } else {
-      console.log("Buttons not ready yet");
-    }
+    } 
   }, [navigationPrevRef, navigationNextRef, movies]);
 
   if (!movies) return (<Preloader />);
