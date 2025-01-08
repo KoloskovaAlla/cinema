@@ -17,8 +17,7 @@ const onGetMovies = async (_, thunkAPI) => {
     for (const category of categories) {
       const url = `https://www.omdbapi.com/?s=${category}&apikey=${apiKey}`;
       const response = await fetch(url);
-      const data = await response.json();
-      console.log(data.Search[0]);
+      const data = await response.json();   
       if (data.Search) {
         allMovies.push(...data.Search);
       }
