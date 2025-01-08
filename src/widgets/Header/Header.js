@@ -1,5 +1,6 @@
 import classes from './Header.module.scss';
 import { Link } from 'react-router-dom';
+import { Navigation, Lang, Theme, Burger } from 'features';
 
 export const Header = () => {
   return (
