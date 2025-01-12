@@ -2,25 +2,29 @@ import classes from './Navigation.module.scss';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { useNav, useLang, useTheme } from 'shared/hooks';
+import { useNav}  from 'shared/hooks';
 import { classNames } from 'shared/utils';
 
 export const Navigation = () => {
-  const dispatch = useDispatch();
-
-  const { theme } = useTheme();
-  const { lang } = useLang();
+  const dispatch = useDispatch(); 
 
   const {
     getNav,
-    navItems,
+  
     isNavActive,
     setIsNavActive,
   } = useNav();
 
-  useEffect(() => {
-    dispatch(getNav());
-  }, [dispatch, getNav, lang]);
+  const navItems = [
+    {
+      target: '',
+      text: 'каталог фильмов',
+    }, 
+    {
+      target: '',
+      text: 'каталог фильмов2',
+    }
+  ];
 
   const handleLinkClick = () => {
     isNavActive
@@ -29,8 +33,7 @@ export const Navigation = () => {
   };
 
   const menuClassNames = classNames(classes.menu, {
-    [classes.active]: isNavActive,
-    [classes.dark]: theme === 'dark',
+    [classes.active]: isNavActive,   
   });
 
   const getLinkClassName = ({ isActive }) => isActive ? 'active' : '';
