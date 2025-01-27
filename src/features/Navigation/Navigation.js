@@ -9,20 +9,19 @@ export const Navigation = () => {
   const dispatch = useDispatch(); 
 
   const {
-    getNav,
-  
+    getNav,  
     isNavActive,
     setIsNavActive,
-  } = useNav();
+  } = useNav(); 
 
   const navItems = [
     {
       target: '',
-      text: 'каталог фильмов',
+      text: 'главная',
     }, 
     {
-      target: '',
-      text: 'каталог фильмов2',
+      target: 'catalog',
+      text: 'каталог',
     }
   ];
 

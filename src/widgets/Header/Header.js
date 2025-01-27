@@ -5,11 +5,13 @@ import { Navigation, Burger } from 'features';
 export const Header = () => {
   return (
     <header className={classes.header}>
-      <Link to='/' className={classes.wrapper}>
-        FILM FINDER
-      </Link>     
-      <Navigation />   
-      <Burger />
+      <div className={classes.wrapper}>        
+        <Link to='/' className={classes.logo}>
+          FILM FINDER
+        </Link>  
+        <Navigation />   
+        <Burger />
+      </div>   
     </header>
   );
 };

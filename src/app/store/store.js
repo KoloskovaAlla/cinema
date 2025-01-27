@@ -1,10 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { filmReducer, moviesReducer, similarFilmsReducer } from 'shared/reducers';
+import { filmReducer, moviesReducer, similarFilmsReducer, navReducer } from 'shared/reducers';
 
 const rootReducer = combineReducers({
   filmReducer,
   moviesReducer,
   similarFilmsReducer,
+  navReducer,
 });
 
 export const store = configureStore({
