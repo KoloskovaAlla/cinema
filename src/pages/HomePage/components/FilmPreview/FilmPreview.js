@@ -17,10 +17,6 @@ export const FilmPreview = ({ movie }) => {
     imageRef.current.style.transitionDuration = '1s';
     console.log('mouse entered')
   };
-
-  useEffect(() => {
-    console.log(isHovered);
-  }, [isHovered]);
   
   const handleMouseLeave = () => {
     setIsHovered(false);

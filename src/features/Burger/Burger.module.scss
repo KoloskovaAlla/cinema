@@ -1,0 +1,62 @@
+@import 'shared/constants/styles/breakpoints';
+
+.burger {
+  margin-left: 20px;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  z-index: 1;
+  color: currentColor;
+
+  @media (min-width: $breakpoint_md) {
+    margin-left: 30px;
+  }
+
+  @media (min-width: $breakpoint_lg) {
+    display: none;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background: currentColor;
+    transition: all 0.5s;
+  }
+
+  &::before {
+    top: 0;
+  }
+
+  &::after {
+    bottom: 0;
+  }
+
+  &.active {
+    &::before {
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    span {
+      opacity: 0;
+    }
+
+    &::after {
+      bottom: 50%;
+      transform: translateY(50%) rotate(-45deg);
+      z-index: 2;
+    }
+  }
+
+  span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: currentColor;
+    transition: all 0.5s;
+  }
+}

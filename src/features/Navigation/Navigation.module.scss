@@ -1,0 +1,79 @@
+@import 'shared/constants/styles/breakpoints';
+
+.navigation {
+  @media (min-width: $breakpoint_lg) {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+.menu {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  right: 0;
+  height: 100%; // растяг-ся на viewport из-за pos: abs
+  display: flex;
+  flex-direction: column;
+  color: var(--color);
+  // background: var(--bg-color);
+  // background: var(--bg-color);
+  transition: top 0.5s, visibility 0.5s;
+  visibility: hidden;
+
+  @media (min-width: $breakpoint_lg) {
+    flex-direction: row;
+    margin-left: 40px;
+    top: 0;
+    position: relative;
+    z-index: 1;
+    visibility: visible;
+  }
+
+  &.active {
+    top: var(--height-header-xs);
+    visibility: visible;
+  }
+
+  &.dark {
+    opacity: 1; // 
+  }
+}
+
+.item {
+  font-size: 24px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  color: currentColor;
+
+  @media (min-width: $breakpoint_lg) {
+    border: none;
+    font-size: 18px;
+    margin-left: 40px;
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+
+  @media (min-width: $breakpoint_lg) {
+    font-size: 20px;
+  }
+
+  a {
+    display: block;
+    width: 100%;
+    padding: 25px 15px;
+    display: flex;
+    justify-content: flex-start;
+
+    @media (min-width: $breakpoint_lg) {
+      padding: 0;
+    }
+  }
+}
+
+a:global.active {
+  border-bottom: 2px solid #aaa;
+}
