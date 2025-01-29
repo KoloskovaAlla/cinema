@@ -16,12 +16,12 @@ export const Navigation = () => {
 
   const navItems = [
     {
-      target: '',
-      text: 'главная',
+      target: 'films',
+      text: 'фильмы',
     }, 
     {
-      target: 'catalog',
-      text: 'каталог',
+      target: 'series',
+      text: 'сериалы',
     }
   ];
 
