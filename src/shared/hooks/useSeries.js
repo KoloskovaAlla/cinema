@@ -6,6 +6,8 @@ const getState = (store) => store.seriesReducer;
 export const useSeries = () => {
   const state = useSelector(getState);
 
+  // console.log(state);
+
   return {
     ...state,
     getSeries,

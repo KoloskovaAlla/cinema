@@ -5,11 +5,12 @@ const onGetSeries = async (_, thunkAPI) => {
     const apiKey = '35b2affc';
     const categories = ['drama', 'thriller', 'fantasy'];
     let allSeries = [];
-
+    
     for (const category of categories) {
       const url = `https://www.omdbapi.com/?s=${category}&type=series&apikey=${apiKey}`;
       const response = await fetch(url);
       const data = await response.json();
+      // console.log(data.Search);
       if (data.Search) {
         allSeries.push(...data.Search);
       }
