@@ -10,7 +10,7 @@ const onGetSeries = async (_, thunkAPI) => {
       const url = `https://www.omdbapi.com/?s=${category}&type=series&apikey=${apiKey}`;
       const response = await fetch(url);
       const data = await response.json();
-      console.log(data);
+      // console.log(data.Search);
       if (data.Search) {
         allSeries.push(...data.Search);
       }

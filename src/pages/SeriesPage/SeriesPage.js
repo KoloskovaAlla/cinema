@@ -3,15 +3,18 @@ import { useDispatch } from 'react-redux';
 import { useSeries } from 'shared/hooks';
 
 export const SeriesPage = () => {
-    const { state, getSeries } = useSeries();
-
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getSeries());
-    }, [dispatch]);
+    const seriesState = useSeries();
+    const { series } = seriesState;
 
-    // console.log(state);
+    useEffect(() => {
+        dispatch(seriesState.getSeries());
+    }, [dispatch]);  
+    
+    useEffect(() => {
+        if (series) console.log(series);
+    }, [series]);
     
 
     return (
