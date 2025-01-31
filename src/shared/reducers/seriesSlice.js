@@ -3,14 +3,18 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 const onGetSeries = async (_, thunkAPI) => {
   try {
     const apiKey = '35b2affc';
-    const categories = ['drama', 'thriller', 'fantasy'];
+    // const categories = ['drama', 'thriller', 'fantasy'];
+    const categories = ["Adventure", "Comedy", "Action"];
     let allSeries = [];
     
     for (const category of categories) {
       const url = `https://www.omdbapi.com/?s=${category}&type=series&apikey=${apiKey}`;
       const response = await fetch(url);
       const data = await response.json();
-      // console.log(data.Search);
+      console.log(data.Search);
+      data.Search.map((film) => {
+        console.log(film)
+      });
       if (data.Search) {
         allSeries.push(...data.Search);
       }
