@@ -13,7 +13,7 @@ export const SeriesPage = () => {
     }, [dispatch]);  
     
     useEffect(() => {
-        if (series) console.log(series);
+        // if (series) console.log(series);
     }, [series]);
     
 
