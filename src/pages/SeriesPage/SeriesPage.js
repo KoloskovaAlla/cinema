@@ -9,6 +9,7 @@ import { classNames } from 'shared/utils/helpers';
 
 export const SeriesPage = () => {
     const dispatch = useDispatch();
+    const navigationPrevRef = useRef(null);
     const navigationNextRef = useRef(null);
 
     const seriesState = useSeries();
@@ -86,7 +87,7 @@ export const SeriesPage = () => {
                 className={buttonPrevClassNames}
                 ref={navigationPrevRef}
             >
-                <LeftArrowIcon />
+                {/* <LeftArrowIcon /> */}
             </button>
             {/* <div className={classes.swiper_pagination_custom} ref={paginationRef}>
             </div> */}
