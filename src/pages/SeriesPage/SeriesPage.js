@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import { SeriePreview } from './components';
 import { MediaPreview } from 'shared/ui';
+import { LeftArrowIcon, RightArrowIcon } from 'shared/icons';
 import { classNames } from 'shared/utils/helpers';
 
 export const SeriesPage = () => {
@@ -79,19 +80,19 @@ export const SeriesPage = () => {
                     <MediaPreview item={serie} />
                 </SwiperSlide>
             ))}
-            {/* <button
+            <button
                 className={buttonPrevClassNames}
                 ref={navigationPrevRef}
             >
                 <LeftArrowIcon />
-            </button> */}
+            </button>
             {/* <div className={classes.swiper_pagination_custom} ref={paginationRef}>
             </div> */}
             <button
                 className={buttonNextClassNames}
                 ref={navigationNextRef}
             >
-                {/* <RightArrowIcon /> */}
+                <RightArrowIcon />
             </button>
         </Swiper>
         </div>
