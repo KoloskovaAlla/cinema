@@ -8,7 +8,7 @@ import 'swiper/css/pagination';
 import { useMovies, useDocumentTitle } from 'shared/hooks';
 import { classNames } from 'shared/utils/helpers';
 import { Preloader } from 'widgets';
-import { LeftArrowIcon, RightArrowIcon } from './assets';
+import { LeftArrowIcon, RightArrowIcon } from 'shared/icons';
 import { MediaPreview } from 'shared/ui';
 
 export const HomePage = () => {
