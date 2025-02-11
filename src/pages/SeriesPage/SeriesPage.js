@@ -5,6 +5,7 @@ import { useSeries } from 'shared/hooks';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import { SeriePreview } from './components';
+import { MediaPreview } from 'shared/ui';
 import { classNames } from 'shared/utils/helpers';
 
 export const SeriesPage = () => {
@@ -80,7 +81,8 @@ export const SeriesPage = () => {
         >
             {series.map((serie, index) => (
                 <SwiperSlide key={index}>
-                    <SeriePreview serie={serie} />
+                    {/* <SeriePreview serie={serie} /> */}
+                    <MediaPreview item={serie} />
                 </SwiperSlide>
             ))}
             <button

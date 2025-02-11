@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import classes from './FilmPreview.module.scss';
+import classes from './MediaPreview.module.scss';
 import { Link } from 'react-router-dom';
 import {useEffect, useRef } from 'react';
 import { classNames } from 'shared/utils/helpers';
 
-export const FilmPreview = ({ movie }) => {
-  const { imdbID, Title, Poster } = movie;
+export const MediaPreview = ({ item }) => {
+  const { imdbID, Title, Poster } = item;
   const imageRef = useRef(null);
    
   const [isHovered, setIsHovered] = useState(false);
