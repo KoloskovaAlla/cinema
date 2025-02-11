@@ -10,6 +10,7 @@ import { classNames } from 'shared/utils/helpers';
 import { Preloader } from 'widgets';
 import { LeftArrowIcon, RightArrowIcon } from './assets';
 import { FilmPreview } from './components';
+import { MediaPreview } from 'shared/ui';
 
 export const HomePage = () => {
   const dispatch = useDispatch();
@@ -126,7 +127,7 @@ export const HomePage = () => {
         >
           {movies.map((movie, index) => (
             <SwiperSlide key={index}>
-              <FilmPreview movie={movie} />
+              <MediaPreview item={movie} />
             </SwiperSlide>
           ))}
           <button
