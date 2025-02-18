@@ -33,10 +33,6 @@ export const FilmPage = () => {
   }, [location]);
 
   useEffect(() => {
-    console.log(film);
-  }, [film]);
-
-  useEffect(() => {
     if (film && movies && movies.length > 0) {
       const currentGenres = film.genre.split(',').map(genre => genre.trim());
 
