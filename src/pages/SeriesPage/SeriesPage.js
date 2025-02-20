@@ -31,70 +31,86 @@ export const SeriesPage = () => {
     });
 
     const onSlideChange = (swiper) => {
-        console.log('change');
         setIsPrevDisabled(swiper.isBeginning);
         setIsNextDisabled(swiper.isEnd);
     };
 
     useEffect(() => {
         dispatch(seriesState.getSeries());
-    }, [dispatch]);  
+    }, [dispatch]); 
+    
+    useEffect(() => {
+        if (swiperRef.current && swiperRef.current.swiper) {
+          const swiper = swiperRef.current.swiper;
+          swiper.params.navigation.prevEl = navigationPrevRef.current;
+          swiper.params.navigation.nextEl = navigationNextRef.current;
+          swiper.params.pagination.el = paginationRef.current;
+    
+          swiper.navigation.init();
+          swiper.navigation.update();
+          swiper.pagination.init();
+          swiper.pagination.render();
+          swiper.pagination.update();
+        }
+      }, [series]);
     
     if (!series) return;
 
     return (
-        <div>Seriespage
-            <Swiper
-                modules={[Navigation, Pagination, Scrollbar, A11y]}
-                spaceBetween={30}
-                slidesPerView={1}
-                breakpoints={{
-                770: {
-                slidesPerView: 2
-                },
-                1150: {
-                slidesPerView: 5
-                },
-                1440: {
-                slidesPerView: 5
-                }
-            }}
-            navigation={{
-                nextEl: navigationNextRef.current,
-                prevEl: navigationPrevRef.current,
-            }}
-            pagination={{
-                el: paginationRef.current,
-                clickable: true,
-                type: 'bullets',
-                bulletClass: classes.bullet,
-                bulletActiveClass: classes.bullet_active,
-            }}
-            onSlideChange={onSlideChange}
-            ref={swiperRef}
-        >
-            {series.map((serie, index) => (
-                <SwiperSlide key={index}>                  
-                    <MediaPreview item={serie} />
-                </SwiperSlide>
-            ))}
-            <button
-                className={buttonPrevClassNames}
-                ref={navigationPrevRef}
+        <div className={classes.seriesPage}> 
+             <div className={classes.mySwiper}>
+                <Swiper
+                    modules={[Navigation, Pagination, Scrollbar, A11y]}
+                    spaceBetween={30}
+                    slidesPerView={1}
+                    breakpoints={{
+                    770: {
+                    slidesPerView: 2
+                    },
+                    1150: {
+                    slidesPerView: 5
+                    },
+                    1440: {
+                    slidesPerView: 5
+                    }
+                }}
+                navigation={{
+                    nextEl: navigationNextRef.current,
+                    prevEl: navigationPrevRef.current,
+                }}
+                pagination={{
+                    el: paginationRef.current,
+                    clickable: true,
+                    type: 'bullets',
+                    bulletClass: classes.bullet,
+                    bulletActiveClass: classes.bullet_active,
+                }}
+                onSlideChange={onSlideChange}
+                ref={swiperRef}
             >
-                <LeftArrowIcon />
-            </button>
-            <div 
-                className={classes.swiper_pagination_custom} 
-                ref={paginationRef}>
-            </div> 
-            <button
-                className={buttonNextClassNames}
-                ref={navigationNextRef}
-            >
-                <RightArrowIcon />
-            </button>
-        </Swiper>
+                {series.map((serie, index) => (
+                    <SwiperSlide key={index}>                  
+                        <MediaPreview item={serie} />
+                    </SwiperSlide>
+                ))}
+                <button
+                    className={buttonPrevClassNames}
+                    ref={navigationPrevRef}
+                >
+                    <LeftArrowIcon />
+                </button>
+                <div 
+                    className={classes.swiper_pagination_custom} 
+                    ref={paginationRef}>
+                </div> 
+                <button
+                    className={buttonNextClassNames}
+                    ref={navigationNextRef}
+                >
+                    <RightArrowIcon />
+                </button>
+                </Swiper>
+            </div>
         </div>
     )
 }

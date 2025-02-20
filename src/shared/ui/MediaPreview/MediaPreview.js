@@ -14,8 +14,7 @@ export const MediaPreview = ({ item }) => {
     setIsHovered(true);
     imageRef.current.style.scale = '1.2';
     imageRef.current.style.transitionProperty = 'all';
-    imageRef.current.style.transitionDuration = '1s';
-    console.log('mouse entered')
+    imageRef.current.style.transitionDuration = '1s';   
   };
   
   const handleMouseLeave = () => {
