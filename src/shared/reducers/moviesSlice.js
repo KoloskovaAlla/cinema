@@ -11,12 +11,13 @@ const fetchMoviesByCategory = async (category) => {
 const onGetMovies = async (_, thunkAPI) => {
   try {
     const apiKey = '35b2affc';
-    const categories = ['action', 'comedy', 'drama'];
-    // const categories = ["Adventure", "Comedy", "Action"];
+ 
+    const categories = ['fantasy', 'sci-fi', 'animation', 'adventure', 'romance', 'historical', 'musical'];
     let allMovies = [];
-
+    
     for (const category of categories) {
-      const url = `https://www.omdbapi.com/?s=${category}&apikey=${apiKey}`;
+      // const url = `https://www.omdbapi.com/?s=${category}&apikey=${apiKey}`;
+      const url = `https://www.omdbapi.com/?s=${category}&y=2024&apikey=${apiKey}`;
       const response = await fetch(url);
       const data = await response.json();  
       console.log(data.Search[0]); 
