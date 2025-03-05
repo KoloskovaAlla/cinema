@@ -17,11 +17,11 @@ export const Navigation = () => {
   const navItems = [
     {
       target: 'films',
-      text: 'фильмы',
+      text: 'films',
     }, 
     {
       target: 'series',
-      text: 'сериалы',
+      text: 'series',
     }
   ];
 
