@@ -7,7 +7,7 @@ export const Header = () => {
     <header className={classes.header}>
       <div className={classes.wrapper}>        
         <Link to='/' className={classes.logo}>
-          FILM FINDER
+          FlickNest 
         </Link>  
         <Navigation />   
         <Burger />

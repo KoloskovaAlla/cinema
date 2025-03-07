@@ -58,7 +58,7 @@
   }
 
   @media (min-width: $breakpoint_lg) {
-    font-size: 20px;
+    font-size: 26px;
   }
 
   a {
@@ -76,4 +76,9 @@
 
 a:global.active {
   border-bottom: 2px solid #aaa;
+  border-bottom: 2px solid #FFB07C;
+  border-bottom: 2px solid #FF8C42;  
+  border-bottom: 2px solid #FF6F3C;  
+  border-bottom: 2px solid #FF7F50;  
+  border-bottom: 2px solid #FF9A3C;  
 }
