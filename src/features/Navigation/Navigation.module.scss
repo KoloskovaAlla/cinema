@@ -17,6 +17,8 @@
   display: flex;
   flex-direction: column;
   color: var(--color);
+  background: #FFF;
+  color:#FF9A3C;
   // background: var(--bg-color);
   // background: var(--bg-color);
   transition: top 0.5s, visibility 0.5s;
@@ -32,7 +34,8 @@
   }
 
   &.active {
-    top: var(--height-header-xs);
+    // top: var(--height-header-xs);
+    top: 50px;
     visibility: visible;
   }
 
@@ -44,6 +47,7 @@
 .item {
   font-size: 24px;
   border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid #FF9A3C;
   display: flex;
   color: currentColor;
 
