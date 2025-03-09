@@ -17,6 +17,12 @@
   display: flex;
   flex-direction: column;
   color: var(--color);
+  background: #b3a9a9;
+  background:  #c0b7bc;
+  background:  #d4c8ca;
+  background:  #dfdadf;
+  color:#FF9A3C;
+  color:#361d50;
   // background: var(--bg-color);
   // background: var(--bg-color);
   transition: top 0.5s, visibility 0.5s;
@@ -32,7 +38,8 @@
   }
 
   &.active {
-    top: var(--height-header-xs);
+    // top: var(--height-header-xs);
+    top: 50px;
     visibility: visible;
   }
 
@@ -44,6 +51,7 @@
 .item {
   font-size: 24px;
   border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid #361d50;;
   display: flex;
   color: currentColor;
 
