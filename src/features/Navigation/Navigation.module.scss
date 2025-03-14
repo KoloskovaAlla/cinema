@@ -28,6 +28,13 @@
   transition: top 0.5s, visibility 0.5s;
   visibility: hidden;
 
+  &.active {
+    // top: var(--height-header-xs);
+    top: 50px;
+    // top: 0;
+    visibility: visible;
+  }
+
   @media (min-width: $breakpoint_lg) {
     flex-direction: row;
     margin-left: 40px;
@@ -37,14 +44,17 @@
     visibility: visible;
     background: #361d50;
     color: #dfdadf;
+
+    &.active {
+      // top: var(--height-header-xs);
+      // top: 50px;
+      top: 0;
+      visibility: visible;
+    }
   }
   
 
-  &.active {
-    // top: var(--height-header-xs);
-    top: 50px;
-    visibility: visible;
-  }
+ 
 
   &.dark {
     opacity: 1; // 
