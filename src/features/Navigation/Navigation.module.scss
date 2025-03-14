@@ -35,7 +35,10 @@
     position: relative;
     z-index: 1;
     visibility: visible;
+    background: #361d50;
+    color: #dfdadf;
   }
+  
 
   &.active {
     // top: var(--height-header-xs);
