@@ -22,7 +22,27 @@ export const Navigation = () => {
     {
       target: 'series',
       text: 'series',
-    }
+    },
+    {
+      target: 'kids',
+      text: 'for kids',
+    },
+    {
+      target: 'sport',
+      text: 'sport',
+    },
+    {
+      target: 'science',
+      text: 'science',
+    }, 
+    {
+      target: 'history',
+      text: 'history & culture',
+    },
+    {
+      target: 'favorites',
+      text: 'favorites',
+    },    
   ];
 
   const handleLinkClick = () => {
