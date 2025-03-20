@@ -94,7 +94,7 @@ export const HomePage = () => {
   return (   
     <div className={classes.homePage}>
       <div className={classes.mySwiper}>
-        <h1 className={classes.title}>The Best Films</h1>
+        {/* <h1 className={classes.title}>The Best Films</h1> */}
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           spaceBetween={30}
