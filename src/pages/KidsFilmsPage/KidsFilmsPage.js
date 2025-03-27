@@ -1,35 +1,33 @@
-import classes from './HomePage.module.scss';
+import classes from './KidsFilmsPage.module.scss';
 import { useRef, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { useMovies, useDocumentTitle } from 'shared/hooks';
+import { useKidsFilms, useDocumentTitle } from 'shared/hooks';
 import { classNames } from 'shared/utils/helpers';
 import { Preloader } from 'widgets';
 import { LeftArrowIcon, RightArrowIcon } from 'shared/icons';
 import { MediaPreview } from 'shared/ui';
 
-export const HomePage = () => {
+export const KidsFilmsPage = () => {
   const dispatch = useDispatch();
   const swiperRef = useRef(null);
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
   const paginationRef = useRef(null);
 
-  const moviesState = useMovies();
-  const { movies } = moviesState;
+  const kidsFilmsState = useKidsFilms();
+  const { kidsFilms } = kidsFilmsState;
 
   const title = 'Film Finder'
 
   useDocumentTitle(title);
 
-  // useEffect(() => {
-  //   if (movies) {movies.map((movie, index) => (
-  //      console.log(movie)
-  //     ))}
-  // }, [movies]);
+  useEffect(() => {   
+    console.log(kidsFilms)
+  }, [kidsFilms]);
 
   useEffect(() => {
     if (swiperRef.current && swiperRef.current.swiper) {
@@ -44,10 +42,16 @@ export const HomePage = () => {
       swiper.pagination.render();
       swiper.pagination.update();
     }
-  }, [movies]);
+  }, [kidsFilms]);
 
   useEffect(() => {
-    dispatch(moviesState.getMovies());
+    if (kidsFilms) {kidsFilms.map((kidsFilm, index) => (
+       console.log(kidsFilm)
+      ))}
+  }, [kidsFilms]);
+
+  useEffect(() => {
+    dispatch(kidsFilmsState.getKidsFilms());
   }, [dispatch]);
  
   const [isPrevDisabled, setIsPrevDisabled] = useState(true);
@@ -93,14 +97,14 @@ export const HomePage = () => {
       nextButton.addEventListener('touchstart', handleNextTouchStart);
       nextButton.addEventListener('touchend', handleNextTouchEnd);
     } 
-  }, [navigationPrevRef, navigationNextRef, movies]);
+  }, [navigationPrevRef, navigationNextRef, kidsFilms]);
 
-  if (!movies) return (<Preloader />);
+  if (!kidsFilms) return (<Preloader />); 
 
   return (   
-    <div className={classes.homePage}>
+    <div className={classes.kidsFilmsPage}>
       <div className={classes.mySwiper}>
-        <h1 className={classes.title}>The Best Films</h1>
+        <h1 className={classes.title}>For Kids</h1>
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           spaceBetween={30}
@@ -120,19 +124,19 @@ export const HomePage = () => {
             nextEl: navigationNextRef.current,
             prevEl: navigationPrevRef.current,
           }}
-          pagination={{
-            el: paginationRef.current,
-            clickable: true,
-            type: 'bullets',
-            bulletClass: classes.bullet,
-            bulletActiveClass: classes.bullet_active,
-          }}
+        //   pagination={{
+        //     el: paginationRef.current,
+        //     clickable: true,
+        //     type: 'bullets',
+        //     bulletClass: classes.bullet,
+        //     bulletActiveClass: classes.bullet_active,
+        //   }}
           onSlideChange={onSlideChange}
           ref={swiperRef}
         >
-          {movies.map((movie, index) => (
+          {kidsFilms.map((kidsFilm, index) => (
             <SwiperSlide key={index}>
-              <MediaPreview item={movie} />
+              <MediaPreview item={kidsFilm} />
             </SwiperSlide>
           ))}
           <button
