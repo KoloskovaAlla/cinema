@@ -10,19 +10,25 @@ import { classNames } from 'shared/utils/helpers';
 
 export const SeriesPage = () => {
     const dispatch = useDispatch();
+    const navigationPrevRef = useRef(null);
     const navigationNextRef = useRef(null);
 
     const seriesState = useSeries();
     const { series } = seriesState;
 
+    const [isPrevDisabled, setIsPrevDisabled] = useState(true);
     const [isNextDisabled, setIsNextDisabled] = useState(false);
+    
+    const buttonPrevClassNames = classNames(classes.swiper_button_prev_custom, {
+        [classes.disablePrev]: isPrevDisabled,
+      });
     const buttonNextClassNames = classNames(classes.swiper_button_next_custom, {
         [classes.disableNext]: isNextDisabled,
       });
 
 
       const onSlideChange = (swiper) => {
-        // setIsPrevDisabled(swiper.isBeginning);
+        setIsPrevDisabled(swiper.isBeginning);
         setIsNextDisabled(swiper.isEnd);
       };
 
@@ -61,7 +67,7 @@ export const SeriesPage = () => {
             }}
             navigation={{
                 nextEl: navigationNextRef.current,
-                // prevEl: navigationPrevRef.current,
+                prevEl: navigationPrevRef.current,
             }}
             // pagination={{
             //     el: paginationRef.current,
@@ -79,12 +85,12 @@ export const SeriesPage = () => {
                     <MediaPreview item={serie} />
                 </SwiperSlide>
             ))}
-            {/* <button
+            <button
                 className={buttonPrevClassNames}
                 ref={navigationPrevRef}
             >
-                <LeftArrowIcon />
-            </button> */}
+                {/* <LeftArrowIcon /> */}
+            </button>
             {/* <div className={classes.swiper_pagination_custom} ref={paginationRef}>
             </div> */}
             <button
