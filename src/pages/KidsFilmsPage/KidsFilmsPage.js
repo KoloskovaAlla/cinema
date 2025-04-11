@@ -25,9 +25,9 @@ export const KidsFilmsPage = () => {
 
   useDocumentTitle(title);
 
-  useEffect(() => {   
-    console.log(kidsFilms)
-  }, [kidsFilms]);
+  // useEffect(() => {   
+  //   console.log(kidsFilms)
+  // }, [kidsFilms]);
 
   useEffect(() => {
     if (swiperRef.current && swiperRef.current.swiper) {
@@ -44,11 +44,11 @@ export const KidsFilmsPage = () => {
     }
   }, [kidsFilms]);
 
-  useEffect(() => {
-    if (kidsFilms) {kidsFilms.map((kidsFilm, index) => (
-       console.log(kidsFilm)
-      ))}
-  }, [kidsFilms]);
+  // useEffect(() => {
+  //   if (kidsFilms) {kidsFilms.map((kidsFilm, index) => (
+  //      console.log(kidsFilm.Title)
+  //     ))}
+  // }, [kidsFilms]);
 
   useEffect(() => {
     dispatch(kidsFilmsState.getKidsFilms());

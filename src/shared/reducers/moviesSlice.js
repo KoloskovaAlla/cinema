@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const fetchMoviesByCategory = async (category) => {
   const apiKey = '35b2affc';
-  const url = `https://www.omdbapi.com/?s=${category}&apikey=${apiKey}`;
+  const url = `https://www.omdbapi.com/?s='a'&apikey=${apiKey}`;
   const response = await fetch(url);
   const data = await response.json();
   return data.Search || [];
@@ -12,15 +12,19 @@ const onGetMovies = async (_, thunkAPI) => {
   try {
     const apiKey = '35b2affc';
  
-    const categories = ['fantasy', 'sci-fi', 'animation', 'adventure', 'romance', 'historical', 'musical'];
+    // const categories = ['fantasy', 'sci-fi', 'animation', 'adventure', 'romance', 'historical', 'musical'];
+    // const categories = ['fantasy'];
+    // const categories = ['run', 'and', 't', 'or', 's'];
+    const categories = ['the', 'last', 'first', 'great', 'little', 'good', 'dark', 'blue', 'black', 'white', 'red', 'night'];
+    // const categories = [''];
     let allMovies = [];
     
     for (const category of categories) {
-      // const url = `https://www.omdbapi.com/?s=${category}&apikey=${apiKey}`;
-      const url = `https://www.omdbapi.com/?s=${category}&y=2024&apikey=${apiKey}`;
+      // const url = `https://www.omdbapi.com/?s=''&apikey=${apiKey}`;
+      const url = `https://www.omdbapi.com/?s=${category}&apikey=${apiKey}`;
+      // const url = `https://www.omdbapi.com/?s=%20&y=2024&apikey=${apiKey}`;
       const response = await fetch(url);
-      const data = await response.json();  
-      console.log(data.Search[0]); 
+      const data = await response.json();      
       if (data.Search) {
         allMovies.push(...data.Search);
       }

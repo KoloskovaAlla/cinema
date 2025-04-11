@@ -4,11 +4,16 @@ import { Link } from 'react-router-dom';
 import {useEffect, useRef } from 'react';
 import { classNames } from 'shared/utils/helpers';
 
-export const MediaPreview = ({ item }) => {
-  const { imdbID, Title, Poster } = item;
+export const MediaPreview = ({ item }) => {    
+  const { imdbID, Title, Poster } = item;  
   const imageRef = useRef(null);
    
   const [isHovered, setIsHovered] = useState(false);
+
+  if (!item) {
+    console.warn('MediaPreview получил undefined item');
+    return null; // Прерываем рендер компонента
+  }
   
   const handleMouseEnter = () => {
     setIsHovered(true);

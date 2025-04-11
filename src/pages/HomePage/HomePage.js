@@ -25,11 +25,11 @@ export const HomePage = () => {
 
   useDocumentTitle(title);
 
-  // useEffect(() => {
-  //   if (movies) {movies.map((movie, index) => (
-  //      console.log(movie)
-  //     ))}
-  // }, [movies]);
+  useEffect(() => {
+    if (movies) {movies.map((movie, index) => (
+       console.log(movie.Title)
+      ))}
+  }, [movies]);
 
   useEffect(() => {
     if (swiperRef.current && swiperRef.current.swiper) {
