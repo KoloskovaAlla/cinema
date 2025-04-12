@@ -20,7 +20,7 @@ const onGetKidsFilms = async (_, thunkAPI) => {
       const url = `https://www.omdbapi.com/?s=${category}&y=2024&apikey=${apiKey}`;
       const response = await fetch(url);
       const data = await response.json();  
-      console.log(data.Search[0]); 
+      // console.log(data.Search[0]); 
       if (data.Search) {
         kidsFilms.push(...data.Search);
       }
@@ -30,7 +30,7 @@ const onGetKidsFilms = async (_, thunkAPI) => {
     kidsFilms.sort(() => Math.random() - 0.5);
 
     // Запрашиваем детали для каждого фильма
-    const moviesWithDetails = await Promise.all(
+    const kidsFilmsWithDetails = await Promise.all(
         kidsFilms.slice(0, 20).map(async (kidsFilm) => { // Ограничение для избежания лимитов API
         const kidsFilmDetailsUrl = `https://www.omdbapi.com/?i=${kidsFilm.imdbID}&apikey=${apiKey}`;
         const kidsFilmDetailsResponse = await fetch(kidsFilmDetailsUrl);
@@ -51,7 +51,7 @@ const onGetKidsFilms = async (_, thunkAPI) => {
       })
     );
 
-    return thunkAPI.fulfillWithValue(kidsFilmsDetailsWithDetails);
+    return thunkAPI.fulfillWithValue(kidsFilmsWithDetails);
   } catch (error) {
     console.error(error.message);
     return thunkAPI.rejectWithValue(error.message);
@@ -65,7 +65,7 @@ const getKidsFilms = createAsyncThunk(
 
 const initialState = {
   isLoadingMovies: false,
-  movies: null,
+  kidsFilms: null,
   errorMessageMovies: '',
 };
 
@@ -77,17 +77,17 @@ const kidsFilmsSlice = createSlice({
     builder
       .addCase(getKidsFilms.pending, state => {
         state.isLoadingMovies = true;
-        state.movies = null;
+        state.kidsFilms = null;
         state.errorMessageMovies = '';
       })
       .addCase(getKidsFilms.fulfilled, (state, { payload }) => {
         state.isLoadingMovies = false;
-        state.movies = payload;
+        state.kidsFilms = payload;
         state.errorMessageMovies = '';
       })
       .addCase(getKidsFilms.rejected, (state, { payload }) => {
         state.isLoadingMovies = false;
-        state.movies = null;
+        state.kidsFilms = null;
         state.errorMessageMovies = payload;
       });
   }
