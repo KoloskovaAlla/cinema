@@ -14,7 +14,7 @@ const onGetKidsFilms = async (_, thunkAPI) => {
    'kids', 'children',
   
   // // Жанры детского контента
-  'adventure', 'fairy', 'magic',
+  'adventure', 'fairy',
   
   // // Персонажи и существа
   'princess', 'animal', 'dog',
@@ -25,7 +25,7 @@ const onGetKidsFilms = async (_, thunkAPI) => {
   'friends', 'toy', 'toys',
   
   // // Сказочные элементы
-  'wonder', 'magical', 'world',
+  'wonder','world',
   
   // // Природа и времена года
   'space', 'jungle',

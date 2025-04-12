@@ -104,7 +104,7 @@ export const KidsFilmsPage = () => {
   return (   
     <div className={classes.kidsFilmsPage}>
       <div className={classes.mySwiper}>
-        <h1 className={classes.title}>For Kids</h1>
+        {/* <h1 className={classes.title}>For Kids</h1> */}
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           spaceBetween={30}
