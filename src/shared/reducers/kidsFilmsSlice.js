@@ -11,13 +11,13 @@ const onGetKidsFilms = async (_, thunkAPI) => {
     // const categories = ['children'];
     const  categories = [
   // Общие детские термины
-   'kids', 'children',
+  'children',
   
   // // Жанры детского контента
   'adventure', 'fairy',
   
   // // Персонажи и существа
-  'princess', 'animal', 'dog',
+  'princess', 'animal', 'dog', 'pony', 'dinosaur', 'puppy', 'kitten',
   
   // // Распространенные слова в детских названиях  
   
