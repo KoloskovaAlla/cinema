@@ -1,29 +1,49 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-const fetchMoviesByCategory = async (category) => {
-  const apiKey = '35b2affc';
-  const url = `https://www.omdbapi.com/?s=${category}&apikey=${apiKey}`;
-  const response = await fetch(url);
-  const data = await response.json();
-  return data.Search || [];
-};
-
 const onGetKidsFilms = async (_, thunkAPI) => {
   try {
     const apiKey = '35b2affc';
  
-    const categories = ['family', 'animation', 'kids', 'adventure'];
+    // const categories = ['family', 'animation', 'kids', 'adventure'];
+    // const categories = ['kids'];
+    // const categories = ['family'];
+    // const categories = ['animation'];
+    // const categories = ['children'];
+    const  categories = [
+  // Общие детские термины
+   'kids', 'children',
+  
+  // // Жанры детского контента
+  'adventure', 'fairy', 'magic',
+  
+  // // Персонажи и существа
+  'princess', 'animal', 'dog',
+  
+  // // Распространенные слова в детских названиях  
+  
+  // // Позитивные эмоции и темы
+  'friends', 'toy', 'toys',
+  
+  // // Сказочные элементы
+  'wonder', 'magical', 'world',
+  
+  // // Природа и времена года
+  'space', 'jungle',
+];
+    const years = Array.from({ length: 30 }, (_, i) => 1990 + i); 
     let kidsFilms = [];
     
     for (const category of categories) {
-      // const url = `https://www.omdbapi.com/?s=${category}&apikey=${apiKey}`;
-      const url = `https://www.omdbapi.com/?s=${category}&y=2024&apikey=${apiKey}`;
-      const response = await fetch(url);
-      const data = await response.json();  
-      // console.log(data.Search[0]); 
-      if (data.Search) {
-        kidsFilms.push(...data.Search);
+      for (const year of years) {
+        const url = `https://www.omdbapi.com/?s=${category}&apikey=${apiKey}`;
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.Search) {
+          kidsFilms.push(...data.Search);
+        }
       }
+      // console.log(kidsFilms);
     }
 
     // Перемешиваем фильмы
@@ -34,7 +54,9 @@ const onGetKidsFilms = async (_, thunkAPI) => {
         kidsFilms.slice(0, 20).map(async (kidsFilm) => { // Ограничение для избежания лимитов API
         const kidsFilmDetailsUrl = `https://www.omdbapi.com/?i=${kidsFilm.imdbID}&apikey=${apiKey}`;
         const kidsFilmDetailsResponse = await fetch(kidsFilmDetailsUrl);
-        const kidsFilmDetails = await kidsFilmDetailsResponse.json();
+        const kidsFilmDetails = await kidsFilmDetailsResponse.json();     
+     
+        // console.log(kidsFilmDetails.Genre);
 
         return {
           ...kidsFilm,
