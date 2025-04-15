@@ -34,18 +34,14 @@ const onGetKidsFilms = async (_, thunkAPI) => {
     let kidsFilms = [];
     
     for (const category of categories) {
-      for (const year of years) {
-        const url = `https://www.omdbapi.com/?s=${category}&apikey=${apiKey}`;
-        const response = await fetch(url);
-        const data = await response.json();
+      const url = `https://www.omdbapi.com/?s=${category}&apikey=${apiKey}`;
+      const response = await fetch(url);
+      const data = await response.json();
 
-        if (data.Search) {
-          kidsFilms.push(...data.Search);
-        }
+      if (data.Search) {
+        kidsFilms.push(...data.Search);
       }
-      // console.log(kidsFilms);
     }
-
     // Перемешиваем фильмы
     kidsFilms.sort(() => Math.random() - 0.5);
 

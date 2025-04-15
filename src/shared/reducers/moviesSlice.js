@@ -1,13 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-const fetchMoviesByCategory = async (category) => {
-  const apiKey = '35b2affc';
-  const url = `https://www.omdbapi.com/?s='a'&apikey=${apiKey}`;
-  const response = await fetch(url);
-  const data = await response.json();
-  return data.Search || [];
-};
-
 const onGetMovies = async (_, thunkAPI) => {
   try {
     const apiKey = '35b2affc';
