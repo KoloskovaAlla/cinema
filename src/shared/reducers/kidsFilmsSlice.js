@@ -1,36 +1,31 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { API_KEY } from 'shared/constants/api';
 
 const onGetKidsFilms = async (_, thunkAPI) => {
   try {
     const apiKey = '35b2affc';
- 
-    // const categories = ['family', 'animation', 'kids', 'adventure'];
-    // const categories = ['kids'];
-    // const categories = ['family'];
-    // const categories = ['animation'];
-    // const categories = ['children'];
     const  categories = [
-  // Общие детские термины
-  'children',
-  
-  // // Жанры детского контента
-  'adventure', 'fairy',
-  
-  // // Персонажи и существа
-  'princess', 'animal', 'dog', 'pony', 'dinosaur', 'puppy', 'kitten',
-  
-  // // Распространенные слова в детских названиях  
-  
-  // // Позитивные эмоции и темы
-  'friends', 'toy', 'toys',
-  
-  // // Сказочные элементы
-  'wonder','world',
-  
-  // // Природа и времена года
-  'space', 'jungle',
-];
-    const years = Array.from({ length: 30 }, (_, i) => 1990 + i); 
+      // Общие детские термины
+      'children',
+      
+      // // Жанры детского контента
+      'adventure', 'fairy',
+      
+      // // Персонажи и существа
+      'princess', 'animal', 'dog', 'pony', 'dinosaur', 'puppy', 'kitten',
+      
+      // // Распространенные слова в детских названиях  
+      
+      // // Позитивные эмоции и темы
+      'friends', 'toy', 'toys',
+      
+      // // Сказочные элементы
+      'wonder','world',
+      
+      // // Природа и времена года
+      'space', 'jungle',
+    ];
+   
     let kidsFilms = [];
     
     for (const category of categories) {
@@ -42,6 +37,7 @@ const onGetKidsFilms = async (_, thunkAPI) => {
         kidsFilms.push(...data.Search);
       }
     }
+
     // Перемешиваем фильмы
     kidsFilms.sort(() => Math.random() - 0.5);
 
@@ -50,9 +46,7 @@ const onGetKidsFilms = async (_, thunkAPI) => {
         kidsFilms.slice(0, 20).map(async (kidsFilm) => { // Ограничение для избежания лимитов API
         const kidsFilmDetailsUrl = `https://www.omdbapi.com/?i=${kidsFilm.imdbID}&apikey=${apiKey}`;
         const kidsFilmDetailsResponse = await fetch(kidsFilmDetailsUrl);
-        const kidsFilmDetails = await kidsFilmDetailsResponse.json();     
-     
-        // console.log(kidsFilmDetails.Genre);
+        const kidsFilmDetails = await kidsFilmDetailsResponse.json();         
 
         return {
           ...kidsFilm,
@@ -88,7 +82,7 @@ const initialState = {
 };
 
 const kidsFilmsSlice = createSlice({
-  name: 'movies',
+  name: 'kidsFilms',
   initialState,
   reducers: {},
   extraReducers: builder => {
