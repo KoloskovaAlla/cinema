@@ -3,28 +3,14 @@ import { API_KEY } from 'shared/constants/api';
 
 // Категории детских фильмов
 const categories = [
-  // Общие термины
-  'children',
-
-  // Жанры
-  'adventure', 'fairy',
-
-  // Персонажи
-  'princess', 'animal', 'dog', 'pony', 'dinosaur', 'puppy', 'kitten',
-
-  // Эмоции и предметы
-  'friends', 'toy', 'toys',
-
-  // Сказочные элементы
-  'wonder', 'world',
-
-  // Природа
-  'space', 'jungle',
+  'children', 'adventure', 'fairy', 'princess', 'animal', 'dog', 'pony',
+  'dinosaur', 'puppy', 'kitten', 'friends', 'toy', 'toys',
+  'wonder', 'world', 'space', 'jungle',
 ];
 
 // Получить список фильмов по категории
 const fetchFilmsByCategory = async (category) => {
-  const url = `https://www.omdbapi.com/?s=${category}&apikey=${API_KEY}`;
+  const url = `https://www.omdbapi.com/?s=${category}&apikey=${API_KEY}&type=movie&page=1`;
   const response = await fetch(url);
   const data = await response.json();
   return data.Search || [];
@@ -49,19 +35,38 @@ const fetchFilmDetails = async (imdbID) => {
   };
 };
 
+// Проверка, подходит ли фильм как детский
+const isKidsGenre = (genreString) => {
+  if (!genreString || genreString === 'N/A') return false;
+  const genre = genreString.toLowerCase();
+  // return genre.includes('family') || genre.includes('animation') || genre.includes('children');
+  return genre.includes('animation') || genre.includes('children');
+};
+
 // Основной thunk
 const onGetKidsFilms = async (_, thunkAPI) => {
   try {
     const filmsByCategory = await Promise.all(categories.map(fetchFilmsByCategory));
     const allFilms = filmsByCategory.flat();
-    const shuffled = allFilms.sort(() => Math.random() - 0.5).slice(0, 20);
 
-    const detailedFilms = await Promise.all(
-      shuffled.map(async (film) => ({
-        ...film,
-        ...(await fetchFilmDetails(film.imdbID)),
-      }))
-    );
+    // Удаление дубликатов по imdbID
+    const uniqueFilmsMap = new Map();
+    allFilms.forEach(film => {
+      if (!uniqueFilmsMap.has(film.imdbID)) {
+        uniqueFilmsMap.set(film.imdbID, film);
+      }
+    });
+    const uniqueFilms = Array.from(uniqueFilmsMap.values()).slice(0, 100); // до 100 штук для фильтрации
+
+    // Получить подробности и фильтровать
+    const detailedFilms = [];
+    for (const film of uniqueFilms) {
+      const details = await fetchFilmDetails(film.imdbID);
+      if (isKidsGenre(details.genre)) {
+        detailedFilms.push({ ...film, ...details });
+        if (detailedFilms.length >= 20) break; // остановимся после 20 подходящих
+      }
+    }
 
     return thunkAPI.fulfillWithValue(detailedFilms);
   } catch (error) {
