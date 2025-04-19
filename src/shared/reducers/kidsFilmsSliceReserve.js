@@ -3,8 +3,7 @@ import { API_KEY } from 'shared/constants/api';
 
 const onGetKidsFilms = async (_, thunkAPI) => {
   try {
-    // const apiKey = '35b2affc';
-    console.log('API_KEY импортированный:', API_KEY);
+    const apiKey = '35b2affc';
     const  categories = [
       // Общие детские термины
       'children',
@@ -30,8 +29,8 @@ const onGetKidsFilms = async (_, thunkAPI) => {
     let kidsFilms = [];
     
     for (const category of categories) {
-      // const url = `https://www.omdbapi.com/?s=${category}&apikey=${apiKey}`;
-      const url = `https://www.omdbapi.com/?s=${category}&apikey=${API_KEY}`;
+      const url = `https://www.omdbapi.com/?s=${category}&apikey=${apiKey}`;
+      // const url = `https://www.omdbapi.com/?s=${category}&API_KEY=${API_KEY}`;
       const response = await fetch(url);
       const data = await response.json();
 
@@ -46,8 +45,8 @@ const onGetKidsFilms = async (_, thunkAPI) => {
     // Запрашиваем детали для каждого фильма
     const kidsFilmsWithDetails = await Promise.all(
         kidsFilms.slice(0, 20).map(async (kidsFilm) => { // Ограничение для избежания лимитов API
-        // const kidsFilmDetailsUrl = `https://www.omdbapi.com/?i=${kidsFilm.imdbID}&apikey=${apiKey}`;
-        const kidsFilmDetailsUrl = `https://www.omdbapi.com/?i=${kidsFilm.imdbID}&apikey=${API_KEY}`;
+        const kidsFilmDetailsUrl = `https://www.omdbapi.com/?i=${kidsFilm.imdbID}&apikey=${apiKey}`;
+        // const kidsFilmDetailsUrl = `https://www.omdbapi.com/?i=${kidsFilm.imdbID}&API_KEY=${API_KEY}`;
         const kidsFilmDetailsResponse = await fetch(kidsFilmDetailsUrl);
         const kidsFilmDetails = await kidsFilmDetailsResponse.json();         
 
