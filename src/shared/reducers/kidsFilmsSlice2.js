@@ -4,7 +4,6 @@ import { API_KEY } from 'shared/constants/api';
 const onGetKidsFilms = async (_, thunkAPI) => {
   try {
     // const apiKey = '35b2affc';
-    console.log('API_KEY импортированный:', API_KEY);
     const  categories = [
       // Общие детские термины
       'children',
@@ -31,7 +30,7 @@ const onGetKidsFilms = async (_, thunkAPI) => {
     
     for (const category of categories) {
       // const url = `https://www.omdbapi.com/?s=${category}&apikey=${apiKey}`;
-      const url = `https://www.omdbapi.com/?s=${category}&apikey=${API_KEY}`;
+      const url = `https://www.omdbapi.com/?s=${category}&API_KEY=${API_KEY}`;
       const response = await fetch(url);
       const data = await response.json();
 
