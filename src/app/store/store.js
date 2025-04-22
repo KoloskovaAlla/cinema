@@ -1,5 +1,13 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { filmReducer, moviesReducer, similarFilmsReducer, navReducer, seriesReducer, kidsFilmsReducer } from 'shared/reducers';
+import { 
+  filmReducer, 
+  moviesReducer, 
+  similarFilmsReducer, 
+  navReducer, 
+  seriesReducer, 
+  kidsFilmsReducer, 
+  historyFilmsReducer, 
+} from 'shared/reducers';
 
 const rootReducer = combineReducers({
   filmReducer,
@@ -8,6 +16,7 @@ const rootReducer = combineReducers({
   navReducer,
   seriesReducer,
   kidsFilmsReducer,
+  historyFilmsReducer,
 });
 
 export const store = configureStore({
