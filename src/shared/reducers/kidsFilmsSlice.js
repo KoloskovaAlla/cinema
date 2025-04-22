@@ -39,11 +39,9 @@ const fetchFilmDetails = async (imdbID) => {
 const isKidsGenre = (genreString) => {
   if (!genreString || genreString === 'N/A') return false;
   const genre = genreString.toLowerCase();
-  // return genre.includes('family') || genre.includes('animation') || genre.includes('children');
   return genre.includes('animation') || genre.includes('children');
 };
 
-// Основной thunk
 const onGetKidsFilms = async (_, thunkAPI) => {
   try {
     const filmsByCategory = await Promise.all(categories.map(fetchFilmsByCategory));
@@ -56,7 +54,7 @@ const onGetKidsFilms = async (_, thunkAPI) => {
         uniqueFilmsMap.set(film.imdbID, film);
       }
     });
-    const uniqueFilms = Array.from(uniqueFilmsMap.values()).slice(0, 100); // до 100 штук для фильтрации
+    const uniqueFilms = Array.from(uniqueFilmsMap.values()).slice(0, 100);
 
     // Получить подробности и фильтровать
     const detailedFilms = [];
@@ -64,23 +62,27 @@ const onGetKidsFilms = async (_, thunkAPI) => {
       const details = await fetchFilmDetails(film.imdbID);
       if (isKidsGenre(details.genre)) {
         detailedFilms.push({ ...film, ...details });
-        if (detailedFilms.length >= 20) break; // остановимся после 20 подходящих
+        if (detailedFilms.length >= 20) break;
       }
     }
 
     return thunkAPI.fulfillWithValue(detailedFilms);
   } catch (error) {
-    console.error(error.message);
-    return thunkAPI.rejectWithValue(error.message);
+    const { message } = error;
+    console.error(message);
+    return thunkAPI.rejectWithValue(message);
   }
 };
 
-const getKidsFilms = createAsyncThunk('movies/getKidsFilms', onGetKidsFilms);
+const getKidsFilms = createAsyncThunk(
+  'kidsFilms/getKidsFilms',
+  onGetKidsFilms,
+);
 
 const initialState = {
-  isLoadingKidsFilms: false,
+  isKidsFilmsLoading: false,
   kidsFilms: null,
-  errorKidsFilms: '',
+  kidsFilmsErrorMessage: '',
 };
 
 const kidsFilmsSlice = createSlice({
@@ -90,19 +92,19 @@ const kidsFilmsSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(getKidsFilms.pending, state => {
-        state.isLoadingKidsFilms = true;
+        state.isKidsFilmsLoading = true;
         state.kidsFilms = null;
-        state.errorKidsFilms = '';
+        state.kidsFilmsErrorMessage = '';
       })
       .addCase(getKidsFilms.fulfilled, (state, { payload }) => {
-        state.isLoadingKidsFilms = false;
+        state.isKidsFilmsLoading = false;
         state.kidsFilms = payload;
-        state.errorKidsFilms = '';
+        state.kidsFilmsErrorMessage = '';
       })
       .addCase(getKidsFilms.rejected, (state, { payload }) => {
-        state.isLoadingKidsFilms = false;
+        state.isKidsFilmsLoading = false;
         state.kidsFilms = null;
-        state.errorKidsFilms = payload;
+        state.kidsFilmsErrorMessage = payload;
       });
   }
 });
