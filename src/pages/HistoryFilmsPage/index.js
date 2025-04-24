@@ -1,0 +1,1 @@
+export { HistoryFilmsPage } from './HistoryFilmsPage';

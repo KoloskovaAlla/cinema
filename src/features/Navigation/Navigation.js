@@ -42,7 +42,7 @@ export const Navigation = () => {
     {
       target: 'favorites',
       text: 'favorites',
-    },    
+    },   
   ];
 
   const handleLinkClick = () => {
