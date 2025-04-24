@@ -120,12 +120,12 @@ const historyFilmsSlice = createSlice({
         state.historyFilms = null;
         state.historyFilmsErrorMessage = '';
       })
-      .addCase(getKidsFilms.fulfilled, (state, { payload }) => {
+      .addCase(getHistoryFilms.fulfilled, (state, { payload }) => {
         state.isHistoryFilmsLoading = false;
         state.historyFilms = payload;
         state.historyFilmsErrorMessage = '';
       })
-      .addCase(getKidsFilms.rejected, (state, { payload }) => {
+      .addCase(getHistoryFilms.rejected, (state, { payload }) => {
         state.isHistoryFilmsLoading = false;
         state.historyFilms = null;
         state.historyFilmsErrorMessage = payload;
