@@ -57,12 +57,12 @@ const fetchFilmDetails = async (imdbID) => {
   };
 };
 
-// Проверка, подходит ли фильм как детский
-// const isKidsGenre = (genreString) => {
-//   if (!genreString || genreString === 'N/A') return false;
-//   const genre = genreString.toLowerCase();
-//   return genre.includes('animation') || genre.includes('children');
-// };
+// Проверка, подходит ли фильм как исторический
+const isHistoryGenre = (genreString) => {
+  if (!genreString || genreString === 'N/A') return false;
+  const genre = genreString.toLowerCase();  
+  return genre.includes('history');
+};
 
 const onGetHistoryFilms = async (_, thunkAPI) => {
   try {
@@ -82,10 +82,9 @@ const onGetHistoryFilms = async (_, thunkAPI) => {
     const detailedFilms = [];
     for (const film of uniqueFilms) {
       const details = await fetchFilmDetails(film.imdbID);
-    //   if (isKidsGenre(details.genre)) {
-      if (true) {
-        detailedFilms.push({ ...film, ...details });
-        console.log(film);
+     
+      if (isHistoryGenre(details.genre)) {         
+        detailedFilms.push({ ...film, ...details });      
         if (detailedFilms.length >= 20) break;
       }
     }
