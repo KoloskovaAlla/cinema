@@ -14,11 +14,7 @@ export const Navigation = () => {
     setIsNavActive,
   } = useNav(); 
 
-  const navItems = [
-    {
-      target: 'films',
-      text: 'films',
-    }, 
+  const navItems = [ 
     {
       target: 'series',
       text: 'series',
@@ -37,7 +33,7 @@ export const Navigation = () => {
     }, 
     {
       target: 'history',
-      text: 'history & culture',
+      text: 'history',
     },
     {
       target: 'favorites',
