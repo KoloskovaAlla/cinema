@@ -1,29 +1,19 @@
 @import 'shared/constants/styles/breakpoints';
 
-.kidsFilmsPage {
+.historyFilmsPage {
   min-height: 100vh;
   position: relative;
   width: 100%;
   margin: 0 auto;
   padding: 30px 15px;
 
-  // @media (min-width: $breakpoint_md) {
-  //   padding: 30px 15px;
-  // }
-
   @media (min-width: $breakpoint_lg) {
     padding: 30px 30px;
   }
-
-  // @media (min-width: $breakpoint_xl) {
-  //   padding: 50px 40px;
-  // }
 }
 
 .mySwiper {
-  width: 100%; // Убедитесь, что ширина установлена на 100%
-  // overflow: hidden; // Чтобы скрыть переполнение
-  // height: 70vh; // Убедитесь, что высота задана корректно
+  width: 100%;
 }
 
 h1 {

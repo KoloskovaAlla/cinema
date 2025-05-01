@@ -1,7 +1,7 @@
 import classes from './HistoryFilmsPage.module.scss';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { useRef, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -92,7 +92,7 @@ export const HistoryFilmsPage = () => {
   if (!historyFilms) return (<Preloader />); 
 
   return (   
-    <div className={classes.kidsFilmsPage}>
+    <div className={classes.historyFilmsPage}>
       <div className={classes.mySwiper}>    
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y]}
