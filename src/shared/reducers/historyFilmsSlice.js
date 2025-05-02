@@ -5,29 +5,29 @@ import { API_KEY } from 'shared/constants/api';
 const categories = [
     "viking",           // фильмы о викингах
     "medieval",         // фильмы о средневековье
-    "samurai",          // фильмы о самураях
+    // "samurai",          // фильмы о самураях
     "ancient",          // фильмы о древних цивилизациях
-    "war",              // военные фильмы
-    "empire",           // фильмы об империях
-    "revolution",       // фильмы о революциях
-    "kingdom",          // фильмы о королевствах
-    "dynasty",          // фильмы о династиях
-    "battle",           // фильмы о сражениях
-    "conquest",         // фильмы о завоеваниях
-    "crusade",          // фильмы о крестовых походах
-    "sparta",           // фильмы о Спарте
-    "rome",             // фильмы о Риме
-    "gladiator",        // фильмы о гладиаторах
-    "knight",           // фильмы о рыцарях
-    "history",          // исторические фильмы
-    "epic",             // эпические фильмы
-    "biography",        // биографические фильмы
-    "castle",           // фильмы с замками
-    "egyptian",         // фильмы о Египте
-    "pharaoh",          // фильмы о фараонах
-    "napoleon",         // фильмы о Наполеоне
-    "caesar",           // фильмы о Цезаре
-    "alexander"   
+    // "war",              // военные фильмы
+    // "empire",           // фильмы об империях
+    // "revolution",       // фильмы о революциях
+    // "kingdom",          // фильмы о королевствах
+    // "dynasty",          // фильмы о династиях
+    // "battle",           // фильмы о сражениях
+    // "conquest",         // фильмы о завоеваниях
+    // "crusade",          // фильмы о крестовых походах
+    // "sparta",           // фильмы о Спарте
+    // "rome",             // фильмы о Риме
+    // "gladiator",        // фильмы о гладиаторах
+    // "knight",           // фильмы о рыцарях
+    // "history",          // исторические фильмы
+    // "epic",             // эпические фильмы
+    // "biography",        // биографические фильмы
+    // "castle",           // фильмы с замками
+    // "egyptian",         // фильмы о Египте
+    // "pharaoh",          // фильмы о фараонах
+    // "napoleon",         // фильмы о Наполеоне
+    // "caesar",           // фильмы о Цезаре
+    // "alexander"   
 ];
 
 // Получить список фильмов по категории
@@ -43,18 +43,6 @@ const fetchFilmDetails = async (imdbID) => {
   const url = `https://www.omdbapi.com/?i=${imdbID}&apikey=${API_KEY}`;
   const response = await fetch(url);
   const data = await response.json();
-
-  return {
-    genre: data.Genre || 'N/A',
-    year: data.Year || 'N/A',
-    runtime: data.Runtime || 'N/A',
-    country: data.Country || 'N/A',
-    rating: data.imdbRating || 'N/A',
-    actors: data.Actors || 'N/A',
-    director: data.Director || 'N/A',
-    writer: data.Writer || 'N/A',
-    plot: data.Plot || 'N/A',
-  };
 };
 
 // Проверка, подходит ли фильм как исторический
