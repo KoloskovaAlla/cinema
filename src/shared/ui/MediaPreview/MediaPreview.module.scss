@@ -23,4 +23,24 @@
     transition-property: all;
     transition-duration: 1s;
   }
+
+  .like {
+    position: absolute;
+    height: 45px;  /* Increased from 30px */
+    width: 45px;   /* Increased from 30px */
+    bottom: 90px;
+    right: 10px;
+    background: rgb(83, 83, 82);
+    border-radius: 50%;  /* Changed from 15px to 50% for perfect circle */
+    display: flex;       /* Added to center the icon */
+    align-items: center; /* Added to center the icon vertically */
+    justify-content: center; /* Added to center the icon horizontally */
+    padding: 8px;        /* Added padding inside the circle */
+  }
+  
+  /* You may need to add this to ensure the SVG icon doesn't stretch */
+  .like svg {
+    width: 24px;  /* Set the icon size */
+    height: 24px;
+  }
   
