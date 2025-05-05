@@ -3,12 +3,12 @@ import classes from './MediaPreview.module.scss';
 import { Link } from 'react-router-dom';
 import {useEffect, useRef } from 'react';
 import { classNames } from 'shared/utils/helpers';
-import { IconEmptyLike } from 'shared/icons';
+import { IconEmptyBookmark, IconFillBookmark } from 'shared/icons';
 
 export const MediaPreview = ({ item }) => {    
   const { imdbID, Title, Poster } = item;  
   const imageRef = useRef(null);
-  const likeButtonRef = useRef(null);
+  const bookmarkButtonRef = useRef(null);
   const [isFilmHover, setIsFilmHover] = useState(false);
    
   const [isHovered, setIsHovered] = useState(false);
@@ -63,9 +63,10 @@ export const MediaPreview = ({ item }) => {
           />
         </div>
         {/* {isFilmHover && isLikeVisible && !isFavorite && ( */}
-        <IconEmptyLike
-          className={classes.like}
-          ref={likeButtonRef}
+        <IconEmptyBookmark
+        // <IconFillBookmark
+          className={classes.bookmark}
+          ref={bookmarkButtonRef}
           // onClick={handleLikeClick}
           // onMouseEnter={handleLikeMouseEnter}
           // onMouseLeave={handleLikeMouseLeave}
