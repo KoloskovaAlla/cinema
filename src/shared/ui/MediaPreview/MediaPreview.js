@@ -3,12 +3,26 @@ import classes from './MediaPreview.module.scss';
 import { Link } from 'react-router-dom';
 import {useEffect, useRef } from 'react';
 import { classNames } from 'shared/utils/helpers';
+import { IconEmptyLike } from 'shared/icons';
 
 export const MediaPreview = ({ item }) => {    
   const { imdbID, Title, Poster } = item;  
   const imageRef = useRef(null);
+  const likeButtonRef = useRef(null);
+  const [isFilmHover, setIsFilmHover] = useState(false);
    
   const [isHovered, setIsHovered] = useState(false);
+
+  // const handleLikeClick = () => {
+  //   if (favoriteFilms.includes(film)) {
+  //     dispatch(setIsFavorite(false));
+  //     removeFromFavoriteFilms(film);
+  //   }
+  //   else {
+  //     addToFavoriteFilms(film);
+  //     dispatch(setIsFavorite(true));
+  //   }
+  // };
 
   if (!item) {
     console.warn('MediaPreview получил undefined item');
@@ -48,6 +62,15 @@ export const MediaPreview = ({ item }) => {
             ref={imageRef}
           />
         </div>
+        {/* {isFilmHover && isLikeVisible && !isFavorite && ( */}
+        <IconEmptyLike
+          className={classes.like}
+          ref={likeButtonRef}
+          // onClick={handleLikeClick}
+          // onMouseEnter={handleLikeMouseEnter}
+          // onMouseLeave={handleLikeMouseLeave}
+        />
+      {/* )} */}
         <h2 className={classes.title}>{Title}</h2>
       </div>
     </Link>
