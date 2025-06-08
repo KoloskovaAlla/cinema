@@ -13,6 +13,10 @@ export const MediaPreview = ({ item }) => {
    
   const [isHovered, setIsHovered] = useState(false);
 
+  useEffect(() => {
+    console.log('test');
+  }, []);
+
   // const handleLikeClick = () => {
   //   if (favoriteFilms.includes(film)) {
   //     dispatch(setIsFavorite(false));
@@ -23,36 +27,36 @@ export const MediaPreview = ({ item }) => {
   //     dispatch(setIsFavorite(true));
   //   }
   // };
-
-  if (!item) {
-    console.warn('MediaPreview получил undefined item');
-    return null; // Прерываем рендер компонента
-  }
   
   const handleMouseEnter = () => {
     setIsHovered(true);
-    imageRef.current.style.scale = '1.2';
-    imageRef.current.style.transitionProperty = 'all';
-    imageRef.current.style.transitionDuration = '1s';   
+    // imageRef.current.style.scale = '1.2';
+    // imageRef.current.style.transitionProperty = 'all';
+    // imageRef.current.style.transitionDuration = '1s';   
   };
   
   const handleMouseLeave = () => {
     setIsHovered(false);
-    imageRef.current.style.scale = '1';
-    imageRef.current.style.transitionProperty = 'all';
+    // imageRef.current.style.scale = '1';
+    // imageRef.current.style.transitionProperty = 'all';
   };
 
   const filmPreviewClassNames = classNames(classes.movie, {
     [classes.hovered]: isHovered,
   });
+  const linkClassNames = classNames(classes.link, {
+    [classes.hovered]: isHovered,
+  });
 
-  // Это на домашней (главной) странице
+   // Это на домашней (главной) странице
   return (
     <Link to={`/${imdbID}`}
       onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}              
-      >
-      <div key={imdbID} className={classes.movie}
+      onMouseLeave={handleMouseLeave}
+      className={linkClassNames}              
+    >
+      <div key={imdbID} className={filmPreviewClassNames}
+      // <div key={imdbID} className={classes.movie}
         // className={isHovered ? classes.hovered : ''}      
       >
         <div className={classes.image}>
@@ -63,16 +67,21 @@ export const MediaPreview = ({ item }) => {
           />
         </div>
         {/* {isFilmHover && isLikeVisible && !isFavorite && ( */}
-        <IconEmptyBookmark
-        // <IconFillBookmark
-          className={classes.bookmark}
-          ref={bookmarkButtonRef}
-          // onClick={handleLikeClick}
-          // onMouseEnter={handleLikeMouseEnter}
-          // onMouseLeave={handleLikeMouseLeave}
-        />
-      {/* )} */}
-        <h2 className={classes.title}>{Title}</h2>
+        {/* {isFilmHover && isLikeVisible && !isFavorite && ( */}
+        {isHovered && (
+          <div className={classes.footer}>
+            <h2 className={classes.title}>{Title}</h2>
+            <IconEmptyBookmark
+            // <IconFillBookmark
+              className={classes.bookmark}
+              ref={bookmarkButtonRef}
+              // onClick={handleLikeClick}
+              // onMouseEnter={handleLikeMouseEnter}
+              // onMouseLeave={handleLikeMouseLeave}
+            />
+     
+          </div>)
+        }
       </div>
     </Link>
   );
