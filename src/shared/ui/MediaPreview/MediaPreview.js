@@ -1,21 +1,18 @@
-import { useState } from 'react';
-import classes from './MediaPreview.module.scss';
+import {useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import {useEffect, useRef } from 'react';
 import { classNames } from 'shared/utils/helpers';
 import { IconEmptyBookmark, IconFillBookmark } from 'shared/icons';
+import classes from './MediaPreview.module.scss';
 
 export const MediaPreview = ({ item }) => {    
   const { imdbID, Title, Poster } = item;  
+
   const imageRef = useRef(null);
   const bookmarkButtonRef = useRef(null);
+  
   const [isFilmHover, setIsFilmHover] = useState(false);
-   
   const [isHovered, setIsHovered] = useState(false);
-
-  useEffect(() => {
-    console.log('test');
-  }, []);
+  
 
   // const handleLikeClick = () => {
   //   if (favoriteFilms.includes(film)) {
@@ -55,9 +52,7 @@ export const MediaPreview = ({ item }) => {
       onMouseLeave={handleMouseLeave}
       className={linkClassNames}              
     >
-      <div key={imdbID} className={filmPreviewClassNames}
-      // <div key={imdbID} className={classes.movie}
-        // className={isHovered ? classes.hovered : ''}      
+      <div key={imdbID} className={filmPreviewClassNames}        
       >
         <div className={classes.image}>
           <img 
