@@ -9,10 +9,8 @@ export const MediaPreview = ({ item }) => {
 
   const imageRef = useRef(null);
   const bookmarkButtonRef = useRef(null);
-  
-  const [isFilmHover, setIsFilmHover] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
-  
+
+  const [isMediaPreviewHovered, setIsMediaPreviewHovered] = useState(false);  
 
   // const handleLikeClick = () => {
   //   if (favoriteFilms.includes(film)) {
@@ -26,23 +24,23 @@ export const MediaPreview = ({ item }) => {
   // };
   
   const handleMouseEnter = () => {
-    setIsHovered(true);
+    setIsMediaPreviewHovered(true);
     // imageRef.current.style.scale = '1.2';
     // imageRef.current.style.transitionProperty = 'all';
     // imageRef.current.style.transitionDuration = '1s';   
   };
   
   const handleMouseLeave = () => {
-    setIsHovered(false);
+    setIsMediaPreviewHovered(false);
     // imageRef.current.style.scale = '1';
     // imageRef.current.style.transitionProperty = 'all';
   };
 
   const filmPreviewClassNames = classNames(classes.movie, {
-    [classes.hovered]: isHovered,
+    [classes.hovered]: isMediaPreviewHovered,
   });
   const linkClassNames = classNames(classes.link, {
-    [classes.hovered]: isHovered,
+    [classes.hovered]: isMediaPreviewHovered,
   });
 
    // Это на домашней (главной) странице
@@ -63,7 +61,7 @@ export const MediaPreview = ({ item }) => {
         </div>
         {/* {isFilmHover && isLikeVisible && !isFavorite && ( */}
         {/* {isFilmHover && isLikeVisible && !isFavorite && ( */}
-        {isHovered && (
+        {isMediaPreviewHovered && (
           <div className={classes.footer}>
             <h2 className={classes.title}>{Title}</h2>
             <IconEmptyBookmark
