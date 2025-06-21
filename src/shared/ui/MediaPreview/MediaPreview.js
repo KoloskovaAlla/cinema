@@ -12,6 +12,8 @@ export const MediaPreview = ({ item }) => {
 
   const [isMediaPreviewHovered, setIsMediaPreviewHovered] = useState(false);  
 
+  //
+
   // const handleLikeClick = () => {
   //   if (favoriteFilms.includes(film)) {
   //     dispatch(setIsFavorite(false));
