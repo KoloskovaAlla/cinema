@@ -31,12 +31,14 @@ export const HomePage = () => {
       ))}
   }, [movies]);
 
+  const [currentSlide, setCurrentSlide] = useState(1);
+
   useEffect(() => {
     if (swiperRef.current && swiperRef.current.swiper) {
       const swiper = swiperRef.current.swiper;
       swiper.params.navigation.prevEl = navigationPrevRef.current;
       swiper.params.navigation.nextEl = navigationNextRef.current;
-      swiper.params.pagination.el = paginationRef.current;
+      // swiper.params.pagination.el = paginationRef.current;
 
       swiper.navigation.init();
       swiper.navigation.update();
@@ -120,13 +122,13 @@ export const HomePage = () => {
             nextEl: navigationNextRef.current,
             prevEl: navigationPrevRef.current,
           }}
-          pagination={{
-            el: paginationRef.current,
-            clickable: true,
-            type: 'bullets',
-            bulletClass: classes.bullet,
-            bulletActiveClass: classes.bullet_active,
-          }}
+          // pagination={{
+          //   el: paginationRef.current,
+          //   clickable: true,
+          //   type: 'bullets',
+          //   bulletClass: classes.bullet,
+          //   bulletActiveClass: classes.bullet_active,
+          // }}
           onSlideChange={onSlideChange}
           ref={swiperRef}
         >
@@ -134,7 +136,7 @@ export const HomePage = () => {
             <SwiperSlide key={index}>
               <MediaPreview item={movie} />
             </SwiperSlide>
-          ))}
+          ))}      
           <button
             className={buttonPrevClassNames}
             ref={navigationPrevRef}
@@ -150,6 +152,11 @@ export const HomePage = () => {
             <RightArrowIcon />
           </button>
         </Swiper>
+            <div className={classes.mobile_counter}>
+            <span className={classes.current_slide}>{currentSlide}</span>
+            <span className={classes.divider}>/</span>
+            <span className={classes.total_slides}>{movies.length}</span>
+          </div>
       </div>
     </div>
   );
