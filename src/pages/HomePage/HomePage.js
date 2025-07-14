@@ -58,6 +58,7 @@ export const HomePage = () => {
   const onSlideChange = (swiper) => {
     setIsPrevDisabled(swiper.isBeginning);
     setIsNextDisabled(swiper.isEnd);
+    setCurrentSlide(swiper.activeIndex + 1);
   };
 
   const buttonPrevClassNames = classNames(classes.swiper_button_prev_custom, {

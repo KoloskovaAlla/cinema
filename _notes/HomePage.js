@@ -1,84 +1,164 @@
-
 import classes from './HomePage.module.scss';
 import { useRef, useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import 'swiper/css';
-import { LeftArrowIcon, RightArrowIcon } from './assets';
-import { FilmPreview } from './components';
+import 'swiper/css/pagination';
+import { useMovies, useDocumentTitle } from 'shared/hooks';
+import { classNames } from 'shared/utils/helpers';
+import { Preloader } from 'widgets';
+import { LeftArrowIcon, RightArrowIcon } from 'shared/icons';
+import { MediaPreview } from 'shared/ui';
 
 export const HomePage = () => {
-  const [movies, setMovies] = useState([]);
+  const dispatch = useDispatch();
+  const swiperRef = useRef(null);
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
-  const swiperRef = useRef(null);
+  const paginationRef = useRef(null);
+
+  const moviesState = useMovies();
+  const { movies } = moviesState;
+
+  const title = 'Film Finder'
+
+  useDocumentTitle(title);
 
   useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        // const apiKey = 'bc8eebf42f936c16863715b5622480d4';
-        const apiKey = '35b2affc';
-        // const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=ru-RU`);
-        // const response = await fetch(`http://www.omdbapi.com/?s=movie&apikey=${apiKey}`);
-        const response = await fetch(`https://www.omdbapi.com/?s=movie&apikey=${apiKey}`);
-        const data = await response.json();
-        console.log(data);
-        // console.log(data.Search);
-        // setMovies(data.results);
-        setMovies(data.Search);
+    if (movies) {movies.map((movie, index) => (
+       console.log(movie.Title)
+      ))}
+  }, [movies]);
 
-      } catch (error) {
-        console.error('Error fetching movies:', error);
-      }
-    };
-
-    fetchMovies();
-  }, []);
+  const [currentSlide, setCurrentSlide] = useState(1);
 
   useEffect(() => {
-    console.log(swiperRef)
-    console.log('test')
+    if (swiperRef.current && swiperRef.current.swiper) {
+      const swiper = swiperRef.current.swiper;
+      swiper.params.navigation.prevEl = navigationPrevRef.current;
+      swiper.params.navigation.nextEl = navigationNextRef.current;
+      // swiper.params.pagination.el = paginationRef.current;
+
+      swiper.navigation.init();
+      swiper.navigation.update();
+      swiper.pagination.init();
+      swiper.pagination.render();
+      swiper.pagination.update();
+    }
+  }, [movies]);
+
+  useEffect(() => {
+    dispatch(moviesState.getMovies());
+  }, [dispatch]);
+ 
+  const [isPrevDisabled, setIsPrevDisabled] = useState(true);
+  const [isNextDisabled, setIsNextDisabled] = useState(false);
+
+  const onSlideChange = (swiper) => {
+    setIsPrevDisabled(swiper.isBeginning);
+    setIsNextDisabled(swiper.isEnd);
+    setCurrentSlide(swiper.activeIndex + 1);
+  };
+
+  const buttonPrevClassNames = classNames(classes.swiper_button_prev_custom, {
+    [classes.disablePrev]: isPrevDisabled,
   });
 
-  return (
+  const buttonNextClassNames = classNames(classes.swiper_button_next_custom, {
+    [classes.disableNext]: isNextDisabled,
+  });
+
+  useEffect(() => {
+    const prevButton = navigationPrevRef.current;
+    const nextButton = navigationNextRef.current;
+
+    if (prevButton && nextButton) {
+      const handlePrevTouchStart = () => {
+        prevButton.style.transform = 'scale(1.5)';
+      };
+
+      const handlePrevTouchEnd = () => {
+        prevButton.style.transform = 'scale(1.0)';
+      };
+
+      const handleNextTouchStart = () => {
+        nextButton.style.transform = 'scale(1.5)';
+      };
+
+      const handleNextTouchEnd = () => {
+        nextButton.style.transform = 'scale(1.0)';
+      };
+
+      prevButton.addEventListener('touchstart', handlePrevTouchStart);
+      prevButton.addEventListener('touchend', handlePrevTouchEnd);
+
+      nextButton.addEventListener('touchstart', handleNextTouchStart);
+      nextButton.addEventListener('touchend', handleNextTouchEnd);
+    } 
+  }, [navigationPrevRef, navigationNextRef, movies]);
+
+  if (!movies) return (<Preloader />);
+
+  return (   
     <div className={classes.homePage}>
-      <h1 className={classes.title}>Лучшие фильмы</h1>
-      <Swiper
-        className={classes.mySwiper}
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={10}
-        slidesPerView={1}
-        breakpoints={{
-          770: {
-            slidesPerView: 2
-          },
-          1150: {
-            slidesPerView: 3
-          },
-          1440: {
-            slidesPerView: 4
-          }
-        }}
-        navigation={{
-          nextEl: navigationNextRef.current,
-          prevEl: navigationPrevRef.current,
-        }}
-        ref={swiperRef}
-      >
-
-        {movies.map((movie, index) => (
-          <SwiperSlide key={index}>
-            <FilmPreview movie={movie} />
-          </SwiperSlide>
-        ))}
-        <button className={classes.swiper_button_prev_custom} ref={navigationPrevRef}>
-          <LeftArrowIcon />
-        </button>
-        <button className={classes.swiper_button_next_custom} ref={navigationNextRef}>
-          <RightArrowIcon />
-        </button>
-
-      </Swiper>
+      <div className={classes.mySwiper}>
+        <h1 className={classes.title}>The Best Films</h1>
+        <Swiper
+          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          spaceBetween={30}
+          slidesPerView={1}
+          breakpoints={{
+            770: {
+              slidesPerView: 2
+            },
+            1150: {
+              slidesPerView: 5
+            },
+            1440: {
+              slidesPerView: 5
+            }
+          }}
+          navigation={{
+            nextEl: navigationNextRef.current,
+            prevEl: navigationPrevRef.current,
+          }}
+          // pagination={{
+          //   el: paginationRef.current,
+          //   clickable: true,
+          //   type: 'bullets',
+          //   bulletClass: classes.bullet,
+          //   bulletActiveClass: classes.bullet_active,
+          // }}
+          onSlideChange={onSlideChange}
+          ref={swiperRef}
+        >
+          {movies.map((movie, index) => (
+            <SwiperSlide key={index}>
+              <MediaPreview item={movie} />
+            </SwiperSlide>
+          ))}      
+          <button
+            className={buttonPrevClassNames}
+            ref={navigationPrevRef}
+          >
+            <LeftArrowIcon />
+          </button>
+          <div className={classes.swiper_pagination_custom} ref={paginationRef}>
+          </div>
+          <button
+            className={buttonNextClassNames}
+            ref={navigationNextRef}
+          >
+            <RightArrowIcon />
+          </button>
+        </Swiper>
+            <div className={classes.mobile_counter}>
+            <span className={classes.current_slide}>{currentSlide}</span>
+            <span className={classes.divider}>/</span>
+            <span className={classes.total_slides}>{movies.length}</span>
+          </div>
+      </div>
     </div>
   );
 };
