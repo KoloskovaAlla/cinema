@@ -25,11 +25,23 @@ export const HomePage = () => {
 
   useDocumentTitle(title);
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
   useEffect(() => {
-    if (movies) {movies.map((movie, index) => (
-       console.log(movie.Title)
-      ))}
-  }, [movies]);
+    const handleResize = () => {
+      const newIsMobile = window.innerWidth < 768;
+      setIsMobile(newIsMobile);
+      
+      if (newIsMobile) {
+        console.log('экран мобильный');
+      } else {
+        console.log('десктоп');
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []); // Пустой массив! useEffect запускается только один раз
 
   const [currentSlide, setCurrentSlide] = useState(1);
 
@@ -123,13 +135,13 @@ export const HomePage = () => {
             nextEl: navigationNextRef.current,
             prevEl: navigationPrevRef.current,
           }}
-          // pagination={{
-          //   el: paginationRef.current,
-          //   clickable: true,
-          //   type: 'bullets',
-          //   bulletClass: classes.bullet,
-          //   bulletActiveClass: classes.bullet_active,
-          // }}
+        pagination={{
+          el: paginationRef.current,
+          clickable: true,
+          type: 'bullets',
+          bulletClass: classes.bullet,
+          bulletActiveClass: classes.bullet_active,
+        }} // На мобильном отключаем пагинацию Swiper
           onSlideChange={onSlideChange}
           ref={swiperRef}
         >
@@ -153,11 +165,12 @@ export const HomePage = () => {
             <RightArrowIcon />
           </button>
         </Swiper>
-            <div className={classes.mobile_counter}>
+          {isMobile && (<div className={classes.mobile_counter}>
             <span className={classes.current_slide}>{currentSlide}</span>
             <span className={classes.divider}>/</span>
             <span className={classes.total_slides}>{movies.length}</span>
           </div>
+          )}
       </div>
     </div>
   );

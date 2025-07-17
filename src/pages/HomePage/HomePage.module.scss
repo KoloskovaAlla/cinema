@@ -124,6 +124,11 @@ h1 {
   margin: 0 5px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  display: none;
+
+   @media (min-width: $breakpoint_md) {
+    display: block;
+  }
 
   &:hover {
     background: rgb(104, 100, 100);
