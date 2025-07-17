@@ -165,12 +165,11 @@ export const HomePage = () => {
             <RightArrowIcon />
           </button>
         </Swiper>
-          {isMobile && (<div className={classes.mobile_counter}>
+          <div className={classes.mobile_counter}>
             <span className={classes.current_slide}>{currentSlide}</span>
             <span className={classes.divider}>/</span>
             <span className={classes.total_slides}>{movies.length}</span>
-          </div>
-          )}
+          </div>          
       </div>
     </div>
   );
