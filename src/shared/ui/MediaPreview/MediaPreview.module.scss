@@ -2,7 +2,7 @@
     position: relative;
     overflow: hidden;
     width: 100%;
-    aspect-ratio: 6/9;
+    aspect-ratio: 7/9;
     margin-bottom: 15px;   
     border-radius: 15px;
   
@@ -25,7 +25,7 @@
   }
 
   .movie {     
-    margin-top: 40px;
+    margin-top: 20px;
     position: relative;  // Добавьте это свойство
     transition: transform 0.5s ease;
     z-index: 1;  // Базовый z-index для всех карточек 
