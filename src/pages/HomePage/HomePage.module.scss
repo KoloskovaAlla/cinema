@@ -95,26 +95,26 @@ h1 {
   left: 15px;
 }
 
-.swiper_pagination_custom {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-  gap: 6px;
-  padding: 5px;
+// .swiper_pagination_custom {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   margin-top: 10px;
+//   gap: 6px;
+//   padding: 5px;
 
-  @media (min-width: $breakpoint_md) {
-    gap: 8px;
-  }
+//   @media (min-width: $breakpoint_md) {
+//     gap: 8px;
+//   }
 
-  @media (min-width: $breakpoint_lg) {
-    gap: 10px;
-  }
+//   @media (min-width: $breakpoint_lg) {
+//     gap: 10px;
+//   }
 
-  @media (min-width: $breakpoint_xl) {
-    gap: 12px;
-  }
-}
+//   @media (min-width: $breakpoint_xl) {
+//     gap: 12px;
+//   }
+// }
 
 .bullet {
   width: 10px;
