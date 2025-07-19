@@ -177,15 +177,13 @@ h1 {
 }
 
 .mobile_counter {
-  position: absolute;
-  bottom: 10px; // поверх карточки, но не слишком близко к краю
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 4px;
+  
+  margin: 0 auto;
+  width: fit-content;
   
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(10px);
@@ -204,8 +202,6 @@ h1 {
     display: none;
   }
 }
-
-
 .current_slide {
   color: #ff8c00; // Активный номер ярче
   font-weight: 700;
