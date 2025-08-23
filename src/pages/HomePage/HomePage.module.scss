@@ -21,9 +21,15 @@
 }
 
 .mySwiper {
-  width: 100%; // Убедитесь, что ширина установлена на 100%  
-  // overflow: hidden; // Чтобы скрыть переполнение
-  // height: 70vh; // Убедитесь, что высота задана корректно
+  width: 100%;
+
+  :global(.swiper) {    
+    overflow: visible;   
+  }
+  
+  :global(.swiper-wrapper) {
+    overflow: visibe; 
+  }
 }
 
 h1 {
