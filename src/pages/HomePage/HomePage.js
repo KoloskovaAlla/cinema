@@ -50,7 +50,7 @@ export const HomePage = () => {
       const swiper = swiperRef.current.swiper;
       swiper.params.navigation.prevEl = navigationPrevRef.current;
       swiper.params.navigation.nextEl = navigationNextRef.current;
-      // swiper.params.pagination.el = paginationRef.current;
+      swiper.params.pagination.el = paginationRef.current;
 
       swiper.navigation.init();
       swiper.navigation.update();
@@ -117,7 +117,7 @@ export const HomePage = () => {
       <div className={classes.mySwiper}>
         <h1 className={classes.title}>The Best Films</h1>
         <Swiper
-          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          modules={[Navigation, Pagination, Scrollbar, A11y]}     
           spaceBetween={30}
           slidesPerView={1}
           breakpoints={{
