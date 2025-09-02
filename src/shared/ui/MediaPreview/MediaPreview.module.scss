@@ -36,12 +36,7 @@
   }
   
   
-  .hovered {
-    transform: scale(1.15);  
-    transition-property: all;
-    transition-duration: 0.5s;
-    z-index: 5;
-  }
+
 
   // .footer {
   //   display: flex;
@@ -67,12 +62,21 @@
     justify-content: space-between;
     border-radius: 0 0 15px 15px;
     padding: 10px 0;
-
  }
 
-.movie.hovered .footer {
-  opacity: 1;
-  background: #746998;
+ // Hover-эффекты только на устройствах с курсором
+@media (hover: hover) and (pointer: fine) {
+  .hovered {
+    transform: scale(1.15);  
+    transition-property: all;
+    transition-duration: 0.5s;
+    z-index: 5;
+  }
+
+  .movie.hovered .footer {
+    opacity: 1;
+    background: #746998;
+  }
 }
 
 

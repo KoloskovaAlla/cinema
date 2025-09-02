@@ -11,13 +11,29 @@ export const MediaPreview = ({ item }) => {
   const bookmarkButtonRef = useRef(null);
 
   const [isMediaPreviewHovered, setIsMediaPreviewHovered] = useState(false);  
+
+  // const handleLikeClick = () => {
+  //   if (favoriteFilms.includes(film)) {
+  //     dispatch(setIsFavorite(false));
+  //     removeFromFavoriteFilms(film);
+  //   }
+  //   else {
+  //     addToFavoriteFilms(film);
+  //     dispatch(setIsFavorite(true));
+  //   }
+  // };
   
   const handleMouseEnter = () => {
-    setIsMediaPreviewHovered(true);    
+    setIsMediaPreviewHovered(true);
+    // imageRef.current.style.scale = '1.2';
+    // imageRef.current.style.transitionProperty = 'all';
+    // imageRef.current.style.transitionDuration = '1s';   
   };
   
   const handleMouseLeave = () => {
-    setIsMediaPreviewHovered(false);    
+    setIsMediaPreviewHovered(false);
+    // imageRef.current.style.scale = '1';
+    // imageRef.current.style.transitionProperty = 'all';
   };
 
   const filmPreviewClassNames = classNames(classes.movie, {
@@ -26,7 +42,8 @@ export const MediaPreview = ({ item }) => {
   const linkClassNames = classNames(classes.link, {
     [classes.hovered]: isMediaPreviewHovered,
   });
- 
+
+   // Это на домашней (главной) странице
   return (
     <Link to={`/${imdbID}`}
       onMouseEnter={handleMouseEnter}
